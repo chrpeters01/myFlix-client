@@ -12,13 +12,13 @@ export const MainView = () => {
   
     if (books.length === 0) {
       return <div>The list is empty!</div>;
-    }
-  
-    return (
+    } else {
+       return (
       <div>
         {books.map((book) => {
-          return <div>{book.title}</div>;
+          return <div key={book.id}>{book.title}</div>;
         })}
       </div>
-    );
+      );
+    }
   };
