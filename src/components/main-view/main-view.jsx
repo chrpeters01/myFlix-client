@@ -5,11 +5,9 @@ import { MovieCard } from "../movie-card/movie-card";
 
 export const MainView = () => {
     const [books, setMovies] = useState([
-      { id: 1, title: "Eloquent JavaScript" },
-      { id: 2, title: "Mastering JavaScript Functional Programming" },
-      { id: 3, title: "JavaScript: The Good Parts" },
-      { id: 4, title: "JavaScript: The Definitive Guide" },
-      { id: 5, title: "The Road to React" }
+      { id: 1, title: "The Departed" },
+      { id: 2, title: "Jurassic Park" },
+      { id: 3, title: "Avatar" },
     ]);
   
     if (movies.length === 0) {
