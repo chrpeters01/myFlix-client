@@ -22,26 +22,33 @@ export const MainView = () => {
       }
     ]);
 
-  return (
+    return (
       <div>
-        <button
-          onClick={() => {
-            alert("Nice!");
-          }}
-        >
-          Click me!
-        </button>
         {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onClick={() => {
+              setSelectedMovie(movie);
+            }}
+          />
         ))}
       </div>
     );
   }
+  <MovieCard
+  key={movie.id}
+  movie={movie}
+  onMovieClick={(newSelectedMovie) => {
+    setSelectedMovie(newSelectedMovie);
+  }}
+/>
 
     const [selectedMovie, setSelectedMovie] = useState(null);
   
     if (selectedMovie) {
-      return <MovieView movie={selectedMovie} />;
+      return <MovieView movie={selectedMovie} onBackClick={() =>
+        setSelectedBook(null)} />
     }
 
       if (movie.length === 0) {
