@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
-
+import { MovieView } from "../movie-view/movie-view";
 
 
 export const MainView = () => {
@@ -12,8 +12,8 @@ export const MainView = () => {
       },
       { id: 2, 
         title: "Jurassic Park",
-      image: "https://media.themoviedb.org/t/p/original/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
-      director: "Steven Spielberg"
+        image: "https://media.themoviedb.org/t/p/original/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
+        director: "Steven Spielberg"
       },
       { id: 3, 
         title: "Avatar",
@@ -21,16 +21,22 @@ export const MainView = () => {
         director: "James Cameron"
       }
     ]);
+
+    const [selectedMovie, setSelectedMovie] = useState(null);
   
-    if (movies.length === 0) {
-      return <div>The list is empty!</div>;
-    } else {
-       return (
-      <div>
-        {movies.map((book) => {
-          <MovieCard movie={movie} />
-        })}
-      </div>
-      );
+    if (selectedMovie) {
+      return <MovieView movie={selectedMovie} />;
     }
+
+      if (movie.length === 0) {
+        return <div>The list is empty!</div>;
+    }
+    
+    return (
+      <div>
+        {movies.map((movie) => (
+        <MovieCard key={movie.id} movie={movie} />
+    ))}
+    </div>
+    );
   };
