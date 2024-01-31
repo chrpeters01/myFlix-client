@@ -8,16 +8,19 @@ export const MainView = () => {
       { id: 1, 
         title: "The Departed",
         image: "https://media.themoviedb.org/t/p/original/nT97ifVT2J1yMQmeq20Qblg61T.jpg",
+        genre: "Crime",
         director: "Martin Scorsese"
       },
       { id: 2, 
         title: "Jurassic Park",
         image: "https://media.themoviedb.org/t/p/original/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
+        genre: "Action",
         director: "Steven Spielberg"
       },
       { id: 3, 
         title: "Avatar",
         image: "https://media.themoviedb.org/t/p/original/kyeqWdyUXW608qlYkRqosgbbJyK.jpg",
+        genre: "Animated",
         director: "James Cameron"
       }
     ]);
