@@ -12,7 +12,7 @@ export const MovieView = ({ movie }) => {
           <span>Director: </span>
           <span>{movie.director}</span>
         </div>
+        <button>Back</button>
       </div>
     );
   };
-  
