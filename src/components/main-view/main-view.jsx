@@ -22,6 +22,22 @@ export const MainView = () => {
       }
     ]);
 
+  return (
+      <div>
+        <button
+          onClick={() => {
+            alert("Nice!");
+          }}
+        >
+          Click me!
+        </button>
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
+    );
+  }
+
     const [selectedMovie, setSelectedMovie] = useState(null);
   
     if (selectedMovie) {
@@ -39,4 +55,4 @@ export const MainView = () => {
     ))}
     </div>
     );
-  };
+  
