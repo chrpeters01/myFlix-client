@@ -3,10 +3,10 @@ import { MainView } from './components/main-view/main-view';
 
 import "./index.scss";
 
-const myFlixApplication = () => {
+const App = () => {
   return <MainView />;
 };
 
 const container = document.querySelector("#root");
 const root = createRoot(container);
-root.render(<myFlixApplication />);
+root.render(<App />);
