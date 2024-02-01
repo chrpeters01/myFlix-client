@@ -43,7 +43,8 @@ export const MainView = () => {
   if (movies.length === 0) {
     return <div>The list is empty!</div>;
   } 
-  return (
+  
+    return (
     <div>
       <button
         onClick={() => {
@@ -53,7 +54,7 @@ export const MainView = () => {
         Click me!
       </button>
       {movies.map((movie) => (
-        <MovieCard key={movie.id} movieTitle={movie} />
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </div>
   );
