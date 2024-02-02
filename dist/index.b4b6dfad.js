@@ -27181,7 +27181,7 @@ const MainView = ()=>{
         {
             id: 1,
             title: "The Departed",
-            imageURL: "https://media.themoviedb.org/t/p/original/nT97ifVT2J1yMQmeq20Qblg61T.jpg",
+            imageURL: "https://media.themoviedb.org/t/p/original/5JdEiLxVU5vozMQe5kuDlfsPu09.jpg",
             genre: "Crime",
             director: "Martin Scorsese",
             description: "South Boston cop Billy Costigan goes under cover to infiltrate the organization of gangland chief Frank Costello."
@@ -27189,7 +27189,7 @@ const MainView = ()=>{
         {
             id: 2,
             title: "Jurassic Park",
-            imageURL: "https://media.themoviedb.org/t/p/original/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
+            imageURL: "https://media.themoviedb.org/t/p/original/l9iqhOWTP33HgWuxOZTLlYLZ58f.jpg",
             genre: "Action",
             director: "Steven Spielberg",
             description: "Paleontologists Alan Grant and Ellie Sattler and mathematician Ian Malcolm are among a select group chosen to tour an island theme park populated by dinosaurs created from prehistoric DNA."
@@ -27236,7 +27236,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "Gl1v0G0OrUDbW2d+ZDmqnWzwZ7Q=");
+_s(MainView, "iE8ylqx3fxhxj1bsfl/MAhbhjWA=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
