@@ -47,7 +47,7 @@ export const MainView = () => {
   } 
   
     return (
-    <button>
+    <div>
       {movies.map((movie) => (
         <MovieCard
           key={movie.id}
@@ -57,7 +57,7 @@ export const MainView = () => {
           }}
         />
       ))}
-    </button>
+    </div>
     );
   };
    

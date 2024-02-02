@@ -1,11 +1,11 @@
 export const MovieCard = ({ movie, onMovieClick }) => {
   return (
-    <button
+    <div
       onClick={() => {
         onMovieClick(movie);
       }}
     >
       {movie.title}
-    </button>
+    </div>
   );
 };
