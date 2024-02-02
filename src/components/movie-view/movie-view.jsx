@@ -20,6 +20,7 @@ export const MovieView = ({ movie }) => {
         <span>Description: </span>
         <span>{movie.description}</span>
       </div>
+      <button>Back</button>
     </div>
   );
 };
