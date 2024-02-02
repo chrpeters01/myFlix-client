@@ -7,7 +7,7 @@ export const MainView = () => {
     { 
       id: 1, 
       title: "The Departed",
-      imageURL: "https://media.themoviedb.org/t/p/original/nT97ifVT2J1yMQmeq20Qblg61T.jpg",
+      imageURL: "https://media.themoviedb.org/t/p/original/jyAgiqVSx5fl0NNj7WoGGKweXrL.jpg",
       genre: "Crime",
       director: "Martin Scorsese",
       description: "South Boston cop Billy Costigan goes under cover to infiltrate the organization of gangland chief Frank Costello.",
