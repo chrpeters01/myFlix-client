@@ -25,7 +25,7 @@ export const MainView = () => {
     { 
       id: 3, 
       title: "Avatar",
-      imageURL: "https://media.themoviedb.org/t/p/original/kyeqWdyUXW608qlYkRqosgbbJyK.jpg",
+      imageURL: "https://media.themoviedb.org/t/p/original/hPiAJMxoS4bAOW4pe6uVs4nRTKO.jpg",
       genre: "Animated",
       director: "James Cameron",
       description: "On the lush alien world of Pandora live the Na'vi, beings who appear primitive but are highly evolved. Because the planet's environment is poisonous, human/Na'vi hybrids, called Avatars, must link to human minds to allow for free movement on Pandora.",
