@@ -1,40 +1,40 @@
 import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
-  const [movies, setMovies] = useState([
-    { 
-      id: 1, 
-      title: "The Departed",
-      imageURL: "https://media.themoviedb.org/t/p/original/5JdEiLxVU5vozMQe5kuDlfsPu09.jpg",
-      genre: "Crime",
-      director: "Martin Scorsese",
-      description: "South Boston cop Billy Costigan goes under cover to infiltrate the organization of gangland chief Frank Costello.",
+  const [movies, setMovies] = useState([])
 
-    },
-    { 
-      id: 2, 
-      title: "Jurassic Park",
-      imageURL: "https://media.themoviedb.org/t/p/original/l9iqhOWTP33HgWuxOZTLlYLZ58f.jpg",
-      genre: "Action",
-      director: "Steven Spielberg",
-      description: "Paleontologists Alan Grant and Ellie Sattler and mathematician Ian Malcolm are among a select group chosen to tour an island theme park populated by dinosaurs created from prehistoric DNA.",
- 
-    },
-    { 
-      id: 3, 
-      title: "Avatar",
-      imageURL: "https://media.themoviedb.org/t/p/original/hPiAJMxoS4bAOW4pe6uVs4nRTKO.jpg",
-      genre: "Animated",
-      director: "James Cameron",
-      description: "On the lush alien world of Pandora live the Na'vi, beings who appear primitive but are highly evolved. Because the planet's environment is poisonous, human/Na'vi hybrids, called Avatars, must link to human minds to allow for free movement on Pandora.",
-      
-
-    }
-  ]);
-
+  useEffect(() => {
+    fetch("https://movies-flix-project-46e833a52919.herokuapp.com/movies")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            const moviesFromApi = data.map((movie) => {
+                return {
+                    _id: movie._id,
+                    Title: movie.Title,
+                    ImagePath: movie.imageURL,
+                    Genre: {
+                      Name: movie.Genre.Name
+                    },
+                    Director: {
+                      Name: movie.Director.Name,
+                     }
+                   };
+                });
+            setMovies(moviesFromApi);
+        });
+}, []);
+  
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+
+
+
+
+
     
   if (selectedMovie) {
     return (
