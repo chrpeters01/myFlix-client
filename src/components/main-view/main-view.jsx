@@ -21,7 +21,8 @@ export const MainView = () => {
                     },
                     Director: {
                       Name: movie.Director.Name,
-                     }
+                     },
+                     Description: movie.Description
                    };
                 });
             setMovies(moviesFromApi);
@@ -30,12 +31,6 @@ export const MainView = () => {
   
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-
-
-
-
-
-    
   if (selectedMovie) {
     return (
       <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
