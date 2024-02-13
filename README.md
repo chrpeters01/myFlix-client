@@ -1,2 +1,2 @@
 # myFlix App
-myFlix is a web application that allows users to explore a collection of movies.
+myFlix is a web application that allows users to explore a collection of movies. User authentication, profile management, and interacting with a catalog of movies are all features within the app. 
