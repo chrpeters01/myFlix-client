@@ -27259,7 +27259,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
         onClick: ()=>{
             onMovieClick(movie);
         },
-        children: movie.title
+        children: movie.Title
     }, void 0, false, {
         fileName: "src/components/movie-card/movie-card.jsx",
         lineNumber: 5,
@@ -28333,8 +28333,8 @@ const MovieView = ({ movie, onBackClick })=>{
 _c = MovieView;
 MovieView.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
-        title: (0, _propTypesDefault.default).string,
         image: (0, _propTypesDefault.default).string,
+        title: (0, _propTypesDefault.default).string,
         genre: (0, _propTypesDefault.default).string,
         director: (0, _propTypesDefault.default).string,
         description: (0, _propTypesDefault.default).string
