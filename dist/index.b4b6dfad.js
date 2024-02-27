@@ -27191,8 +27191,7 @@ const MainView = ()=>{
                     },
                     Director: {
                         Name: movie.Director.Name
-                    },
-                    Description: movie.Description
+                    }
                 };
             });
             setMovies(moviesFromApi);
@@ -27204,14 +27203,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 36,
+        lineNumber: 35,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 41,
+        lineNumber: 40,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27222,12 +27221,12 @@ const MainView = ()=>{
                 }
             }, movie._id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 47,
+                lineNumber: 46,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 45,
+        lineNumber: 44,
         columnNumber: 5
     }, undefined);
 };
@@ -28220,7 +28219,7 @@ const MovieView = ({ movie, onBackClick })=>{
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 7,
-                    columnNumber: 9
+                    columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
@@ -28293,34 +28292,12 @@ const MovieView = ({ movie, onBackClick })=>{
                 lineNumber: 17,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Description: "
-                    }, void 0, false, {
-                        fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 22,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.Description
-                    }, void 0, false, {
-                        fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 23,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 21,
-                columnNumber: 6
-            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 onClick: onBackClick,
                 children: "Back"
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 25,
+                lineNumber: 21,
                 columnNumber: 7
             }, undefined)
         ]
@@ -28333,13 +28310,11 @@ const MovieView = ({ movie, onBackClick })=>{
 _c = MovieView;
 MovieView.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
-        image: (0, _propTypesDefault.default).string,
         title: (0, _propTypesDefault.default).string,
         genre: (0, _propTypesDefault.default).string,
-        director: (0, _propTypesDefault.default).string,
-        description: (0, _propTypesDefault.default).string
+        director: (0, _propTypesDefault.default).string
     }).isRequired,
-    onMovieClick: (0, _propTypesDefault.default).func.isRequired
+    onBackClick: (0, _propTypesDefault.default).func.isRequired
 };
 var _c;
 $RefreshReg$(_c, "MovieView");
