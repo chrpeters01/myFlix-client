@@ -9,10 +9,10 @@ export const LoginView = ({ onLoggedIn }) => {
     event.preventDefault();
 
     const data = {
-      UserName: username,
+      Username: username,
       Password: password,
     };
-    fetch("https://movies-flix-project-46e833a52919.herokuapp.com/movies", {
+    fetch("https://movies-flix-project-46e833a52919.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
