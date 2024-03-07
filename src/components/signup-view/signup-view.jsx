@@ -36,7 +36,7 @@ export const SignupView = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Username:</label>
+      <label>Username:
       <input
         type="text"
         minLength={5}
@@ -44,24 +44,27 @@ export const SignupView = () => {
         onChange={(e) => setUsername(e.target.value)}
         required
       />
+      </label>
       <br />
-      <label> Birthday: </label>
+      <label> Birthday: 
       <input
         type="date"
         value={birthdate}
         onChange={(e) => setBirthdate(e.target.value)}
         required
       />
+      </label>
       <br />
-      <label> Email: </label>
+      <label> Email: 
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
       />
+      </label>
       <br />
-      <label>Password:</label>
+      <label>Password:
       <input
         type="password"
         minLength={8}
@@ -69,6 +72,7 @@ export const SignupView = () => {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
+      </label>
       <br />
       <button type="submit"> Sign up </button>
     </form>
