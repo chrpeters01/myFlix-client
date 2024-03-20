@@ -70,12 +70,12 @@ return (
                 <Navigate to="/" />
               ) : (
                 <Col md={5}>
-                  <LoginView 
+                   <LoginView 
                   onLoggedIn={(user, token) => {
                     setUser(user);
                     setToken(token);
                   }} />
-                </Col>
+               </Col>
               )}
             </>
           }
@@ -121,11 +121,4 @@ return (
     </BrowserRouter>
   );
 };
-    
-    
-    
-    
-    
-    
-
     
