@@ -6,21 +6,21 @@ import PropTypes from 'prop-types';
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
   
-  const movie = movies.find((m) => m.id === movieId);
+  const theMovie = movies.find((m) => m.id === movieId);
   
   return (
     <div>
       <div>
         <span>Title: </span>
-        <span>{movie}</span>
+        <span>{theMovie.Title}</span>
       </div>
       <div>
         <span>Genre: </span>
-        <span>{movie}</span>
+        <span>{theMovie.Genre.Name}</span>
       </div>
       <div>
         <span>Director: </span>
-        <span>{movie}</span>
+        <span>{theMovie.Director.Name}</span>
       </div>
     
       <Link to={`/`}>
