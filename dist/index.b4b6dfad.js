@@ -36209,8 +36209,8 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _s = $RefreshSig$();
 const MovieView = ({ movies })=>{
     _s();
-    const { movieId } = (0, _reactRouter.useParams)();
-    const theMovie = movies.find((m)=>m.id === movieId);
+    const { movie_id } = (0, _reactRouter.useParams)();
+    const theMovie = movies.find((m)=>m.id === movie_id);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -36301,7 +36301,7 @@ const MovieView = ({ movies })=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MovieView, "e2L2DPdRH1AShA7yIOCsYRlzvlI=", false, function() {
+_s(MovieView, "T6xP/eMjXIK7y70TnffRwbmgN5k=", false, function() {
     return [
         (0, _reactRouter.useParams)
     ];

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 export const MovieView = ({ movies }) => {
-  const { movieId } = useParams();
+  const { movie_id } = useParams();
   
-  const theMovie = movies.find((m) => m.id === movieId);
+  const theMovie = movies.find((m) => m.id === movie_id);
   
   return (
     <div>
@@ -39,5 +39,5 @@ MovieView.propTypes = {
     Director: PropTypes.shape({
       Name: PropTypes.string,
     })
-  }).isRequired
+  }).isRequired,
 };
