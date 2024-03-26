@@ -147,19 +147,19 @@ const handleDeleteAccount = (id) => {
            </Card.Body>
            </Card>      
     </Row>
-    <Button onClick={() => handleDeleteAccount(storedUser._id)} 
-        className="button-delete mb-5" 
-        type="submit" variant="outline-secondary"
-        >
-        Delete account
-        </Button>
-    <Row>
+        <Row>
         <Col className="mb-5" xs={12} md={12}>
             {
                 favoriteMovies && (<FavoriteMovies user={user} favoriteMovies={favoriteMovies} />)
             }
         </Col>
       </Row>
+     <Button onClick={() => handleDeleteAccount(storedUser._id)} 
+        className="button-delete mb-5" 
+        type="submit" variant="outline-secondary"
+        >
+        Delete account
+        </Button>
       </Container>
   )
 }

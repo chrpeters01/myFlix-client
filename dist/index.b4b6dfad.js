@@ -41977,17 +41977,6 @@ const ProfileView = ({ token, user, movies, onSubmit })=>{
                 lineNumber: 129,
                 columnNumber: 5
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                onClick: ()=>handleDeleteAccount(storedUser._id),
-                className: "button-delete mb-5",
-                type: "submit",
-                variant: "outline-secondary",
-                children: "Delete account"
-            }, void 0, false, {
-                fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 150,
-                columnNumber: 5
-            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                     className: "mb-5",
@@ -41998,18 +41987,29 @@ const ProfileView = ({ token, user, movies, onSubmit })=>{
                         favoriteMovies: favoriteMovies
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 159,
+                        lineNumber: 153,
                         columnNumber: 36
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 157,
+                    lineNumber: 151,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 156,
-                columnNumber: 5
+                lineNumber: 150,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                onClick: ()=>handleDeleteAccount(storedUser._id),
+                className: "button-delete mb-5",
+                type: "submit",
+                variant: "outline-secondary",
+                children: "Delete account"
+            }, void 0, false, {
+                fileName: "src/components/profile-view/profile-view.jsx",
+                lineNumber: 157,
+                columnNumber: 6
             }, undefined)
         ]
     }, void 0, true, {
