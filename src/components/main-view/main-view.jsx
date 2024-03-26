@@ -4,6 +4,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { ProfileView } from "../profile-view/profile-view";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -122,9 +123,27 @@ return (
               </>
             }
           />
+  <Route
+            path="/profile"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col md={8}>
+                    <ProfileView
+                      localUser={user}
+                      movies={movies}
+                      token={token}
+                    />
+                  </Col>
+                )}
+              </>
+            }
+          />
         </Routes>
       </Row>
     </BrowserRouter>
   );
-};
+}
     
