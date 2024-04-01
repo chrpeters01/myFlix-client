@@ -43,6 +43,7 @@ export const MainView = () => {
       }, [token]);
       
       
+
 return (
 <BrowserRouter>
   <NavigationBar
@@ -115,7 +116,10 @@ return (
                   <>
                     {movies.map((movie) => (
                       <Col className="mb-4" key={movie.id} md={3}>
-                        <MovieCard movie={movie} />
+                        <MovieCard 
+                        isFavorite={user.FavoriteMovies.includes(movie.title)}
+                        movie={movie} 
+                        />
                       </Col>
                     ))}
                   </>

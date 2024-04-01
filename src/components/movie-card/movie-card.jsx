@@ -1,11 +1,9 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movie, isFavorite }) => {
+export const MovieCard = ({movie, isFavorite }) => {
   const storedToken = localStorage.getItem("token");
   const storedUser = JSON.parse(localStorage.getItem("user"));
 
@@ -15,13 +13,12 @@ export const MovieCard = ({ movie, isFavorite }) => {
   const [addTitle, setAddTitle] = useState("");
   const [delTitle, setDelTitle] = useState("");
   
-  
-  //ADD MOVIES TO FAVORITE
+//Add movie to favorites:
 useEffect(() => {
   const addToFavorites = () => {
 
   fetch (
-    `https://cine-verse-b8832aa84c3e.herokuapp.com/users/${user.UserName}/movies/${encodeURIComponent(movie.title)}`,
+    `https://movies-flix-project-46e833a52919.herokuapp.com/users/${user.UserName}/movies/${encodeURIComponent(movie.title)}`,
     {
     method: 'POST',
     // body: JSON.stringify(favoriteMoviesData),
@@ -52,7 +49,7 @@ useEffect(() => {
 const removeFromFavorites = () => {
 
   fetch (
-    `https://cine-verse-b8832aa84c3e.herokuapp.com/users/${user.UserName}/movies/${encodeURIComponent(movie.title)}`,
+    `https://movies-flix-project-46e833a52919.herokuapp.com/users/${user.UserName}/movies/${encodeURIComponent(movie.title)}`,
     {
     method: 'DELETE',
     headers: { "Authorization": `Bearer ${storedToken}`,
@@ -94,36 +91,31 @@ const handleAddToFavorites = () => {
  const handleRemoveFromFavorites = () => {
   setDelTitle(movie.title)
  }; 
-  
-  
-  
+
   return (
     <>
-   <Card>
+    <Link className="link-card" to={`/movies/${encodeURIComponent(movie.id)}`}>
+    <Card>
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
         <Card.Text>{movie.Genre.Name}</Card.Text>
-        <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
-           <Button variant="link">Open</Button>
-        </Link>
       </Card.Body>
     </Card>
+    </Link>
   <Card>
-{isFavorite ? ( 
-  <Button variant="primary"  onClick={handleRemoveFromFavorites}>Remove from favorites</Button>
-) : (
-  <Button variant="primary" onClick={handleAddToFavorites}>Add to favorites</Button>  
-)}
-</Card>
-</>
-);
+    {isFavorite ? ( 
+      <Button variant="primary"  onClick={handleRemoveFromFavorites}>Remove from favorites</Button>
+    ) : (
+      <Button variant="primary" onClick={handleAddToFavorites}>Add to favorites</Button>  
+    )}
+  </Card>
+    </>
+  );
 }
-
-
 
 MovieCard.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
   movie: PropTypes.shape({
     Title: PropTypes.string,
-  }).isRequired,
+  }).isRequired
 };
