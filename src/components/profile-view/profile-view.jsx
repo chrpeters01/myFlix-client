@@ -1,8 +1,9 @@
 import React from "react";
+import "./profile-view.scss";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col"
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FavoriteMovies } from "./favorite-movies";
 import { UpdateUser }  from "./update-user";
 import { Card, Button } from "react-bootstrap";
@@ -95,7 +96,7 @@ const handleDeleteAccount = (id) => {
         <Col 
         >
         </Col>
-        <Card.Title><h2> Hello {username}! </h2></Card.Title>
+        <Card.Title><h2> Hello! {username} </h2></Card.Title>
         <Card.Text>
           {email}
         </Card.Text>

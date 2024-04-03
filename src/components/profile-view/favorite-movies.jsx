@@ -9,11 +9,11 @@ import { MovieCard } from "../movie-card/movie-card";
 export const FavoriteMovies = ({user, favoriteMovies}) => {
   return (
     <Col className="mb-5">
-      <h3 className="title">List of favorite movies</h3>
+      <h3 className="title">Favorite Movies</h3>
       <Row>
         {favoriteMovies.map((movie) => (
           <Col key={movie._id} md={6}>
-            <Link to={`/movies/${movie._id}`} />
+            <Link to={`https://movies-flix-project-46e833a52919.herokuapp.com/users/${user.Username}/movies/${movieId}`} />
             <MovieCard
               key={movie._id}
               isFavorite={user.FavoriteMovies.includes(movie.title)}
@@ -29,3 +29,4 @@ FavoriteMovies.propTypes = {
   favoriteMovies: PropTypes.array.isRequired,
   user: PropTypes.object.isRequired
 };
+

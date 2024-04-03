@@ -10,7 +10,7 @@ export const UpdateUser = ({ formData, handleUpdate, handleSubmit }) => {
     <Row>
       <Form onSubmit={handleSubmit}>
         <br />
-        <h2> Update profile information </h2>
+        <h2> Update Profile </h2>
         <Form.Group controlId="formUsername">
           <Form.Label>Username:</Form.Label>
           <Form.Control
