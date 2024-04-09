@@ -96,7 +96,9 @@ const handleDeleteAccount = (id) => {
         <Col 
         >
         </Col>
+        <Row className="justify-content-center">
         <Card.Title><h2> Hello! {username} </h2></Card.Title>
+        </Row>
         <Card.Text>
           {email}
         </Card.Text>

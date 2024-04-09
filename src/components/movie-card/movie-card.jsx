@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
-import { Button, Card } from "react-bootstrap";
+import {Button} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const MovieCard = ({movie}) => {
+export const MovieCard = ({movie, isFavorite}) => {
   const storedToken = localStorage.getItem("token");
   const storedUser = JSON.parse(localStorage.getItem("user"));
 
@@ -78,17 +79,23 @@ return (
       </Card.Body>
     </Card>
     </Link>
+  
   <Card>
-  <Button variant="primary" onClick={() => addToFavorites(movie._id)}>Add to favorites</Button>
-  <p></p>
-  <Button variant="primary" onClick={() => removeFromFavorites(movie._id)}>Remove from favorites</Button>
+
+ {isFavorite ? (
+<Button variant="primary" onClick={() => removeFromFavorites(movie._id)}>Remove from favorites</Button>
+) : (
+<Button variant="primary" onClick={() => addToFavorites(movie._id)}>Add to favorites</Button>
+)}
+  
+  
   </Card>
     </>
   );
 }
 MovieCard.propTypes = {
+isFavorite: PropTypes.bool.isRequired,
   movie: PropTypes.shape({
     Title: PropTypes.string,
   }).isRequired
 };
-

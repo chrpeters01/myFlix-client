@@ -1,32 +1,29 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
-import { Link } from "react-router-dom";
-import { MovieCard } from "../movie-card/movie-card";
+import React from 'react'
+import Row  from 'react-bootstrap/Row'
+import Col  from 'react-bootstrap/Col'
+import { MovieCard } from '../movie-card/movie-card'
+import { Link } from 'react-router-dom'
 
 export const FavoriteMovies = ({user, favoriteMovies}) => {
   return (
-    <Col className="mb-5">
-      <h3 className="title">Favorite Movies</h3>
-      <Row>
-        {favoriteMovies.map((movie) => (
-          <Col key={movie._id} md={6}>
-            <Link to={`https://movies-flix-project-46e833a52919.herokuapp.com/users/${user.Username}/movies/${movieId}`} />
-            <MovieCard
-              key={movie._id}
-              isFavorite={user.FavoriteMovies.includes(movie.title)}
-              movie={movie}
-            />
-          </Col>
-        ))}
-      </Row>
+   <Row>
+    <Col md={12} >
+        <h3>My Favorites</h3>
     </Col>
-  );
+    <Row>
+        {favoriteMovies.map((movie) => {
+          return (
+            <Col  className="mb-5" key={movie.id} md={4}>
+              <Link to={`/movies/${movie.id}`} />
+              <MovieCard
+                movie={movie}
+                isFavorite = {user.FavoriteMovies.includes(movie._id)}
+              />
+            </Col>
+          );
+        })}
+      </Row>
+   </Row>
+   
+  )
 }
-FavoriteMovies.propTypes = {
-  favoriteMovies: PropTypes.array.isRequired,
-  user: PropTypes.object.isRequired
-};
-
