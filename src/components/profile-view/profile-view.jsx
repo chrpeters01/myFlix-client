@@ -1,124 +1,184 @@
 import React from "react";
 import "./profile-view.scss";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col"
 
 import { useState } from "react";
-import { FavoriteMovies } from "./favorite-movies";
-import { UpdateUser }  from "./update-user";
-import { Card, Button } from "react-bootstrap";
+import { Row, Col, Form, Button, Card } from "react-bootstrap";
 
-export const ProfileView = ({ token, user, movies, onSubmit }) => {
+export const ProfileView = ({ movies, token }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(storedUser ? storedUser : null);
 
-  const [username, setUsername] = useState(storedUser.UserName);
-  const [email, setEmail] = useState(storedUser.Email);
-  const [birthdate, setBirthdate] = useState(storedUser.Birthdate);
+  const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(user.Email);
+  const [birthdate, setBirthdate] = useState(user.Birthdate);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const favoriteMovies = movies.filter(m => storedUser.FavoriteMovies.includes(m.title));
 
-  const formData = {
-    UserName: username,
-    Email: email,
-    Password: password
-  };
-
-  formData.Birthdate = birthdate ? new Date(birthdate).toISOString().substring(0, 10) : null;
-
-  const handleSubmit = (event) => {
+const handleUpdate = (event) => {
     event.preventDefault(event);
- 
-    // Send updated user information to the server, endpoint /users/:username
-    fetch(`https://movies-flix-project-46e833a52919.herokuapp.com/users/${storedUser.UserName}`, {
-      method: "PUT",
-      body:JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-         Authorization: `Bearer ${token}` }
+
+    const data = {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthdate: birthdate
+    };
+
+    fetch(
+      `https://movies-flix-project-46e833a52919.herokuapp.com/users/${user.Username}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        
       }
     )
-    .then((response) => {
-      if (response.ok) {
-        alert("Update successful");
-        return response.json()
-      }
+      .then((response) => {
+        if (response.ok) {
+          return response.json(); 
+        } else {
+          throw new Error("Update failed");
+        }
+      })
+      .then((updatedUser) => {
+        if (updatedUser) {
+          localStorage.setItem("user", JSON.stringify(updatedUser));
+          setUser(updatedUser);
+          alert("Update successful");
+        }
+      })
+      .catch((error) => {
+        console.error("Error during update:", error);
         alert("Update failed");
-     })
-    .then((data) => {
-      localStorage.setItem("user", JSON.stringify(data));
-      onSubmit(data);
-    })
-    .catch((error) => {
-        console.error(error);
       });
-};
+  };
 
-  const handleUpdate = (e) => {
-    switch(e.target.type) {
-      case "text":
-        setUsername(e.target.value);
-        break;
-      case "email":
-        setEmail(e.target.value);
-        break;
-      case "password":
-        setPassword(e.target.value);
-        break;
-      case "date":
-        setBirthdate(e.target.value);
-        default:
-    }
-}
+  const handleDeleteAccount = () => {
+    fetch(
+      `https://movies-flix-project-46e833a52919.herokuapp.com/users/${user.Username}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((response) => {
+      if (response.ok) {
+        alert("Account deleted successfully.");
+        localStorage.clear();
+        window.location.reload();
+      } else {
+        alert("Something went wrong.");
+      }
+    });
+  };
 
-const handleDeleteAccount = (id) => {
-  fetch (`https://movies-flix-project-46e833a52919.herokuapp.com/users/${id}`, {
-    method: "DELETE",
-    headers: { Authorization: `Bearer ${token}`,
-    "Content-Type": "application/json"
-    }
-}).then ((response) => {
-  if (response.ok) {
-    alert("The account has been successfully deleted.");
-    localStorage.clear();
-    window.location.reload();
-  } else {
-    alert("Something went wrong.");
-    }
-  });
-};
+  const favoriteMovies =
+    storedUser && storedUser.FavoriteMovies
+      ? movies.filter((m) => storedUser.FavoriteMovies.includes(m._id))
+      : [];
 
   return (
     <>
       <Row>
-        <Card >
-        <Card.Body>
-        <Col 
-        >
+        <Col md={12}>
+          <Card className="mt-2 mb-3">
+            <Card.Body>
+              <Card.Title>Profile Information</Card.Title>
+              <p>Name: {user.Username}</p>
+              <p>Email: {user.Email}</p>
+            </Card.Body>
+          </Card>
         </Col>
-        <Row className="justify-content-center">
-        <Card.Title><h2> Hello! {username} </h2></Card.Title>
-        </Row>
-        <Card.Text>
-          {email}
-        </Card.Text>
-       </Card.Body>
-        </Card>
-        <Col>
-          <UpdateUser 
-           formData={formData}
-           handleUpdate={handleUpdate}
-           handleSubmit={handleSubmit}
-           />
+
+
+        <Col md={12}>
+          <Card className="mt-2 mb-3">
+            <Card.Body>
+              <Card.Title>Update User Profile</Card.Title>
+              <Form>
+                <Form.Group controlId="formUsername">
+                  <Form.Label>Username:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                    minLength="5"
+                  />
+                </Form.Group>
+                <Form.Group controlId="formPassword">
+                  <Form.Label>New Password:</Form.Label>
+                  <Form.Control
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <Form.Check
+                    type="checkbox"
+                    label="Show Password"
+                    onChange={() => setShowPassword(!showPassword)}
+                  />
+                </Form.Group>
+                <Form.Group controlId="formEmail">
+                  <Form.Label>Email:</Form.Label>
+                  <Form.Control
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+                <Form.Group controlId="formBirthdate">
+                  <Form.Label>Date of Birth:</Form.Label>
+                  <Form.Control
+                    type="date"
+                    value={birthdate}
+                    onChange={(e) => setBirthdate(e.target.value)}
+                    required
+                  />
+                  <br />
+                </Form.Group>
+                
+                <div className="text-center">
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    onClick={handleUpdate}>
+                  Update Profile
+                  </Button>{" "}
+         
+                 <Button 
+                  variant="danger" 
+                  onClick={handleDeleteAccount}>
+                  Delete Account
+                  </Button>
+                </div>
+              </Form>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
-       <Row className="justify-content-center">
-          <FavoriteMovies user={user} favoriteMovies={favoriteMovies} />
+
+      <Row>
+        <Col md={12}>
+          <Card className="mt-2 mb-3">
+            <Card.Body>
+              <Card.Title>My Favorite Movies</Card.Title>
+              {favoriteMovies.length
+                ? favoriteMovies.map((favMovie) => <p>{favMovie.Title}</p>)
+                : null}
+            </Card.Body>
+          </Card>
+        </Col>
       </Row>
-      <Button onClick={() => handleDeleteAccount(storedUser._id)} 
-        className="button-delete mt-3" 
-        type="submit" variant="outline-secondary">
-        Delete account</Button>
     </>
-  ); 
-}
+  );
+};
+

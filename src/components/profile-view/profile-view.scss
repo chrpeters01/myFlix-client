@@ -1,14 +1,25 @@
-.mb-4 {
-    margin-bottom: 15px;
-    figure {
-        position: relative;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        
-    }
-}
 
-text{
-    color: whitesmoke;
-}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+  
+  .card-title {
+    text-align: center; 
+  }
+  
+  .card-text {
+    text-align: center; 
+  }
+  
+  .button-delete {
+    align-self: flex-end; 
+  
+  }
+
+  
+  .card {
+  
+  background-color: #fefeff !important;
+  }
