@@ -1,29 +1,34 @@
 import React from "react";
-import "./profile-view.scss";
-import Row from "react-bootstrap/Row";
-
 import { useState } from "react";
 import { Row, Col, Form, Button, Card } from "react-bootstrap";
+import "./profile-view.scss";
+
+import moment from "moment";
+
+let isoDate = "2021-09-19T05:30:00.000Z";
+
+let newDate = moment.utc(isoDate).format("MM/DD/YY");
+console.log("converted date", newDate);
 
 export const ProfileView = ({ movies, token }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(storedUser ? storedUser : null);
 
   const [username, setUsername] = useState(user.Username);
-  const [password, setPassword] = useState("");
+  //const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
   const [birthdate, setBirthdate] = useState(user.Birthdate);
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
 
-
-const handleUpdate = (event) => {
+  const handleUpdate = (event) => {
     event.preventDefault(event);
 
     const data = {
       Username: username,
-      Password: password,
+      Password: user.Password,
+      // Password: password,
       Email: email,
-      Birthdate: birthdate
+      Birthdate: birthdate,
     };
 
     fetch(
@@ -35,12 +40,11 @@ const handleUpdate = (event) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        
       }
     )
       .then((response) => {
         if (response.ok) {
-          return response.json(); 
+          return response.json();
         } else {
           throw new Error("Update failed");
         }
@@ -93,10 +97,10 @@ const handleUpdate = (event) => {
               <Card.Title>Profile Information</Card.Title>
               <p>Name: {user.Username}</p>
               <p>Email: {user.Email}</p>
+              <p>Birthday: {moment(user.Birthdate).utc().format("MM-DD-YYYY")} </p>
             </Card.Body>
           </Card>
         </Col>
-
 
         <Col md={12}>
           <Card className="mt-2 mb-3">
@@ -113,19 +117,19 @@ const handleUpdate = (event) => {
                     minLength="5"
                   />
                 </Form.Group>
+                {/*
                 <Form.Group controlId="formPassword">
-                  <Form.Label>New Password:</Form.Label>
-                  <Form.Control
-                    type={showPassword ? "text" : "password"}
+                <Form.Label>New Password:</Form.Label>
+                 <Form.Control
+                  type={showPassword ? "text" : "password"}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <Form.Check
+                    onChange={(e) => setPassword(e.target.value)}/>
+                <Form.Check
                     type="checkbox"
                     label="Show Password"
-                    onChange={() => setShowPassword(!showPassword)}
-                  />
+                    onChange={() => setShowPassword(!showPassword)}/>
                 </Form.Group>
+                  */}
                 <Form.Group controlId="formEmail">
                   <Form.Label>Email:</Form.Label>
                   <Form.Control
@@ -136,7 +140,7 @@ const handleUpdate = (event) => {
                   />
                 </Form.Group>
                 <Form.Group controlId="formBirthdate">
-                  <Form.Label>Date of Birth:</Form.Label>
+                  <Form.Label>Birthday:</Form.Label>
                   <Form.Control
                     type="date"
                     value={birthdate}
@@ -145,19 +149,17 @@ const handleUpdate = (event) => {
                   />
                   <br />
                 </Form.Group>
-                
+
                 <div className="text-center">
                   <Button
                     variant="primary"
                     type="submit"
-                    onClick={handleUpdate}>
-                  Update Profile
+                    onClick={handleUpdate}
+                  >
+                    Update Profile
                   </Button>{" "}
-         
-                 <Button 
-                  variant="danger" 
-                  onClick={handleDeleteAccount}>
-                  Delete Account
+                  <Button variant="danger" onClick={handleDeleteAccount}>
+                    Delete Account
                   </Button>
                 </div>
               </Form>
@@ -181,4 +183,3 @@ const handleUpdate = (event) => {
     </>
   );
 };
-
