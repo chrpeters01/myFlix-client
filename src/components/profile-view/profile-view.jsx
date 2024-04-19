@@ -117,6 +117,7 @@ export const ProfileView = ({ movies, token }) => {
                     minLength="5"
                   />
                 </Form.Group>
+                
                 {/*
                 <Form.Group controlId="formPassword">
                 <Form.Label>New Password:</Form.Label>
@@ -130,6 +131,7 @@ export const ProfileView = ({ movies, token }) => {
                     onChange={() => setShowPassword(!showPassword)}/>
                 </Form.Group>
                   */}
+                  
                 <Form.Group controlId="formEmail">
                   <Form.Label>Email:</Form.Label>
                   <Form.Control
