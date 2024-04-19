@@ -27514,30 +27514,30 @@ const MovieCard = ({ movie, isFavorite })=>{
                                 children: movie.Title
                             }, void 0, false, {
                                 fileName: "src/components/movie-card/movie-card.jsx",
-                                lineNumber: 77,
+                                lineNumber: 78,
                                 columnNumber: 9
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                                 children: movie.Genre.Name
                             }, void 0, false, {
                                 fileName: "src/components/movie-card/movie-card.jsx",
-                                lineNumber: 78,
+                                lineNumber: 79,
                                 columnNumber: 9
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 76,
+                        lineNumber: 77,
                         columnNumber: 7
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 75,
+                    lineNumber: 76,
                     columnNumber: 5
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 74,
+                lineNumber: 75,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
@@ -27547,7 +27547,7 @@ const MovieCard = ({ movie, isFavorite })=>{
                     children: "Remove from favorites"
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 86,
+                    lineNumber: 87,
                     columnNumber: 1
                 }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                     variant: "primary",
@@ -27555,12 +27555,12 @@ const MovieCard = ({ movie, isFavorite })=>{
                     children: "Add to favorites"
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 88,
+                    lineNumber: 89,
                     columnNumber: 1
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 83,
+                lineNumber: 84,
                 columnNumber: 3
             }, undefined)
         ]
