@@ -41296,7 +41296,7 @@ _s(MovieView, "T6xP/eMjXIK7y70TnffRwbmgN5k=", false, function() {
 });
 _c = MovieView;
 MovieView.propTypes = {
-    movie: (0, _propTypesDefault.default).shape({
+    movies: (0, _propTypesDefault.default).shape({
         Title: (0, _propTypesDefault.default).string,
         Genre: (0, _propTypesDefault.default).shape({
             Name: (0, _propTypesDefault.default).string
