@@ -33,13 +33,5 @@ export const MovieView = ({ movies }) => {
 };
 
 MovieView.propTypes = {
-  movies: PropTypes.shape({
-    Title: PropTypes.string,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string,
-    }),
-    Director: PropTypes.shape({
-      Name: PropTypes.string,
-    })
-  }).isRequired,
-};
+  movies: PropTypes.array.isRequired
+  }

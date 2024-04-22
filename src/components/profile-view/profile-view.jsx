@@ -2,13 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { Row, Col, Form, Button, Card } from "react-bootstrap";
 import "./profile-view.scss";
-
 import moment from "moment";
 
-let isoDate = "2021-09-19T05:30:00.000Z";
-
-let newDate = moment.utc(isoDate).format("MM/DD/YY");
-console.log("converted date", newDate);
 
 export const ProfileView = ({ movies, token }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -28,8 +23,10 @@ export const ProfileView = ({ movies, token }) => {
       Password: user.Password,
       // Password: password,
       Email: email,
-      Birthdate: birthdate,
+      Birthdate: birthdate
     };
+
+   
 
     fetch(
       `https://movies-flix-project-46e833a52919.herokuapp.com/users/${user.Username}`,
@@ -97,7 +94,7 @@ export const ProfileView = ({ movies, token }) => {
               <Card.Title>Profile Information</Card.Title>
               <p>Name: {user.Username}</p>
               <p>Email: {user.Email}</p>
-              <p>Birthday: {moment(user.Birthdate).utc().format("MM-DD-YYYY")} </p>
+              <p>Birthday: {moment(user.Birthdate).utc().format('MM/DD/YYYY')} </p>
             </Card.Body>
           </Card>
         </Col>
@@ -141,11 +138,11 @@ export const ProfileView = ({ movies, token }) => {
                     required
                   />
                 </Form.Group>
-                <Form.Group controlId="formBirthdate">
+                <Form.Group controlId="formBirthday">
                   <Form.Label>Birthday:</Form.Label>
                   <Form.Control
                     type="date"
-                    value={birthdate}
+                    value={birthdate.slice(0, 10)}
                     onChange={(e) => setBirthdate(e.target.value)}
                     required
                   />
@@ -185,3 +182,4 @@ export const ProfileView = ({ movies, token }) => {
     </>
   );
 };
+
