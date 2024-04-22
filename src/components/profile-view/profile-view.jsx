@@ -4,7 +4,6 @@ import { Row, Col, Form, Button, Card } from "react-bootstrap";
 import "./profile-view.scss";
 import moment from "moment";
 
-
 export const ProfileView = ({ movies, token }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(storedUser ? storedUser : null);
@@ -23,10 +22,8 @@ export const ProfileView = ({ movies, token }) => {
       Password: user.Password,
       // Password: password,
       Email: email,
-      Birthdate: birthdate
+      Birthdate: birthdate,
     };
-
-   
 
     fetch(
       `https://movies-flix-project-46e833a52919.herokuapp.com/users/${user.Username}`,
@@ -94,7 +91,9 @@ export const ProfileView = ({ movies, token }) => {
               <Card.Title>Profile Information</Card.Title>
               <p>Name: {user.Username}</p>
               <p>Email: {user.Email}</p>
-              <p>Birthday: {moment(user.Birthdate).utc().format('MM/DD/YYYY')} </p>
+              <p>
+                Birthday: {moment(user.Birthdate).utc().format("MM/DD/YYYY")}{" "}
+              </p>
             </Card.Body>
           </Card>
         </Col>
@@ -114,7 +113,7 @@ export const ProfileView = ({ movies, token }) => {
                     minLength="5"
                   />
                 </Form.Group>
-                
+
                 {/*
                 <Form.Group controlId="formPassword">
                 <Form.Label>New Password:</Form.Label>
@@ -128,7 +127,7 @@ export const ProfileView = ({ movies, token }) => {
                     onChange={() => setShowPassword(!showPassword)}/>
                 </Form.Group>
                   */}
-                  
+
                 <Form.Group controlId="formEmail">
                   <Form.Label>Email:</Form.Label>
                   <Form.Control
@@ -182,4 +181,3 @@ export const ProfileView = ({ movies, token }) => {
     </>
   );
 };
-
