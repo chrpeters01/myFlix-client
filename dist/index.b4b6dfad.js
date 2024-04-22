@@ -27365,7 +27365,7 @@ const MainView = ()=>{
                                                 lineNumber: 119,
                                                 columnNumber: 25
                                             }, void 0)
-                                        }, movie.id, false, {
+                                        }, movie._id, false, {
                                             fileName: "src/components/main-view/main-view.jsx",
                                             lineNumber: 118,
                                             columnNumber: 23

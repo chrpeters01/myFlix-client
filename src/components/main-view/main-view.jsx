@@ -115,7 +115,7 @@ return (
                 ) : (
                   <>
                     {movies.map((movie) => (
-                      <Col className="mb-4" key={movie.id} md={3}>
+                      <Col className="mb-4" key={movie._id} md={3}>
                         <MovieCard 
                        movie={movie} 
                        isFavorite = {user.FavoriteMovies.includes(movie._id)}
