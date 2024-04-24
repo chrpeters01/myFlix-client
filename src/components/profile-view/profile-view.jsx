@@ -167,20 +167,19 @@ export const ProfileView = ({ movies, token }) => {
       </Row>
 
       <Row>
-  <Col md={12}>
-    <Card className="mt-2 mb-3">
-      <Card.Body>
-        <Card.Title>My Favorite Movies</Card.Title>
-        {favoriteMovies.length
-          ? favoriteMovies.map((favMovie) => (
-              <p key={favMovie._id}>{favMovie.Title}</p>
-            ))
-          : null}
-      </Card.Body>
-    </Card>
-  </Col>
-</Row>
+        <Col md={12}>
+          <Card className="mt-2 mb-3">
+            <Card.Body>
+              <Card.Title>My Favorite Movies</Card.Title>
+              {favoriteMovies.length
+                ? favoriteMovies.map((favMovie) => (
+                    <p key={favMovie._id}>{favMovie.Title}</p>
+                  ))
+                : null}
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
     </>
   );
 };
-

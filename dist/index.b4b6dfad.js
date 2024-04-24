@@ -42058,30 +42058,30 @@ const ProfileView = ({ movies, token })=>{
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
                                     lineNumber: 173,
-                                    columnNumber: 9
+                                    columnNumber: 15
                                 }, undefined),
                                 favoriteMovies.length ? favoriteMovies.map((favMovie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                         children: favMovie.Title
                                     }, favMovie._id, false, {
                                         fileName: "src/components/profile-view/profile-view.jsx",
                                         lineNumber: 176,
-                                        columnNumber: 15
+                                        columnNumber: 21
                                     }, undefined)) : null
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/profile-view.jsx",
                             lineNumber: 172,
-                            columnNumber: 7
+                            columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
                         lineNumber: 171,
-                        columnNumber: 5
+                        columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
                     lineNumber: 170,
-                    columnNumber: 3
+                    columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
