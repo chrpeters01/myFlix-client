@@ -33,5 +33,6 @@ export const MovieView = ({ movies }) => {
 };
 
 MovieView.propTypes = {
-  movies: PropTypes.array.isRequired,
-};
+  movies: PropTypes.array.isRequired
+  };
+
