@@ -91,9 +91,7 @@ export const ProfileView = ({ movies, token }) => {
               <Card.Title>Profile Information</Card.Title>
               <p>Name: {user.Username}</p>
               <p>Email: {user.Email}</p>
-              <p>
-                Birthday: {moment(user.Birthdate).utc().format("MM/DD/YYYY")}{" "}
-              </p>
+              <p>Birthday: {moment(user.Birthdate).utc().format("MM/DD/YYYY")}{" "}</p>
             </Card.Body>
           </Card>
         </Col>
@@ -181,3 +179,4 @@ export const ProfileView = ({ movies, token }) => {
     </>
   );
 };
+

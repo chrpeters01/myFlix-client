@@ -2,29 +2,29 @@ import React from "react";
 import { useParams } from "react-router";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import "./movie-view.scss";
 
 export const MovieView = ({ movies }) => {
-  const { movie_id } = useParams();
-  
-  const theMovie = movies.find((m) => m.id === movie_id);
-  
+  const { movieId } = useParams();
+  const decodedMovieId = decodeURIComponent(movieId);
+  const movie = movies.find((m) => m._id === decodedMovieId);
+
   return (
     <div>
       <div>
         <span>Title: </span>
-        <span>{theMovie.Title}</span>
+        <span>{movie.Title}</span>
       </div>
       <div>
         <span>Genre: </span>
-        <span>{theMovie.Genre.Name}</span>
+        <span>{movie.Genre.Name}</span>
       </div>
       <div>
         <span>Director: </span>
-        <span>{theMovie.Director.Name}</span>
+        <span>{movie.Director.Name}</span>
       </div>
-    
+
       <Link to={`/`}>
         <Button className="back-button"> Back </Button>
       </Link>
@@ -33,5 +33,5 @@ export const MovieView = ({ movies }) => {
 };
 
 MovieView.propTypes = {
-  movies: PropTypes.array.isRequired
-  }
+  movies: PropTypes.array.isRequired,
+};
