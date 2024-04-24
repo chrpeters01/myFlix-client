@@ -91,7 +91,9 @@ export const ProfileView = ({ movies, token }) => {
               <Card.Title>Profile Information</Card.Title>
               <p>Name: {user.Username}</p>
               <p>Email: {user.Email}</p>
-              <p>Birthday: {moment(user.Birthdate).utc().format("MM/DD/YYYY")}{" "}</p>
+              <p>
+                Birthday: {moment(user.Birthdate).utc().format("MM/DD/YYYY")}{" "}
+              </p>
             </Card.Body>
           </Card>
         </Col>
@@ -165,17 +167,19 @@ export const ProfileView = ({ movies, token }) => {
       </Row>
 
       <Row>
-        <Col md={12}>
-          <Card className="mt-2 mb-3">
-            <Card.Body>
-              <Card.Title>My Favorite Movies</Card.Title>
-              {favoriteMovies.length
-                ? favoriteMovies.map((favMovie) => <p>{favMovie.Title}</p>)
-                : null}
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+  <Col md={12}>
+    <Card className="mt-2 mb-3">
+      <Card.Body>
+        <Card.Title>My Favorite Movies</Card.Title>
+        {favoriteMovies.length
+          ? favoriteMovies.map((favMovie) => (
+              <p key={favMovie._id}>{favMovie.Title}</p>
+            ))
+          : null}
+      </Card.Body>
+    </Card>
+  </Col>
+</Row>
     </>
   );
 };
