@@ -183,3 +183,4 @@ export const ProfileView = ({ movies, token }) => {
     </>
   );
 };
+
