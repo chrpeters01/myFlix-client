@@ -12,7 +12,7 @@ export const LoginView = ({ onLoggedIn }) => {
 
     const data = {
       Username: username,
-      Password: password,
+      Password: password
     };
     fetch("https://movies-flix-project-46e833a52919.herokuapp.com/login", {
       method: "POST",
@@ -64,3 +64,4 @@ export const LoginView = ({ onLoggedIn }) => {
     </Form>
   );
 };
+

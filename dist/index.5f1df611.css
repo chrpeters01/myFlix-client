@@ -1,3 +1,34 @@
+.title {
+  margin: 24px 0 16px;
+}
+
+.back-button {
+  margin: 8px 0;
+}
+
+img {
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.card-body {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.card-title, .card-text {
+  text-align: center;
+}
+
+.button-delete {
+  align-self: flex-end;
+}
+
+.card {
+  background-color: #fefeff !important;
+}
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -12018,4 +12049,4 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
-/*# sourceMappingURL=index.ce1d6491.css.map */
+/*# sourceMappingURL=index.5f1df611.css.map */
