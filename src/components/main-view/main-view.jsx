@@ -16,6 +16,7 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     if (!token) {
@@ -42,6 +43,17 @@ export const MainView = () => {
       });
   }, [token]);
 
+  // Filter movies based on search query
+  const filteredMovies = movies.filter((movie) => {
+    const titleMatch = movie.Title.toLowerCase().includes(
+      searchQuery.toLowerCase()
+    );
+    const genreMatch = movie.Genre.Name.toLowerCase().includes(
+      searchQuery.toLowerCase()
+    );
+    return titleMatch || genreMatch;
+  });
+
   return (
     <BrowserRouter>
       <NavigationBar
@@ -51,6 +63,7 @@ export const MainView = () => {
           setToken(null);
           localStorage.clear();
         }}
+        setSearchQuery={setSearchQuery}
       />
       <Row className="justify-content-md-center">
         <Routes>
@@ -109,11 +122,11 @@ export const MainView = () => {
               <>
                 {!user ? (
                   <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
+                ) : filteredMovies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
                   <>
-                    {movies.map((movie) => (
+                    {filteredMovies.map((movie) => (
                       <Col className="mb-4" key={movie._id} md={3}>
                         <MovieCard
                           movie={movie}
@@ -149,4 +162,3 @@ export const MainView = () => {
     </BrowserRouter>
   );
 };
- 
