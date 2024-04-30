@@ -142,15 +142,16 @@
       this[globalName] = mainExports;
     }
   }
-})({"5qIsR":[function(require,module,exports) {
+})({"7oH2Q":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
+var HMR_USE_SSE = false;
 module.bundle.HMR_BUNDLE_ID = "022c1b16b4b6dfad";
 "use strict";
-/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
+/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, HMR_USE_SSE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
   HMRAsset,
   HMRMessage,
@@ -189,6 +190,7 @@ declare var HMR_HOST: string;
 declare var HMR_PORT: string;
 declare var HMR_ENV_HASH: string;
 declare var HMR_SECURE: boolean;
+declare var HMR_USE_SSE: boolean;
 declare var chrome: ExtensionContext;
 declare var browser: ExtensionContext;
 declare var __parcel__import__: (string) => Promise<void>;
@@ -232,7 +234,8 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== "undefined") {
         "0.0.0.0"
     ].includes(hostname) ? "wss" : "ws";
     var ws;
-    try {
+    if (HMR_USE_SSE) ws = new EventSource("/__parcel_hmr");
+    else try {
         ws = new WebSocket(protocol + "://" + hostname + (port ? ":" + port : "") + "/");
     } catch (err) {
         if (err.message) console.error(err.message);
@@ -302,12 +305,14 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== "undefined") {
             }
         }
     };
-    ws.onerror = function(e) {
-        if (e.message) console.error(e.message);
-    };
-    ws.onclose = function() {
-        console.warn("[parcel] \uD83D\uDEA8 Connection to the HMR server was lost");
-    };
+    if (ws instanceof WebSocket) {
+        ws.onerror = function(e) {
+            if (e.message) console.error(e.message);
+        };
+        ws.onclose = function() {
+            console.warn("[parcel] \uD83D\uDEA8 Connection to the HMR server was lost");
+        };
+    }
 }
 function removeErrorOverlay() {
     var overlay = document.getElementById(OVERLAY_ID);
@@ -578,9 +583,9 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     });
 }
 
-},{}],"1xC6H":[function(require,module,exports) {
-var Refresh = require("6d18d6bd340e7473");
-var ErrorOverlay = require("74ad5ea14201648c");
+},{}],"40UBb":[function(require,module,exports) {
+var Refresh = require("59b390270d6a1074");
+var ErrorOverlay = require("9a9de81598b4500e");
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
 window.$RefreshSig$ = function() {
@@ -599,11 +604,11 @@ window.addEventListener("parcelhmraccept", ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"6d18d6bd340e7473":"786KC","74ad5ea14201648c":"1dldy"}],"786KC":[function(require,module,exports) {
+},{"59b390270d6a1074":"eQQgf","9a9de81598b4500e":"5jikM"}],"eQQgf":[function(require,module,exports) {
 "use strict";
-module.exports = require("96622d495519d4e");
+module.exports = require("c7a276dce79413e3");
 
-},{"96622d495519d4e":"hdge7"}],"hdge7":[function(require,module,exports) {
+},{"c7a276dce79413e3":"9Hre6"}],"9Hre6":[function(require,module,exports) {
 /** @license React v0.9.0
  * react-refresh-runtime.development.js
  *
@@ -1063,8 +1068,8 @@ module.exports = require("96622d495519d4e");
     exports.setSignature = setSignature;
 })();
 
-},{}],"1dldy":[function(require,module,exports) {
-var process = require("d1546958eb39fdcf");
+},{}],"5jikM":[function(require,module,exports) {
+var process = require("445c8803daf87743");
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -2794,7 +2799,7 @@ var process = require("d1546958eb39fdcf");
     ]);
 });
 
-},{"d1546958eb39fdcf":"d5jf4"}],"d5jf4":[function(require,module,exports) {
+},{"445c8803daf87743":"8QLtY"}],"8QLtY":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -2982,11 +2987,11 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","react-bootstrap/Container":"hEdsw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"bl7WB","react-dom/client":"5gkhG","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","react-bootstrap/Container":"7vJU3","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dvzmY"}],"bl7WB":[function(require,module,exports) {
 "use strict";
-module.exports = require("ee51401569654d91");
+module.exports = require("82529c5081409ecb");
 
-},{"ee51401569654d91":"48uCM"}],"48uCM":[function(require,module,exports) {
+},{"82529c5081409ecb":"6xUdP"}],"6xUdP":[function(require,module,exports) {
 /**
  * @license React
  * react-jsx-dev-runtime.development.js
@@ -2998,7 +3003,7 @@ module.exports = require("ee51401569654d91");
  */ "use strict";
 (function() {
     "use strict";
-    var React = require("58362d9d82be395f");
+    var React = require("e5cf2beebbc05ee2");
     // ATTENTION
     // When adding new symbols to this file,
     // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
@@ -3771,6 +3776,7 @@ module.exports = require("ee51401569654d91");
             setCurrentlyValidatingElement$1(null);
         }
     }
+    var didWarnAboutKeySpread = {};
     function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
         var validType = isValidElementType(type); // We warn in this case but don't throw. We expect the element creation to
         // succeed and there will likely be errors in render.
@@ -3808,6 +3814,18 @@ module.exports = require("ee51401569654d91");
                 } else validateChildKeys(children, type);
             }
         }
+        if (hasOwnProperty.call(props, "key")) {
+            var componentName = getComponentNameFromType(type);
+            var keys = Object.keys(props).filter(function(k) {
+                return k !== "key";
+            });
+            var beforeExample = keys.length > 0 ? "{key: someKey, " + keys.join(": ..., ") + ": ...}" : "{key: someKey}";
+            if (!didWarnAboutKeySpread[componentName + beforeExample]) {
+                var afterExample = keys.length > 0 ? "{" + keys.join(": ..., ") + ": ...}" : "{}";
+                error('A props object containing a "key" prop is being spread into JSX:\n  let props = %s;\n  <%s {...props} />\nReact keys must be passed directly to JSX without using spread:\n  let props = %s;\n  <%s key={someKey} {...props} />', beforeExample, componentName, afterExample, componentName);
+                didWarnAboutKeySpread[componentName + beforeExample] = true;
+            }
+        }
         if (type === REACT_FRAGMENT_TYPE) validateFragmentProps(element);
         else validatePropTypes(element);
         return element;
@@ -3817,11 +3835,11 @@ module.exports = require("ee51401569654d91");
     exports.jsxDEV = jsxDEV$1;
 })();
 
-},{"58362d9d82be395f":"21dqq"}],"21dqq":[function(require,module,exports) {
+},{"e5cf2beebbc05ee2":"l8X7j"}],"l8X7j":[function(require,module,exports) {
 "use strict";
-module.exports = require("a569817e6ea559f6");
+module.exports = require("85677a8d6b20ea96");
 
-},{"a569817e6ea559f6":"6YvXz"}],"6YvXz":[function(require,module,exports) {
+},{"85677a8d6b20ea96":"hhLuU"}],"hhLuU":[function(require,module,exports) {
 /**
  * @license React
  * react.development.js
@@ -3834,7 +3852,7 @@ module.exports = require("a569817e6ea559f6");
 (function() {
     "use strict";
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-    var ReactVersion = "18.2.0";
+    var ReactVersion = "18.3.1";
     // ATTENTION
     // When adding new symbols to this file,
     // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
@@ -5657,6 +5675,7 @@ module.exports = require("a569817e6ea559f6");
     exports.StrictMode = REACT_STRICT_MODE_TYPE;
     exports.Suspense = REACT_SUSPENSE_TYPE;
     exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals;
+    exports.act = act;
     exports.cloneElement = cloneElement$1;
     exports.createContext = createContext;
     exports.createElement = createElement$1;
@@ -5687,9 +5706,9 @@ module.exports = require("a569817e6ea559f6");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"lOjBx":[function(require,module,exports) {
+},{}],"5gkhG":[function(require,module,exports) {
 "use strict";
-var m = require("aaccff5d309d9239");
+var m = require("878223973c735067");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 exports.createRoot = function(c, o) {
     i.usingClientEntryPoint = true;
@@ -5708,7 +5727,7 @@ exports.hydrateRoot = function(c, h, o) {
     }
 };
 
-},{"aaccff5d309d9239":"j6uA9"}],"j6uA9":[function(require,module,exports) {
+},{"878223973c735067":"ibfHo"}],"ibfHo":[function(require,module,exports) {
 "use strict";
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -5722,9 +5741,9 @@ function checkDCE() {
     // a false positive.
     throw new Error("^_^");
 }
-module.exports = require("b0f0e6b9e8349dac");
+module.exports = require("82a3dcbc21a7e921");
 
-},{"b0f0e6b9e8349dac":"3iA9v"}],"3iA9v":[function(require,module,exports) {
+},{"82a3dcbc21a7e921":"iM4yd"}],"iM4yd":[function(require,module,exports) {
 /**
  * @license React
  * react-dom.development.js
@@ -5737,8 +5756,8 @@ module.exports = require("b0f0e6b9e8349dac");
 (function() {
     "use strict";
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-    var React = require("6f0162e9ab224cd4");
-    var Scheduler = require("8ad4ca65319d28a7");
+    var React = require("6981e9f7f932245a");
+    var Scheduler = require("69208e5768203b44");
     var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     var suppressWarning = false;
     function setSuppressWarning(newSuppressWarning) {
@@ -5821,7 +5840,7 @@ module.exports = require("b0f0e6b9e8349dac");
     // element's object properties instead of only HTML attributes.
     // https://github.com/facebook/react/issues/11347
     var enableCustomElementPropertySupport = false; // Disables children for <textarea> elements
-    var warnAboutStringRefs = false; // -----------------------------------------------------------------------------
+    var warnAboutStringRefs = true; // -----------------------------------------------------------------------------
     // Debugging and DevTools
     // -----------------------------------------------------------------------------
     // Adds user timing marks for e.g. state updates, suspense, and work loop stuff,
@@ -15351,1136 +15370,6 @@ module.exports = require("b0f0e6b9e8349dac");
         pendingUNSAFE_ComponentWillUpdateWarnings = [];
         pendingLegacyContextWarning = new Map();
     };
-    function resolveDefaultProps(Component, baseProps) {
-        if (Component && Component.defaultProps) {
-            // Resolve default props. Taken from ReactElement
-            var props = assign({}, baseProps);
-            var defaultProps = Component.defaultProps;
-            for(var propName in defaultProps)if (props[propName] === undefined) props[propName] = defaultProps[propName];
-            return props;
-        }
-        return baseProps;
-    }
-    var valueCursor = createCursor(null);
-    var rendererSigil;
-    // Use this to detect multiple renderers using the same context
-    rendererSigil = {};
-    var currentlyRenderingFiber = null;
-    var lastContextDependency = null;
-    var lastFullyObservedContext = null;
-    var isDisallowedContextReadInDEV = false;
-    function resetContextDependencies() {
-        // This is called right before React yields execution, to ensure `readContext`
-        // cannot be called outside the render phase.
-        currentlyRenderingFiber = null;
-        lastContextDependency = null;
-        lastFullyObservedContext = null;
-        isDisallowedContextReadInDEV = false;
-    }
-    function enterDisallowedContextReadInDEV() {
-        isDisallowedContextReadInDEV = true;
-    }
-    function exitDisallowedContextReadInDEV() {
-        isDisallowedContextReadInDEV = false;
-    }
-    function pushProvider(providerFiber, context, nextValue) {
-        push(valueCursor, context._currentValue, providerFiber);
-        context._currentValue = nextValue;
-        if (context._currentRenderer !== undefined && context._currentRenderer !== null && context._currentRenderer !== rendererSigil) error("Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.");
-        context._currentRenderer = rendererSigil;
-    }
-    function popProvider(context, providerFiber) {
-        var currentValue = valueCursor.current;
-        pop(valueCursor, providerFiber);
-        context._currentValue = currentValue;
-    }
-    function scheduleContextWorkOnParentPath(parent, renderLanes, propagationRoot) {
-        // Update the child lanes of all the ancestors, including the alternates.
-        var node = parent;
-        while(node !== null){
-            var alternate = node.alternate;
-            if (!isSubsetOfLanes(node.childLanes, renderLanes)) {
-                node.childLanes = mergeLanes(node.childLanes, renderLanes);
-                if (alternate !== null) alternate.childLanes = mergeLanes(alternate.childLanes, renderLanes);
-            } else if (alternate !== null && !isSubsetOfLanes(alternate.childLanes, renderLanes)) alternate.childLanes = mergeLanes(alternate.childLanes, renderLanes);
-            if (node === propagationRoot) break;
-            node = node.return;
-        }
-        if (node !== propagationRoot) error("Expected to find the propagation root when scheduling context work. This error is likely caused by a bug in React. Please file an issue.");
-    }
-    function propagateContextChange(workInProgress, context, renderLanes) {
-        propagateContextChange_eager(workInProgress, context, renderLanes);
-    }
-    function propagateContextChange_eager(workInProgress, context, renderLanes) {
-        var fiber = workInProgress.child;
-        if (fiber !== null) // Set the return pointer of the child to the work-in-progress fiber.
-        fiber.return = workInProgress;
-        while(fiber !== null){
-            var nextFiber = void 0; // Visit this fiber.
-            var list = fiber.dependencies;
-            if (list !== null) {
-                nextFiber = fiber.child;
-                var dependency = list.firstContext;
-                while(dependency !== null){
-                    // Check if the context matches.
-                    if (dependency.context === context) {
-                        // Match! Schedule an update on this fiber.
-                        if (fiber.tag === ClassComponent) {
-                            // Schedule a force update on the work-in-progress.
-                            var lane = pickArbitraryLane(renderLanes);
-                            var update = createUpdate(NoTimestamp, lane);
-                            update.tag = ForceUpdate; // TODO: Because we don't have a work-in-progress, this will add the
-                            // update to the current fiber, too, which means it will persist even if
-                            // this render is thrown away. Since it's a race condition, not sure it's
-                            // worth fixing.
-                            // Inlined `enqueueUpdate` to remove interleaved update check
-                            var updateQueue = fiber.updateQueue;
-                            if (updateQueue === null) ;
-                            else {
-                                var sharedQueue = updateQueue.shared;
-                                var pending = sharedQueue.pending;
-                                if (pending === null) // This is the first update. Create a circular list.
-                                update.next = update;
-                                else {
-                                    update.next = pending.next;
-                                    pending.next = update;
-                                }
-                                sharedQueue.pending = update;
-                            }
-                        }
-                        fiber.lanes = mergeLanes(fiber.lanes, renderLanes);
-                        var alternate = fiber.alternate;
-                        if (alternate !== null) alternate.lanes = mergeLanes(alternate.lanes, renderLanes);
-                        scheduleContextWorkOnParentPath(fiber.return, renderLanes, workInProgress); // Mark the updated lanes on the list, too.
-                        list.lanes = mergeLanes(list.lanes, renderLanes); // Since we already found a match, we can stop traversing the
-                        break;
-                    }
-                    dependency = dependency.next;
-                }
-            } else if (fiber.tag === ContextProvider) // Don't scan deeper if this is a matching provider
-            nextFiber = fiber.type === workInProgress.type ? null : fiber.child;
-            else if (fiber.tag === DehydratedFragment) {
-                // If a dehydrated suspense boundary is in this subtree, we don't know
-                // if it will have any context consumers in it. The best we can do is
-                // mark it as having updates.
-                var parentSuspense = fiber.return;
-                if (parentSuspense === null) throw new Error("We just came from a parent so we must have had a parent. This is a bug in React.");
-                parentSuspense.lanes = mergeLanes(parentSuspense.lanes, renderLanes);
-                var _alternate = parentSuspense.alternate;
-                if (_alternate !== null) _alternate.lanes = mergeLanes(_alternate.lanes, renderLanes);
-                 // This is intentionally passing this fiber as the parent
-                // because we want to schedule this fiber as having work
-                // on its children. We'll use the childLanes on
-                // this fiber to indicate that a context has changed.
-                scheduleContextWorkOnParentPath(parentSuspense, renderLanes, workInProgress);
-                nextFiber = fiber.sibling;
-            } else // Traverse down.
-            nextFiber = fiber.child;
-            if (nextFiber !== null) // Set the return pointer of the child to the work-in-progress fiber.
-            nextFiber.return = fiber;
-            else {
-                // No child. Traverse to next sibling.
-                nextFiber = fiber;
-                while(nextFiber !== null){
-                    if (nextFiber === workInProgress) {
-                        // We're back to the root of this subtree. Exit.
-                        nextFiber = null;
-                        break;
-                    }
-                    var sibling = nextFiber.sibling;
-                    if (sibling !== null) {
-                        // Set the return pointer of the sibling to the work-in-progress fiber.
-                        sibling.return = nextFiber.return;
-                        nextFiber = sibling;
-                        break;
-                    } // No more siblings. Traverse up.
-                    nextFiber = nextFiber.return;
-                }
-            }
-            fiber = nextFiber;
-        }
-    }
-    function prepareToReadContext(workInProgress, renderLanes) {
-        currentlyRenderingFiber = workInProgress;
-        lastContextDependency = null;
-        lastFullyObservedContext = null;
-        var dependencies = workInProgress.dependencies;
-        if (dependencies !== null) {
-            var firstContext = dependencies.firstContext;
-            if (firstContext !== null) {
-                if (includesSomeLane(dependencies.lanes, renderLanes)) // Context list has a pending update. Mark that this fiber performed work.
-                markWorkInProgressReceivedUpdate();
-                 // Reset the work-in-progress list
-                dependencies.firstContext = null;
-            }
-        }
-    }
-    function readContext(context) {
-        // This warning would fire if you read context inside a Hook like useMemo.
-        // Unlike the class check below, it's not enforced in production for perf.
-        if (isDisallowedContextReadInDEV) error("Context can only be read while React is rendering. In classes, you can read it in the render method or getDerivedStateFromProps. In function components, you can read it directly in the function body, but not inside Hooks like useReducer() or useMemo().");
-        var value = context._currentValue;
-        if (lastFullyObservedContext === context) ;
-        else {
-            var contextItem = {
-                context: context,
-                memoizedValue: value,
-                next: null
-            };
-            if (lastContextDependency === null) {
-                if (currentlyRenderingFiber === null) throw new Error("Context can only be read while React is rendering. In classes, you can read it in the render method or getDerivedStateFromProps. In function components, you can read it directly in the function body, but not inside Hooks like useReducer() or useMemo().");
-                 // This is the first dependency for this component. Create a new list.
-                lastContextDependency = contextItem;
-                currentlyRenderingFiber.dependencies = {
-                    lanes: NoLanes,
-                    firstContext: contextItem
-                };
-            } else // Append a new context item.
-            lastContextDependency = lastContextDependency.next = contextItem;
-        }
-        return value;
-    }
-    // render. When this render exits, either because it finishes or because it is
-    // interrupted, the interleaved updates will be transferred onto the main part
-    // of the queue.
-    var concurrentQueues = null;
-    function pushConcurrentUpdateQueue(queue) {
-        if (concurrentQueues === null) concurrentQueues = [
-            queue
-        ];
-        else concurrentQueues.push(queue);
-    }
-    function finishQueueingConcurrentUpdates() {
-        // Transfer the interleaved updates onto the main queue. Each queue has a
-        // `pending` field and an `interleaved` field. When they are not null, they
-        // point to the last node in a circular linked list. We need to append the
-        // interleaved list to the end of the pending list by joining them into a
-        // single, circular list.
-        if (concurrentQueues !== null) {
-            for(var i = 0; i < concurrentQueues.length; i++){
-                var queue = concurrentQueues[i];
-                var lastInterleavedUpdate = queue.interleaved;
-                if (lastInterleavedUpdate !== null) {
-                    queue.interleaved = null;
-                    var firstInterleavedUpdate = lastInterleavedUpdate.next;
-                    var lastPendingUpdate = queue.pending;
-                    if (lastPendingUpdate !== null) {
-                        var firstPendingUpdate = lastPendingUpdate.next;
-                        lastPendingUpdate.next = firstInterleavedUpdate;
-                        lastInterleavedUpdate.next = firstPendingUpdate;
-                    }
-                    queue.pending = lastInterleavedUpdate;
-                }
-            }
-            concurrentQueues = null;
-        }
-    }
-    function enqueueConcurrentHookUpdate(fiber, queue, update, lane) {
-        var interleaved = queue.interleaved;
-        if (interleaved === null) {
-            // This is the first update. Create a circular list.
-            update.next = update; // At the end of the current render, this queue's interleaved updates will
-            // be transferred to the pending queue.
-            pushConcurrentUpdateQueue(queue);
-        } else {
-            update.next = interleaved.next;
-            interleaved.next = update;
-        }
-        queue.interleaved = update;
-        return markUpdateLaneFromFiberToRoot(fiber, lane);
-    }
-    function enqueueConcurrentHookUpdateAndEagerlyBailout(fiber, queue, update, lane) {
-        var interleaved = queue.interleaved;
-        if (interleaved === null) {
-            // This is the first update. Create a circular list.
-            update.next = update; // At the end of the current render, this queue's interleaved updates will
-            // be transferred to the pending queue.
-            pushConcurrentUpdateQueue(queue);
-        } else {
-            update.next = interleaved.next;
-            interleaved.next = update;
-        }
-        queue.interleaved = update;
-    }
-    function enqueueConcurrentClassUpdate(fiber, queue, update, lane) {
-        var interleaved = queue.interleaved;
-        if (interleaved === null) {
-            // This is the first update. Create a circular list.
-            update.next = update; // At the end of the current render, this queue's interleaved updates will
-            // be transferred to the pending queue.
-            pushConcurrentUpdateQueue(queue);
-        } else {
-            update.next = interleaved.next;
-            interleaved.next = update;
-        }
-        queue.interleaved = update;
-        return markUpdateLaneFromFiberToRoot(fiber, lane);
-    }
-    function enqueueConcurrentRenderForLane(fiber, lane) {
-        return markUpdateLaneFromFiberToRoot(fiber, lane);
-    } // Calling this function outside this module should only be done for backwards
-    // compatibility and should always be accompanied by a warning.
-    var unsafe_markUpdateLaneFromFiberToRoot = markUpdateLaneFromFiberToRoot;
-    function markUpdateLaneFromFiberToRoot(sourceFiber, lane) {
-        // Update the source fiber's lanes
-        sourceFiber.lanes = mergeLanes(sourceFiber.lanes, lane);
-        var alternate = sourceFiber.alternate;
-        if (alternate !== null) alternate.lanes = mergeLanes(alternate.lanes, lane);
-        if (alternate === null && (sourceFiber.flags & (Placement | Hydrating)) !== NoFlags) warnAboutUpdateOnNotYetMountedFiberInDEV(sourceFiber);
-        var node = sourceFiber;
-        var parent = sourceFiber.return;
-        while(parent !== null){
-            parent.childLanes = mergeLanes(parent.childLanes, lane);
-            alternate = parent.alternate;
-            if (alternate !== null) alternate.childLanes = mergeLanes(alternate.childLanes, lane);
-            else if ((parent.flags & (Placement | Hydrating)) !== NoFlags) warnAboutUpdateOnNotYetMountedFiberInDEV(sourceFiber);
-            node = parent;
-            parent = parent.return;
-        }
-        if (node.tag === HostRoot) {
-            var root = node.stateNode;
-            return root;
-        } else return null;
-    }
-    var UpdateState = 0;
-    var ReplaceState = 1;
-    var ForceUpdate = 2;
-    var CaptureUpdate = 3; // Global state that is reset at the beginning of calling `processUpdateQueue`.
-    // It should only be read right after calling `processUpdateQueue`, via
-    // `checkHasForceUpdateAfterProcessing`.
-    var hasForceUpdate = false;
-    var didWarnUpdateInsideUpdate;
-    var currentlyProcessingQueue;
-    didWarnUpdateInsideUpdate = false;
-    currentlyProcessingQueue = null;
-    function initializeUpdateQueue(fiber) {
-        var queue = {
-            baseState: fiber.memoizedState,
-            firstBaseUpdate: null,
-            lastBaseUpdate: null,
-            shared: {
-                pending: null,
-                interleaved: null,
-                lanes: NoLanes
-            },
-            effects: null
-        };
-        fiber.updateQueue = queue;
-    }
-    function cloneUpdateQueue(current, workInProgress) {
-        // Clone the update queue from current. Unless it's already a clone.
-        var queue = workInProgress.updateQueue;
-        var currentQueue = current.updateQueue;
-        if (queue === currentQueue) {
-            var clone = {
-                baseState: currentQueue.baseState,
-                firstBaseUpdate: currentQueue.firstBaseUpdate,
-                lastBaseUpdate: currentQueue.lastBaseUpdate,
-                shared: currentQueue.shared,
-                effects: currentQueue.effects
-            };
-            workInProgress.updateQueue = clone;
-        }
-    }
-    function createUpdate(eventTime, lane) {
-        var update = {
-            eventTime: eventTime,
-            lane: lane,
-            tag: UpdateState,
-            payload: null,
-            callback: null,
-            next: null
-        };
-        return update;
-    }
-    function enqueueUpdate(fiber, update, lane) {
-        var updateQueue = fiber.updateQueue;
-        if (updateQueue === null) // Only occurs if the fiber has been unmounted.
-        return null;
-        var sharedQueue = updateQueue.shared;
-        if (currentlyProcessingQueue === sharedQueue && !didWarnUpdateInsideUpdate) {
-            error("An update (setState, replaceState, or forceUpdate) was scheduled from inside an update function. Update functions should be pure, with zero side-effects. Consider using componentDidUpdate or a callback.");
-            didWarnUpdateInsideUpdate = true;
-        }
-        if (isUnsafeClassRenderPhaseUpdate()) {
-            // This is an unsafe render phase update. Add directly to the update
-            // queue so we can process it immediately during the current render.
-            var pending = sharedQueue.pending;
-            if (pending === null) // This is the first update. Create a circular list.
-            update.next = update;
-            else {
-                update.next = pending.next;
-                pending.next = update;
-            }
-            sharedQueue.pending = update; // Update the childLanes even though we're most likely already rendering
-            // this fiber. This is for backwards compatibility in the case where you
-            // update a different component during render phase than the one that is
-            // currently renderings (a pattern that is accompanied by a warning).
-            return unsafe_markUpdateLaneFromFiberToRoot(fiber, lane);
-        } else return enqueueConcurrentClassUpdate(fiber, sharedQueue, update, lane);
-    }
-    function entangleTransitions(root, fiber, lane) {
-        var updateQueue = fiber.updateQueue;
-        if (updateQueue === null) // Only occurs if the fiber has been unmounted.
-        return;
-        var sharedQueue = updateQueue.shared;
-        if (isTransitionLane(lane)) {
-            var queueLanes = sharedQueue.lanes; // If any entangled lanes are no longer pending on the root, then they must
-            // have finished. We can remove them from the shared queue, which represents
-            // a superset of the actually pending lanes. In some cases we may entangle
-            // more than we need to, but that's OK. In fact it's worse if we *don't*
-            // entangle when we should.
-            queueLanes = intersectLanes(queueLanes, root.pendingLanes); // Entangle the new transition lane with the other transition lanes.
-            var newQueueLanes = mergeLanes(queueLanes, lane);
-            sharedQueue.lanes = newQueueLanes; // Even if queue.lanes already include lane, we don't know for certain if
-            // the lane finished since the last time we entangled it. So we need to
-            // entangle it again, just to be sure.
-            markRootEntangled(root, newQueueLanes);
-        }
-    }
-    function enqueueCapturedUpdate(workInProgress, capturedUpdate) {
-        // Captured updates are updates that are thrown by a child during the render
-        // phase. They should be discarded if the render is aborted. Therefore,
-        // we should only put them on the work-in-progress queue, not the current one.
-        var queue = workInProgress.updateQueue; // Check if the work-in-progress queue is a clone.
-        var current = workInProgress.alternate;
-        if (current !== null) {
-            var currentQueue = current.updateQueue;
-            if (queue === currentQueue) {
-                // The work-in-progress queue is the same as current. This happens when
-                // we bail out on a parent fiber that then captures an error thrown by
-                // a child. Since we want to append the update only to the work-in
-                // -progress queue, we need to clone the updates. We usually clone during
-                // processUpdateQueue, but that didn't happen in this case because we
-                // skipped over the parent when we bailed out.
-                var newFirst = null;
-                var newLast = null;
-                var firstBaseUpdate = queue.firstBaseUpdate;
-                if (firstBaseUpdate !== null) {
-                    // Loop through the updates and clone them.
-                    var update = firstBaseUpdate;
-                    do {
-                        var clone = {
-                            eventTime: update.eventTime,
-                            lane: update.lane,
-                            tag: update.tag,
-                            payload: update.payload,
-                            callback: update.callback,
-                            next: null
-                        };
-                        if (newLast === null) newFirst = newLast = clone;
-                        else {
-                            newLast.next = clone;
-                            newLast = clone;
-                        }
-                        update = update.next;
-                    }while (update !== null); // Append the captured update the end of the cloned list.
-                    if (newLast === null) newFirst = newLast = capturedUpdate;
-                    else {
-                        newLast.next = capturedUpdate;
-                        newLast = capturedUpdate;
-                    }
-                } else // There are no base updates.
-                newFirst = newLast = capturedUpdate;
-                queue = {
-                    baseState: currentQueue.baseState,
-                    firstBaseUpdate: newFirst,
-                    lastBaseUpdate: newLast,
-                    shared: currentQueue.shared,
-                    effects: currentQueue.effects
-                };
-                workInProgress.updateQueue = queue;
-                return;
-            }
-        } // Append the update to the end of the list.
-        var lastBaseUpdate = queue.lastBaseUpdate;
-        if (lastBaseUpdate === null) queue.firstBaseUpdate = capturedUpdate;
-        else lastBaseUpdate.next = capturedUpdate;
-        queue.lastBaseUpdate = capturedUpdate;
-    }
-    function getStateFromUpdate(workInProgress, queue, update, prevState, nextProps, instance) {
-        switch(update.tag){
-            case ReplaceState:
-                var payload = update.payload;
-                if (typeof payload === "function") {
-                    enterDisallowedContextReadInDEV();
-                    var nextState = payload.call(instance, prevState, nextProps);
-                    if (workInProgress.mode & StrictLegacyMode) {
-                        setIsStrictModeForDevtools(true);
-                        try {
-                            payload.call(instance, prevState, nextProps);
-                        } finally{
-                            setIsStrictModeForDevtools(false);
-                        }
-                    }
-                    exitDisallowedContextReadInDEV();
-                    return nextState;
-                } // State object
-                return payload;
-            case CaptureUpdate:
-                workInProgress.flags = workInProgress.flags & ~ShouldCapture | DidCapture;
-            // Intentional fallthrough
-            case UpdateState:
-                var _payload = update.payload;
-                var partialState;
-                if (typeof _payload === "function") {
-                    enterDisallowedContextReadInDEV();
-                    partialState = _payload.call(instance, prevState, nextProps);
-                    if (workInProgress.mode & StrictLegacyMode) {
-                        setIsStrictModeForDevtools(true);
-                        try {
-                            _payload.call(instance, prevState, nextProps);
-                        } finally{
-                            setIsStrictModeForDevtools(false);
-                        }
-                    }
-                    exitDisallowedContextReadInDEV();
-                } else // Partial state object
-                partialState = _payload;
-                if (partialState === null || partialState === undefined) // Null and undefined are treated as no-ops.
-                return prevState;
-                 // Merge the partial state and the previous state.
-                return assign({}, prevState, partialState);
-            case ForceUpdate:
-                hasForceUpdate = true;
-                return prevState;
-        }
-        return prevState;
-    }
-    function processUpdateQueue(workInProgress, props, instance, renderLanes) {
-        // This is always non-null on a ClassComponent or HostRoot
-        var queue = workInProgress.updateQueue;
-        hasForceUpdate = false;
-        currentlyProcessingQueue = queue.shared;
-        var firstBaseUpdate = queue.firstBaseUpdate;
-        var lastBaseUpdate = queue.lastBaseUpdate; // Check if there are pending updates. If so, transfer them to the base queue.
-        var pendingQueue = queue.shared.pending;
-        if (pendingQueue !== null) {
-            queue.shared.pending = null; // The pending queue is circular. Disconnect the pointer between first
-            // and last so that it's non-circular.
-            var lastPendingUpdate = pendingQueue;
-            var firstPendingUpdate = lastPendingUpdate.next;
-            lastPendingUpdate.next = null; // Append pending updates to base queue
-            if (lastBaseUpdate === null) firstBaseUpdate = firstPendingUpdate;
-            else lastBaseUpdate.next = firstPendingUpdate;
-            lastBaseUpdate = lastPendingUpdate; // If there's a current queue, and it's different from the base queue, then
-            // we need to transfer the updates to that queue, too. Because the base
-            // queue is a singly-linked list with no cycles, we can append to both
-            // lists and take advantage of structural sharing.
-            // TODO: Pass `current` as argument
-            var current = workInProgress.alternate;
-            if (current !== null) {
-                // This is always non-null on a ClassComponent or HostRoot
-                var currentQueue = current.updateQueue;
-                var currentLastBaseUpdate = currentQueue.lastBaseUpdate;
-                if (currentLastBaseUpdate !== lastBaseUpdate) {
-                    if (currentLastBaseUpdate === null) currentQueue.firstBaseUpdate = firstPendingUpdate;
-                    else currentLastBaseUpdate.next = firstPendingUpdate;
-                    currentQueue.lastBaseUpdate = lastPendingUpdate;
-                }
-            }
-        } // These values may change as we process the queue.
-        if (firstBaseUpdate !== null) {
-            // Iterate through the list of updates to compute the result.
-            var newState = queue.baseState; // TODO: Don't need to accumulate this. Instead, we can remove renderLanes
-            // from the original lanes.
-            var newLanes = NoLanes;
-            var newBaseState = null;
-            var newFirstBaseUpdate = null;
-            var newLastBaseUpdate = null;
-            var update = firstBaseUpdate;
-            do {
-                var updateLane = update.lane;
-                var updateEventTime = update.eventTime;
-                if (!isSubsetOfLanes(renderLanes, updateLane)) {
-                    // Priority is insufficient. Skip this update. If this is the first
-                    // skipped update, the previous update/state is the new base
-                    // update/state.
-                    var clone = {
-                        eventTime: updateEventTime,
-                        lane: updateLane,
-                        tag: update.tag,
-                        payload: update.payload,
-                        callback: update.callback,
-                        next: null
-                    };
-                    if (newLastBaseUpdate === null) {
-                        newFirstBaseUpdate = newLastBaseUpdate = clone;
-                        newBaseState = newState;
-                    } else newLastBaseUpdate = newLastBaseUpdate.next = clone;
-                     // Update the remaining priority in the queue.
-                    newLanes = mergeLanes(newLanes, updateLane);
-                } else {
-                    // This update does have sufficient priority.
-                    if (newLastBaseUpdate !== null) {
-                        var _clone = {
-                            eventTime: updateEventTime,
-                            // This update is going to be committed so we never want uncommit
-                            // it. Using NoLane works because 0 is a subset of all bitmasks, so
-                            // this will never be skipped by the check above.
-                            lane: NoLane,
-                            tag: update.tag,
-                            payload: update.payload,
-                            callback: update.callback,
-                            next: null
-                        };
-                        newLastBaseUpdate = newLastBaseUpdate.next = _clone;
-                    } // Process this update.
-                    newState = getStateFromUpdate(workInProgress, queue, update, newState, props, instance);
-                    var callback = update.callback;
-                    if (callback !== null && // If the update was already committed, we should not queue its
-                    // callback again.
-                    update.lane !== NoLane) {
-                        workInProgress.flags |= Callback;
-                        var effects = queue.effects;
-                        if (effects === null) queue.effects = [
-                            update
-                        ];
-                        else effects.push(update);
-                    }
-                }
-                update = update.next;
-                if (update === null) {
-                    pendingQueue = queue.shared.pending;
-                    if (pendingQueue === null) break;
-                    else {
-                        // An update was scheduled from inside a reducer. Add the new
-                        // pending updates to the end of the list and keep processing.
-                        var _lastPendingUpdate = pendingQueue; // Intentionally unsound. Pending updates form a circular list, but we
-                        // unravel them when transferring them to the base queue.
-                        var _firstPendingUpdate = _lastPendingUpdate.next;
-                        _lastPendingUpdate.next = null;
-                        update = _firstPendingUpdate;
-                        queue.lastBaseUpdate = _lastPendingUpdate;
-                        queue.shared.pending = null;
-                    }
-                }
-            }while (true);
-            if (newLastBaseUpdate === null) newBaseState = newState;
-            queue.baseState = newBaseState;
-            queue.firstBaseUpdate = newFirstBaseUpdate;
-            queue.lastBaseUpdate = newLastBaseUpdate; // Interleaved updates are stored on a separate queue. We aren't going to
-            // process them during this render, but we do need to track which lanes
-            // are remaining.
-            var lastInterleaved = queue.shared.interleaved;
-            if (lastInterleaved !== null) {
-                var interleaved = lastInterleaved;
-                do {
-                    newLanes = mergeLanes(newLanes, interleaved.lane);
-                    interleaved = interleaved.next;
-                }while (interleaved !== lastInterleaved);
-            } else if (firstBaseUpdate === null) // `queue.lanes` is used for entangling transitions. We can set it back to
-            // zero once the queue is empty.
-            queue.shared.lanes = NoLanes;
-             // Set the remaining expiration time to be whatever is remaining in the queue.
-            // This should be fine because the only two other things that contribute to
-            // expiration time are props and context. We're already in the middle of the
-            // begin phase by the time we start processing the queue, so we've already
-            // dealt with the props. Context in components that specify
-            // shouldComponentUpdate is tricky; but we'll have to account for
-            // that regardless.
-            markSkippedUpdateLanes(newLanes);
-            workInProgress.lanes = newLanes;
-            workInProgress.memoizedState = newState;
-        }
-        currentlyProcessingQueue = null;
-    }
-    function callCallback(callback, context) {
-        if (typeof callback !== "function") throw new Error("Invalid argument passed as callback. Expected a function. Instead " + ("received: " + callback));
-        callback.call(context);
-    }
-    function resetHasForceUpdateBeforeProcessing() {
-        hasForceUpdate = false;
-    }
-    function checkHasForceUpdateAfterProcessing() {
-        return hasForceUpdate;
-    }
-    function commitUpdateQueue(finishedWork, finishedQueue, instance) {
-        // Commit the effects
-        var effects = finishedQueue.effects;
-        finishedQueue.effects = null;
-        if (effects !== null) for(var i = 0; i < effects.length; i++){
-            var effect = effects[i];
-            var callback = effect.callback;
-            if (callback !== null) {
-                effect.callback = null;
-                callCallback(callback, instance);
-            }
-        }
-    }
-    var fakeInternalInstance = {}; // React.Component uses a shared frozen object by default.
-    // We'll use it to determine whether we need to initialize legacy refs.
-    var emptyRefsObject = new React.Component().refs;
-    var didWarnAboutStateAssignmentForComponent;
-    var didWarnAboutUninitializedState;
-    var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
-    var didWarnAboutLegacyLifecyclesAndDerivedState;
-    var didWarnAboutUndefinedDerivedState;
-    var warnOnUndefinedDerivedState;
-    var warnOnInvalidCallback;
-    var didWarnAboutDirectlyAssigningPropsToState;
-    var didWarnAboutContextTypeAndContextTypes;
-    var didWarnAboutInvalidateContextType;
-    didWarnAboutStateAssignmentForComponent = new Set();
-    didWarnAboutUninitializedState = new Set();
-    didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate = new Set();
-    didWarnAboutLegacyLifecyclesAndDerivedState = new Set();
-    didWarnAboutDirectlyAssigningPropsToState = new Set();
-    didWarnAboutUndefinedDerivedState = new Set();
-    didWarnAboutContextTypeAndContextTypes = new Set();
-    didWarnAboutInvalidateContextType = new Set();
-    var didWarnOnInvalidCallback = new Set();
-    warnOnInvalidCallback = function(callback, callerName) {
-        if (callback === null || typeof callback === "function") return;
-        var key = callerName + "_" + callback;
-        if (!didWarnOnInvalidCallback.has(key)) {
-            didWarnOnInvalidCallback.add(key);
-            error("%s(...): Expected the last optional `callback` argument to be a function. Instead received: %s.", callerName, callback);
-        }
-    };
-    warnOnUndefinedDerivedState = function(type, partialState) {
-        if (partialState === undefined) {
-            var componentName = getComponentNameFromType(type) || "Component";
-            if (!didWarnAboutUndefinedDerivedState.has(componentName)) {
-                didWarnAboutUndefinedDerivedState.add(componentName);
-                error("%s.getDerivedStateFromProps(): A valid state object (or null) must be returned. You have returned undefined.", componentName);
-            }
-        }
-    }; // This is so gross but it's at least non-critical and can be removed if
-    // it causes problems. This is meant to give a nicer error message for
-    // ReactDOM15.unstable_renderSubtreeIntoContainer(reactDOM16Component,
-    // ...)) which otherwise throws a "_processChildContext is not a function"
-    // exception.
-    Object.defineProperty(fakeInternalInstance, "_processChildContext", {
-        enumerable: false,
-        value: function() {
-            throw new Error("_processChildContext is not available in React 16+. This likely means you have multiple copies of React and are attempting to nest a React 15 tree inside a React 16 tree using unstable_renderSubtreeIntoContainer, which isn't supported. Try to make sure you have only one copy of React (and ideally, switch to ReactDOM.createPortal).");
-        }
-    });
-    Object.freeze(fakeInternalInstance);
-    function applyDerivedStateFromProps(workInProgress, ctor, getDerivedStateFromProps, nextProps) {
-        var prevState = workInProgress.memoizedState;
-        var partialState = getDerivedStateFromProps(nextProps, prevState);
-        if (workInProgress.mode & StrictLegacyMode) {
-            setIsStrictModeForDevtools(true);
-            try {
-                // Invoke the function an extra time to help detect side-effects.
-                partialState = getDerivedStateFromProps(nextProps, prevState);
-            } finally{
-                setIsStrictModeForDevtools(false);
-            }
-        }
-        warnOnUndefinedDerivedState(ctor, partialState);
-        var memoizedState = partialState === null || partialState === undefined ? prevState : assign({}, prevState, partialState);
-        workInProgress.memoizedState = memoizedState; // Once the update queue is empty, persist the derived state onto the
-        // base state.
-        if (workInProgress.lanes === NoLanes) {
-            // Queue is always non-null for classes
-            var updateQueue = workInProgress.updateQueue;
-            updateQueue.baseState = memoizedState;
-        }
-    }
-    var classComponentUpdater = {
-        isMounted: isMounted,
-        enqueueSetState: function(inst, payload, callback) {
-            var fiber = get(inst);
-            var eventTime = requestEventTime();
-            var lane = requestUpdateLane(fiber);
-            var update = createUpdate(eventTime, lane);
-            update.payload = payload;
-            if (callback !== undefined && callback !== null) {
-                warnOnInvalidCallback(callback, "setState");
-                update.callback = callback;
-            }
-            var root = enqueueUpdate(fiber, update, lane);
-            if (root !== null) {
-                scheduleUpdateOnFiber(root, fiber, lane, eventTime);
-                entangleTransitions(root, fiber, lane);
-            }
-            markStateUpdateScheduled(fiber, lane);
-        },
-        enqueueReplaceState: function(inst, payload, callback) {
-            var fiber = get(inst);
-            var eventTime = requestEventTime();
-            var lane = requestUpdateLane(fiber);
-            var update = createUpdate(eventTime, lane);
-            update.tag = ReplaceState;
-            update.payload = payload;
-            if (callback !== undefined && callback !== null) {
-                warnOnInvalidCallback(callback, "replaceState");
-                update.callback = callback;
-            }
-            var root = enqueueUpdate(fiber, update, lane);
-            if (root !== null) {
-                scheduleUpdateOnFiber(root, fiber, lane, eventTime);
-                entangleTransitions(root, fiber, lane);
-            }
-            markStateUpdateScheduled(fiber, lane);
-        },
-        enqueueForceUpdate: function(inst, callback) {
-            var fiber = get(inst);
-            var eventTime = requestEventTime();
-            var lane = requestUpdateLane(fiber);
-            var update = createUpdate(eventTime, lane);
-            update.tag = ForceUpdate;
-            if (callback !== undefined && callback !== null) {
-                warnOnInvalidCallback(callback, "forceUpdate");
-                update.callback = callback;
-            }
-            var root = enqueueUpdate(fiber, update, lane);
-            if (root !== null) {
-                scheduleUpdateOnFiber(root, fiber, lane, eventTime);
-                entangleTransitions(root, fiber, lane);
-            }
-            markForceUpdateScheduled(fiber, lane);
-        }
-    };
-    function checkShouldComponentUpdate(workInProgress, ctor, oldProps, newProps, oldState, newState, nextContext) {
-        var instance = workInProgress.stateNode;
-        if (typeof instance.shouldComponentUpdate === "function") {
-            var shouldUpdate = instance.shouldComponentUpdate(newProps, newState, nextContext);
-            if (workInProgress.mode & StrictLegacyMode) {
-                setIsStrictModeForDevtools(true);
-                try {
-                    // Invoke the function an extra time to help detect side-effects.
-                    shouldUpdate = instance.shouldComponentUpdate(newProps, newState, nextContext);
-                } finally{
-                    setIsStrictModeForDevtools(false);
-                }
-            }
-            if (shouldUpdate === undefined) error("%s.shouldComponentUpdate(): Returned undefined instead of a boolean value. Make sure to return true or false.", getComponentNameFromType(ctor) || "Component");
-            return shouldUpdate;
-        }
-        if (ctor.prototype && ctor.prototype.isPureReactComponent) return !shallowEqual(oldProps, newProps) || !shallowEqual(oldState, newState);
-        return true;
-    }
-    function checkClassInstance(workInProgress, ctor, newProps) {
-        var instance = workInProgress.stateNode;
-        var name = getComponentNameFromType(ctor) || "Component";
-        var renderPresent = instance.render;
-        if (!renderPresent) {
-            if (ctor.prototype && typeof ctor.prototype.render === "function") error("%s(...): No `render` method found on the returned component instance: did you accidentally return an object from the constructor?", name);
-            else error("%s(...): No `render` method found on the returned component instance: you may have forgotten to define `render`.", name);
-        }
-        if (instance.getInitialState && !instance.getInitialState.isReactClassApproved && !instance.state) error("getInitialState was defined on %s, a plain JavaScript class. This is only supported for classes created using React.createClass. Did you mean to define a state property instead?", name);
-        if (instance.getDefaultProps && !instance.getDefaultProps.isReactClassApproved) error("getDefaultProps was defined on %s, a plain JavaScript class. This is only supported for classes created using React.createClass. Use a static property to define defaultProps instead.", name);
-        if (instance.propTypes) error("propTypes was defined as an instance property on %s. Use a static property to define propTypes instead.", name);
-        if (instance.contextType) error("contextType was defined as an instance property on %s. Use a static property to define contextType instead.", name);
-        if (instance.contextTypes) error("contextTypes was defined as an instance property on %s. Use a static property to define contextTypes instead.", name);
-        if (ctor.contextType && ctor.contextTypes && !didWarnAboutContextTypeAndContextTypes.has(ctor)) {
-            didWarnAboutContextTypeAndContextTypes.add(ctor);
-            error("%s declares both contextTypes and contextType static properties. The legacy contextTypes property will be ignored.", name);
-        }
-        if (typeof instance.componentShouldUpdate === "function") error("%s has a method called componentShouldUpdate(). Did you mean shouldComponentUpdate()? The name is phrased as a question because the function is expected to return a value.", name);
-        if (ctor.prototype && ctor.prototype.isPureReactComponent && typeof instance.shouldComponentUpdate !== "undefined") error("%s has a method called shouldComponentUpdate(). shouldComponentUpdate should not be used when extending React.PureComponent. Please extend React.Component if shouldComponentUpdate is used.", getComponentNameFromType(ctor) || "A pure component");
-        if (typeof instance.componentDidUnmount === "function") error("%s has a method called componentDidUnmount(). But there is no such lifecycle method. Did you mean componentWillUnmount()?", name);
-        if (typeof instance.componentDidReceiveProps === "function") error("%s has a method called componentDidReceiveProps(). But there is no such lifecycle method. If you meant to update the state in response to changing props, use componentWillReceiveProps(). If you meant to fetch data or run side-effects or mutations after React has updated the UI, use componentDidUpdate().", name);
-        if (typeof instance.componentWillRecieveProps === "function") error("%s has a method called componentWillRecieveProps(). Did you mean componentWillReceiveProps()?", name);
-        if (typeof instance.UNSAFE_componentWillRecieveProps === "function") error("%s has a method called UNSAFE_componentWillRecieveProps(). Did you mean UNSAFE_componentWillReceiveProps()?", name);
-        var hasMutatedProps = instance.props !== newProps;
-        if (instance.props !== undefined && hasMutatedProps) error("%s(...): When calling super() in `%s`, make sure to pass up the same props that your component's constructor was passed.", name, name);
-        if (instance.defaultProps) error("Setting defaultProps as an instance property on %s is not supported and will be ignored. Instead, define defaultProps as a static property on %s.", name, name);
-        if (typeof instance.getSnapshotBeforeUpdate === "function" && typeof instance.componentDidUpdate !== "function" && !didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate.has(ctor)) {
-            didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate.add(ctor);
-            error("%s: getSnapshotBeforeUpdate() should be used with componentDidUpdate(). This component defines getSnapshotBeforeUpdate() only.", getComponentNameFromType(ctor));
-        }
-        if (typeof instance.getDerivedStateFromProps === "function") error("%s: getDerivedStateFromProps() is defined as an instance method and will be ignored. Instead, declare it as a static method.", name);
-        if (typeof instance.getDerivedStateFromError === "function") error("%s: getDerivedStateFromError() is defined as an instance method and will be ignored. Instead, declare it as a static method.", name);
-        if (typeof ctor.getSnapshotBeforeUpdate === "function") error("%s: getSnapshotBeforeUpdate() is defined as a static method and will be ignored. Instead, declare it as an instance method.", name);
-        var _state = instance.state;
-        if (_state && (typeof _state !== "object" || isArray(_state))) error("%s.state: must be set to an object or null", name);
-        if (typeof instance.getChildContext === "function" && typeof ctor.childContextTypes !== "object") error("%s.getChildContext(): childContextTypes must be defined in order to use getChildContext().", name);
-    }
-    function adoptClassInstance(workInProgress, instance) {
-        instance.updater = classComponentUpdater;
-        workInProgress.stateNode = instance; // The instance needs access to the fiber so that it can schedule updates
-        set(instance, workInProgress);
-        instance._reactInternalInstance = fakeInternalInstance;
-    }
-    function constructClassInstance(workInProgress, ctor, props) {
-        var isLegacyContextConsumer = false;
-        var unmaskedContext = emptyContextObject;
-        var context = emptyContextObject;
-        var contextType = ctor.contextType;
-        if ("contextType" in ctor) {
-            var isValid = contextType === null || contextType !== undefined && contextType.$$typeof === REACT_CONTEXT_TYPE && contextType._context === undefined; // Not a <Context.Consumer>
-            if (!isValid && !didWarnAboutInvalidateContextType.has(ctor)) {
-                didWarnAboutInvalidateContextType.add(ctor);
-                var addendum = "";
-                if (contextType === undefined) addendum = " However, it is set to undefined. This can be caused by a typo or by mixing up named and default imports. This can also happen due to a circular dependency, so try moving the createContext() call to a separate file.";
-                else if (typeof contextType !== "object") addendum = " However, it is set to a " + typeof contextType + ".";
-                else if (contextType.$$typeof === REACT_PROVIDER_TYPE) addendum = " Did you accidentally pass the Context.Provider instead?";
-                else if (contextType._context !== undefined) // <Context.Consumer>
-                addendum = " Did you accidentally pass the Context.Consumer instead?";
-                else addendum = " However, it is set to an object with keys {" + Object.keys(contextType).join(", ") + "}.";
-                error("%s defines an invalid contextType. contextType should point to the Context object returned by React.createContext().%s", getComponentNameFromType(ctor) || "Component", addendum);
-            }
-        }
-        if (typeof contextType === "object" && contextType !== null) context = readContext(contextType);
-        else {
-            unmaskedContext = getUnmaskedContext(workInProgress, ctor, true);
-            var contextTypes = ctor.contextTypes;
-            isLegacyContextConsumer = contextTypes !== null && contextTypes !== undefined;
-            context = isLegacyContextConsumer ? getMaskedContext(workInProgress, unmaskedContext) : emptyContextObject;
-        }
-        var instance = new ctor(props, context); // Instantiate twice to help detect side-effects.
-        if (workInProgress.mode & StrictLegacyMode) {
-            setIsStrictModeForDevtools(true);
-            try {
-                instance = new ctor(props, context); // eslint-disable-line no-new
-            } finally{
-                setIsStrictModeForDevtools(false);
-            }
-        }
-        var state = workInProgress.memoizedState = instance.state !== null && instance.state !== undefined ? instance.state : null;
-        adoptClassInstance(workInProgress, instance);
-        if (typeof ctor.getDerivedStateFromProps === "function" && state === null) {
-            var componentName = getComponentNameFromType(ctor) || "Component";
-            if (!didWarnAboutUninitializedState.has(componentName)) {
-                didWarnAboutUninitializedState.add(componentName);
-                error("`%s` uses `getDerivedStateFromProps` but its initial state is %s. This is not recommended. Instead, define the initial state by assigning an object to `this.state` in the constructor of `%s`. This ensures that `getDerivedStateFromProps` arguments have a consistent shape.", componentName, instance.state === null ? "null" : "undefined", componentName);
-            }
-        } // If new component APIs are defined, "unsafe" lifecycles won't be called.
-        // Warn about these lifecycles if they are present.
-        // Don't warn about react-lifecycles-compat polyfilled methods though.
-        if (typeof ctor.getDerivedStateFromProps === "function" || typeof instance.getSnapshotBeforeUpdate === "function") {
-            var foundWillMountName = null;
-            var foundWillReceivePropsName = null;
-            var foundWillUpdateName = null;
-            if (typeof instance.componentWillMount === "function" && instance.componentWillMount.__suppressDeprecationWarning !== true) foundWillMountName = "componentWillMount";
-            else if (typeof instance.UNSAFE_componentWillMount === "function") foundWillMountName = "UNSAFE_componentWillMount";
-            if (typeof instance.componentWillReceiveProps === "function" && instance.componentWillReceiveProps.__suppressDeprecationWarning !== true) foundWillReceivePropsName = "componentWillReceiveProps";
-            else if (typeof instance.UNSAFE_componentWillReceiveProps === "function") foundWillReceivePropsName = "UNSAFE_componentWillReceiveProps";
-            if (typeof instance.componentWillUpdate === "function" && instance.componentWillUpdate.__suppressDeprecationWarning !== true) foundWillUpdateName = "componentWillUpdate";
-            else if (typeof instance.UNSAFE_componentWillUpdate === "function") foundWillUpdateName = "UNSAFE_componentWillUpdate";
-            if (foundWillMountName !== null || foundWillReceivePropsName !== null || foundWillUpdateName !== null) {
-                var _componentName = getComponentNameFromType(ctor) || "Component";
-                var newApiName = typeof ctor.getDerivedStateFromProps === "function" ? "getDerivedStateFromProps()" : "getSnapshotBeforeUpdate()";
-                if (!didWarnAboutLegacyLifecyclesAndDerivedState.has(_componentName)) {
-                    didWarnAboutLegacyLifecyclesAndDerivedState.add(_componentName);
-                    error("Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n%s uses %s but also contains the following legacy lifecycles:%s%s%s\n\nThe above lifecycles should be removed. Learn more about this warning here:\nhttps://reactjs.org/link/unsafe-component-lifecycles", _componentName, newApiName, foundWillMountName !== null ? "\n  " + foundWillMountName : "", foundWillReceivePropsName !== null ? "\n  " + foundWillReceivePropsName : "", foundWillUpdateName !== null ? "\n  " + foundWillUpdateName : "");
-                }
-            }
-        }
-        // ReactFiberContext usually updates this cache but can't for newly-created instances.
-        if (isLegacyContextConsumer) cacheContext(workInProgress, unmaskedContext, context);
-        return instance;
-    }
-    function callComponentWillMount(workInProgress, instance) {
-        var oldState = instance.state;
-        if (typeof instance.componentWillMount === "function") instance.componentWillMount();
-        if (typeof instance.UNSAFE_componentWillMount === "function") instance.UNSAFE_componentWillMount();
-        if (oldState !== instance.state) {
-            error("%s.componentWillMount(): Assigning directly to this.state is deprecated (except inside a component's constructor). Use setState instead.", getComponentNameFromFiber(workInProgress) || "Component");
-            classComponentUpdater.enqueueReplaceState(instance, instance.state, null);
-        }
-    }
-    function callComponentWillReceiveProps(workInProgress, instance, newProps, nextContext) {
-        var oldState = instance.state;
-        if (typeof instance.componentWillReceiveProps === "function") instance.componentWillReceiveProps(newProps, nextContext);
-        if (typeof instance.UNSAFE_componentWillReceiveProps === "function") instance.UNSAFE_componentWillReceiveProps(newProps, nextContext);
-        if (instance.state !== oldState) {
-            var componentName = getComponentNameFromFiber(workInProgress) || "Component";
-            if (!didWarnAboutStateAssignmentForComponent.has(componentName)) {
-                didWarnAboutStateAssignmentForComponent.add(componentName);
-                error("%s.componentWillReceiveProps(): Assigning directly to this.state is deprecated (except inside a component's constructor). Use setState instead.", componentName);
-            }
-            classComponentUpdater.enqueueReplaceState(instance, instance.state, null);
-        }
-    } // Invokes the mount life-cycles on a previously never rendered instance.
-    function mountClassInstance(workInProgress, ctor, newProps, renderLanes) {
-        checkClassInstance(workInProgress, ctor, newProps);
-        var instance = workInProgress.stateNode;
-        instance.props = newProps;
-        instance.state = workInProgress.memoizedState;
-        instance.refs = emptyRefsObject;
-        initializeUpdateQueue(workInProgress);
-        var contextType = ctor.contextType;
-        if (typeof contextType === "object" && contextType !== null) instance.context = readContext(contextType);
-        else {
-            var unmaskedContext = getUnmaskedContext(workInProgress, ctor, true);
-            instance.context = getMaskedContext(workInProgress, unmaskedContext);
-        }
-        if (instance.state === newProps) {
-            var componentName = getComponentNameFromType(ctor) || "Component";
-            if (!didWarnAboutDirectlyAssigningPropsToState.has(componentName)) {
-                didWarnAboutDirectlyAssigningPropsToState.add(componentName);
-                error("%s: It is not recommended to assign props directly to state because updates to props won't be reflected in state. In most cases, it is better to use props directly.", componentName);
-            }
-        }
-        if (workInProgress.mode & StrictLegacyMode) ReactStrictModeWarnings.recordLegacyContextWarning(workInProgress, instance);
-        ReactStrictModeWarnings.recordUnsafeLifecycleWarnings(workInProgress, instance);
-        instance.state = workInProgress.memoizedState;
-        var getDerivedStateFromProps = ctor.getDerivedStateFromProps;
-        if (typeof getDerivedStateFromProps === "function") {
-            applyDerivedStateFromProps(workInProgress, ctor, getDerivedStateFromProps, newProps);
-            instance.state = workInProgress.memoizedState;
-        } // In order to support react-lifecycles-compat polyfilled components,
-        // Unsafe lifecycles should not be invoked for components using the new APIs.
-        if (typeof ctor.getDerivedStateFromProps !== "function" && typeof instance.getSnapshotBeforeUpdate !== "function" && (typeof instance.UNSAFE_componentWillMount === "function" || typeof instance.componentWillMount === "function")) {
-            callComponentWillMount(workInProgress, instance); // If we had additional state updates during this life-cycle, let's
-            // process them now.
-            processUpdateQueue(workInProgress, newProps, instance, renderLanes);
-            instance.state = workInProgress.memoizedState;
-        }
-        if (typeof instance.componentDidMount === "function") {
-            var fiberFlags = Update;
-            fiberFlags |= LayoutStatic;
-            if ((workInProgress.mode & StrictEffectsMode) !== NoMode) fiberFlags |= MountLayoutDev;
-            workInProgress.flags |= fiberFlags;
-        }
-    }
-    function resumeMountClassInstance(workInProgress, ctor, newProps, renderLanes) {
-        var instance = workInProgress.stateNode;
-        var oldProps = workInProgress.memoizedProps;
-        instance.props = oldProps;
-        var oldContext = instance.context;
-        var contextType = ctor.contextType;
-        var nextContext = emptyContextObject;
-        if (typeof contextType === "object" && contextType !== null) nextContext = readContext(contextType);
-        else {
-            var nextLegacyUnmaskedContext = getUnmaskedContext(workInProgress, ctor, true);
-            nextContext = getMaskedContext(workInProgress, nextLegacyUnmaskedContext);
-        }
-        var getDerivedStateFromProps = ctor.getDerivedStateFromProps;
-        var hasNewLifecycles = typeof getDerivedStateFromProps === "function" || typeof instance.getSnapshotBeforeUpdate === "function"; // Note: During these life-cycles, instance.props/instance.state are what
-        // ever the previously attempted to render - not the "current". However,
-        // during componentDidUpdate we pass the "current" props.
-        // In order to support react-lifecycles-compat polyfilled components,
-        // Unsafe lifecycles should not be invoked for components using the new APIs.
-        if (!hasNewLifecycles && (typeof instance.UNSAFE_componentWillReceiveProps === "function" || typeof instance.componentWillReceiveProps === "function")) {
-            if (oldProps !== newProps || oldContext !== nextContext) callComponentWillReceiveProps(workInProgress, instance, newProps, nextContext);
-        }
-        resetHasForceUpdateBeforeProcessing();
-        var oldState = workInProgress.memoizedState;
-        var newState = instance.state = oldState;
-        processUpdateQueue(workInProgress, newProps, instance, renderLanes);
-        newState = workInProgress.memoizedState;
-        if (oldProps === newProps && oldState === newState && !hasContextChanged() && !checkHasForceUpdateAfterProcessing()) {
-            // If an update was already in progress, we should schedule an Update
-            // effect even though we're bailing out, so that cWU/cDU are called.
-            if (typeof instance.componentDidMount === "function") {
-                var fiberFlags = Update;
-                fiberFlags |= LayoutStatic;
-                if ((workInProgress.mode & StrictEffectsMode) !== NoMode) fiberFlags |= MountLayoutDev;
-                workInProgress.flags |= fiberFlags;
-            }
-            return false;
-        }
-        if (typeof getDerivedStateFromProps === "function") {
-            applyDerivedStateFromProps(workInProgress, ctor, getDerivedStateFromProps, newProps);
-            newState = workInProgress.memoizedState;
-        }
-        var shouldUpdate = checkHasForceUpdateAfterProcessing() || checkShouldComponentUpdate(workInProgress, ctor, oldProps, newProps, oldState, newState, nextContext);
-        if (shouldUpdate) {
-            // In order to support react-lifecycles-compat polyfilled components,
-            // Unsafe lifecycles should not be invoked for components using the new APIs.
-            if (!hasNewLifecycles && (typeof instance.UNSAFE_componentWillMount === "function" || typeof instance.componentWillMount === "function")) {
-                if (typeof instance.componentWillMount === "function") instance.componentWillMount();
-                if (typeof instance.UNSAFE_componentWillMount === "function") instance.UNSAFE_componentWillMount();
-            }
-            if (typeof instance.componentDidMount === "function") {
-                var _fiberFlags = Update;
-                _fiberFlags |= LayoutStatic;
-                if ((workInProgress.mode & StrictEffectsMode) !== NoMode) _fiberFlags |= MountLayoutDev;
-                workInProgress.flags |= _fiberFlags;
-            }
-        } else {
-            // If an update was already in progress, we should schedule an Update
-            // effect even though we're bailing out, so that cWU/cDU are called.
-            if (typeof instance.componentDidMount === "function") {
-                var _fiberFlags2 = Update;
-                _fiberFlags2 |= LayoutStatic;
-                if ((workInProgress.mode & StrictEffectsMode) !== NoMode) _fiberFlags2 |= MountLayoutDev;
-                workInProgress.flags |= _fiberFlags2;
-            } // If shouldComponentUpdate returned false, we should still update the
-            // memoized state to indicate that this work can be reused.
-            workInProgress.memoizedProps = newProps;
-            workInProgress.memoizedState = newState;
-        } // Update the existing instance's state, props, and context pointers even
-        // if shouldComponentUpdate returns false.
-        instance.props = newProps;
-        instance.state = newState;
-        instance.context = nextContext;
-        return shouldUpdate;
-    } // Invokes the update life-cycles and returns false if it shouldn't rerender.
-    function updateClassInstance(current, workInProgress, ctor, newProps, renderLanes) {
-        var instance = workInProgress.stateNode;
-        cloneUpdateQueue(current, workInProgress);
-        var unresolvedOldProps = workInProgress.memoizedProps;
-        var oldProps = workInProgress.type === workInProgress.elementType ? unresolvedOldProps : resolveDefaultProps(workInProgress.type, unresolvedOldProps);
-        instance.props = oldProps;
-        var unresolvedNewProps = workInProgress.pendingProps;
-        var oldContext = instance.context;
-        var contextType = ctor.contextType;
-        var nextContext = emptyContextObject;
-        if (typeof contextType === "object" && contextType !== null) nextContext = readContext(contextType);
-        else {
-            var nextUnmaskedContext = getUnmaskedContext(workInProgress, ctor, true);
-            nextContext = getMaskedContext(workInProgress, nextUnmaskedContext);
-        }
-        var getDerivedStateFromProps = ctor.getDerivedStateFromProps;
-        var hasNewLifecycles = typeof getDerivedStateFromProps === "function" || typeof instance.getSnapshotBeforeUpdate === "function"; // Note: During these life-cycles, instance.props/instance.state are what
-        // ever the previously attempted to render - not the "current". However,
-        // during componentDidUpdate we pass the "current" props.
-        // In order to support react-lifecycles-compat polyfilled components,
-        // Unsafe lifecycles should not be invoked for components using the new APIs.
-        if (!hasNewLifecycles && (typeof instance.UNSAFE_componentWillReceiveProps === "function" || typeof instance.componentWillReceiveProps === "function")) {
-            if (unresolvedOldProps !== unresolvedNewProps || oldContext !== nextContext) callComponentWillReceiveProps(workInProgress, instance, newProps, nextContext);
-        }
-        resetHasForceUpdateBeforeProcessing();
-        var oldState = workInProgress.memoizedState;
-        var newState = instance.state = oldState;
-        processUpdateQueue(workInProgress, newProps, instance, renderLanes);
-        newState = workInProgress.memoizedState;
-        if (unresolvedOldProps === unresolvedNewProps && oldState === newState && !hasContextChanged() && !checkHasForceUpdateAfterProcessing() && !enableLazyContextPropagation) {
-            // If an update was already in progress, we should schedule an Update
-            // effect even though we're bailing out, so that cWU/cDU are called.
-            if (typeof instance.componentDidUpdate === "function") {
-                if (unresolvedOldProps !== current.memoizedProps || oldState !== current.memoizedState) workInProgress.flags |= Update;
-            }
-            if (typeof instance.getSnapshotBeforeUpdate === "function") {
-                if (unresolvedOldProps !== current.memoizedProps || oldState !== current.memoizedState) workInProgress.flags |= Snapshot;
-            }
-            return false;
-        }
-        if (typeof getDerivedStateFromProps === "function") {
-            applyDerivedStateFromProps(workInProgress, ctor, getDerivedStateFromProps, newProps);
-            newState = workInProgress.memoizedState;
-        }
-        var shouldUpdate = checkHasForceUpdateAfterProcessing() || checkShouldComponentUpdate(workInProgress, ctor, oldProps, newProps, oldState, newState, nextContext) || // TODO: In some cases, we'll end up checking if context has changed twice,
-        // both before and after `shouldComponentUpdate` has been called. Not ideal,
-        // but I'm loath to refactor this function. This only happens for memoized
-        // components so it's not that common.
-        enableLazyContextPropagation;
-        if (shouldUpdate) {
-            // In order to support react-lifecycles-compat polyfilled components,
-            // Unsafe lifecycles should not be invoked for components using the new APIs.
-            if (!hasNewLifecycles && (typeof instance.UNSAFE_componentWillUpdate === "function" || typeof instance.componentWillUpdate === "function")) {
-                if (typeof instance.componentWillUpdate === "function") instance.componentWillUpdate(newProps, newState, nextContext);
-                if (typeof instance.UNSAFE_componentWillUpdate === "function") instance.UNSAFE_componentWillUpdate(newProps, newState, nextContext);
-            }
-            if (typeof instance.componentDidUpdate === "function") workInProgress.flags |= Update;
-            if (typeof instance.getSnapshotBeforeUpdate === "function") workInProgress.flags |= Snapshot;
-        } else {
-            // If an update was already in progress, we should schedule an Update
-            // effect even though we're bailing out, so that cWU/cDU are called.
-            if (typeof instance.componentDidUpdate === "function") {
-                if (unresolvedOldProps !== current.memoizedProps || oldState !== current.memoizedState) workInProgress.flags |= Update;
-            }
-            if (typeof instance.getSnapshotBeforeUpdate === "function") {
-                if (unresolvedOldProps !== current.memoizedProps || oldState !== current.memoizedState) workInProgress.flags |= Snapshot;
-            } // If shouldComponentUpdate returned false, we should still update the
-            // memoized props/state to indicate that this work can be reused.
-            workInProgress.memoizedProps = newProps;
-            workInProgress.memoizedState = newState;
-        } // Update the existing instance's state, props, and context pointers even
-        // if shouldComponentUpdate returns false.
-        instance.props = newProps;
-        instance.state = newState;
-        instance.context = nextContext;
-        return shouldUpdate;
-    }
     var didWarnAboutMaps;
     var didWarnAboutGenerators;
     var didWarnAboutStringRefs;
@@ -16506,6 +15395,9 @@ module.exports = require("b0f0e6b9e8349dac");
         ownerHasKeyUseWarning[componentName] = true;
         error('Each child in a list should have a unique "key" prop. See https://reactjs.org/link/warning-keys for more information.');
     };
+    function isReactClass(type) {
+        return type.prototype && type.prototype.isReactComponent;
+    }
     function coerceRef(returnFiber, current, element) {
         var mixedRef = element.ref;
         if (mixedRef !== null && typeof mixedRef !== "function" && typeof mixedRef !== "object") {
@@ -16514,10 +15406,13 @@ module.exports = require("b0f0e6b9e8349dac");
             if ((returnFiber.mode & StrictLegacyMode || warnAboutStringRefs) && // We warn in ReactElement.js if owner and self are equal for string refs
             // because these cannot be automatically converted to an arrow function
             // using a codemod. Therefore, we don't have to warn about string refs again.
-            !(element._owner && element._self && element._owner.stateNode !== element._self)) {
+            !(element._owner && element._self && element._owner.stateNode !== element._self) && // Will already throw with "Function components cannot have string refs"
+            !(element._owner && element._owner.tag !== ClassComponent) && // Will already warn with "Function components cannot be given refs"
+            !(typeof element.type === "function" && !isReactClass(element.type)) && // Will already throw with "Element ref was specified as a string (someStringRef) but no owner was set"
+            element._owner) {
                 var componentName = getComponentNameFromFiber(returnFiber) || "Component";
                 if (!didWarnAboutStringRefs[componentName]) {
-                    error('A string ref, "%s", has been found within a strict mode tree. String refs are a source of potential bugs and should be avoided. We recommend using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', mixedRef);
+                    error('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. We recommend using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', componentName, mixedRef);
                     didWarnAboutStringRefs[componentName] = true;
                 }
             }
@@ -16537,8 +15432,6 @@ module.exports = require("b0f0e6b9e8349dac");
                 if (current !== null && current.ref !== null && typeof current.ref === "function" && current.ref._stringRef === stringRef) return current.ref;
                 var ref = function(value) {
                     var refs = resolvedInst.refs;
-                    if (refs === emptyRefsObject) // This is a lazy pooled frozen object, so we need to initialize.
-                    refs = resolvedInst.refs = {};
                     if (value === null) delete refs[stringRef];
                     else refs[stringRef] = value;
                 };
@@ -17190,6 +16083,653 @@ module.exports = require("b0f0e6b9e8349dac");
         while(child !== null){
             resetWorkInProgress(child, lanes);
             child = child.sibling;
+        }
+    }
+    var valueCursor = createCursor(null);
+    var rendererSigil;
+    // Use this to detect multiple renderers using the same context
+    rendererSigil = {};
+    var currentlyRenderingFiber = null;
+    var lastContextDependency = null;
+    var lastFullyObservedContext = null;
+    var isDisallowedContextReadInDEV = false;
+    function resetContextDependencies() {
+        // This is called right before React yields execution, to ensure `readContext`
+        // cannot be called outside the render phase.
+        currentlyRenderingFiber = null;
+        lastContextDependency = null;
+        lastFullyObservedContext = null;
+        isDisallowedContextReadInDEV = false;
+    }
+    function enterDisallowedContextReadInDEV() {
+        isDisallowedContextReadInDEV = true;
+    }
+    function exitDisallowedContextReadInDEV() {
+        isDisallowedContextReadInDEV = false;
+    }
+    function pushProvider(providerFiber, context, nextValue) {
+        push(valueCursor, context._currentValue, providerFiber);
+        context._currentValue = nextValue;
+        if (context._currentRenderer !== undefined && context._currentRenderer !== null && context._currentRenderer !== rendererSigil) error("Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.");
+        context._currentRenderer = rendererSigil;
+    }
+    function popProvider(context, providerFiber) {
+        var currentValue = valueCursor.current;
+        pop(valueCursor, providerFiber);
+        context._currentValue = currentValue;
+    }
+    function scheduleContextWorkOnParentPath(parent, renderLanes, propagationRoot) {
+        // Update the child lanes of all the ancestors, including the alternates.
+        var node = parent;
+        while(node !== null){
+            var alternate = node.alternate;
+            if (!isSubsetOfLanes(node.childLanes, renderLanes)) {
+                node.childLanes = mergeLanes(node.childLanes, renderLanes);
+                if (alternate !== null) alternate.childLanes = mergeLanes(alternate.childLanes, renderLanes);
+            } else if (alternate !== null && !isSubsetOfLanes(alternate.childLanes, renderLanes)) alternate.childLanes = mergeLanes(alternate.childLanes, renderLanes);
+            if (node === propagationRoot) break;
+            node = node.return;
+        }
+        if (node !== propagationRoot) error("Expected to find the propagation root when scheduling context work. This error is likely caused by a bug in React. Please file an issue.");
+    }
+    function propagateContextChange(workInProgress, context, renderLanes) {
+        propagateContextChange_eager(workInProgress, context, renderLanes);
+    }
+    function propagateContextChange_eager(workInProgress, context, renderLanes) {
+        var fiber = workInProgress.child;
+        if (fiber !== null) // Set the return pointer of the child to the work-in-progress fiber.
+        fiber.return = workInProgress;
+        while(fiber !== null){
+            var nextFiber = void 0; // Visit this fiber.
+            var list = fiber.dependencies;
+            if (list !== null) {
+                nextFiber = fiber.child;
+                var dependency = list.firstContext;
+                while(dependency !== null){
+                    // Check if the context matches.
+                    if (dependency.context === context) {
+                        // Match! Schedule an update on this fiber.
+                        if (fiber.tag === ClassComponent) {
+                            // Schedule a force update on the work-in-progress.
+                            var lane = pickArbitraryLane(renderLanes);
+                            var update = createUpdate(NoTimestamp, lane);
+                            update.tag = ForceUpdate; // TODO: Because we don't have a work-in-progress, this will add the
+                            // update to the current fiber, too, which means it will persist even if
+                            // this render is thrown away. Since it's a race condition, not sure it's
+                            // worth fixing.
+                            // Inlined `enqueueUpdate` to remove interleaved update check
+                            var updateQueue = fiber.updateQueue;
+                            if (updateQueue === null) ;
+                            else {
+                                var sharedQueue = updateQueue.shared;
+                                var pending = sharedQueue.pending;
+                                if (pending === null) // This is the first update. Create a circular list.
+                                update.next = update;
+                                else {
+                                    update.next = pending.next;
+                                    pending.next = update;
+                                }
+                                sharedQueue.pending = update;
+                            }
+                        }
+                        fiber.lanes = mergeLanes(fiber.lanes, renderLanes);
+                        var alternate = fiber.alternate;
+                        if (alternate !== null) alternate.lanes = mergeLanes(alternate.lanes, renderLanes);
+                        scheduleContextWorkOnParentPath(fiber.return, renderLanes, workInProgress); // Mark the updated lanes on the list, too.
+                        list.lanes = mergeLanes(list.lanes, renderLanes); // Since we already found a match, we can stop traversing the
+                        break;
+                    }
+                    dependency = dependency.next;
+                }
+            } else if (fiber.tag === ContextProvider) // Don't scan deeper if this is a matching provider
+            nextFiber = fiber.type === workInProgress.type ? null : fiber.child;
+            else if (fiber.tag === DehydratedFragment) {
+                // If a dehydrated suspense boundary is in this subtree, we don't know
+                // if it will have any context consumers in it. The best we can do is
+                // mark it as having updates.
+                var parentSuspense = fiber.return;
+                if (parentSuspense === null) throw new Error("We just came from a parent so we must have had a parent. This is a bug in React.");
+                parentSuspense.lanes = mergeLanes(parentSuspense.lanes, renderLanes);
+                var _alternate = parentSuspense.alternate;
+                if (_alternate !== null) _alternate.lanes = mergeLanes(_alternate.lanes, renderLanes);
+                 // This is intentionally passing this fiber as the parent
+                // because we want to schedule this fiber as having work
+                // on its children. We'll use the childLanes on
+                // this fiber to indicate that a context has changed.
+                scheduleContextWorkOnParentPath(parentSuspense, renderLanes, workInProgress);
+                nextFiber = fiber.sibling;
+            } else // Traverse down.
+            nextFiber = fiber.child;
+            if (nextFiber !== null) // Set the return pointer of the child to the work-in-progress fiber.
+            nextFiber.return = fiber;
+            else {
+                // No child. Traverse to next sibling.
+                nextFiber = fiber;
+                while(nextFiber !== null){
+                    if (nextFiber === workInProgress) {
+                        // We're back to the root of this subtree. Exit.
+                        nextFiber = null;
+                        break;
+                    }
+                    var sibling = nextFiber.sibling;
+                    if (sibling !== null) {
+                        // Set the return pointer of the sibling to the work-in-progress fiber.
+                        sibling.return = nextFiber.return;
+                        nextFiber = sibling;
+                        break;
+                    } // No more siblings. Traverse up.
+                    nextFiber = nextFiber.return;
+                }
+            }
+            fiber = nextFiber;
+        }
+    }
+    function prepareToReadContext(workInProgress, renderLanes) {
+        currentlyRenderingFiber = workInProgress;
+        lastContextDependency = null;
+        lastFullyObservedContext = null;
+        var dependencies = workInProgress.dependencies;
+        if (dependencies !== null) {
+            var firstContext = dependencies.firstContext;
+            if (firstContext !== null) {
+                if (includesSomeLane(dependencies.lanes, renderLanes)) // Context list has a pending update. Mark that this fiber performed work.
+                markWorkInProgressReceivedUpdate();
+                 // Reset the work-in-progress list
+                dependencies.firstContext = null;
+            }
+        }
+    }
+    function readContext(context) {
+        // This warning would fire if you read context inside a Hook like useMemo.
+        // Unlike the class check below, it's not enforced in production for perf.
+        if (isDisallowedContextReadInDEV) error("Context can only be read while React is rendering. In classes, you can read it in the render method or getDerivedStateFromProps. In function components, you can read it directly in the function body, but not inside Hooks like useReducer() or useMemo().");
+        var value = context._currentValue;
+        if (lastFullyObservedContext === context) ;
+        else {
+            var contextItem = {
+                context: context,
+                memoizedValue: value,
+                next: null
+            };
+            if (lastContextDependency === null) {
+                if (currentlyRenderingFiber === null) throw new Error("Context can only be read while React is rendering. In classes, you can read it in the render method or getDerivedStateFromProps. In function components, you can read it directly in the function body, but not inside Hooks like useReducer() or useMemo().");
+                 // This is the first dependency for this component. Create a new list.
+                lastContextDependency = contextItem;
+                currentlyRenderingFiber.dependencies = {
+                    lanes: NoLanes,
+                    firstContext: contextItem
+                };
+            } else // Append a new context item.
+            lastContextDependency = lastContextDependency.next = contextItem;
+        }
+        return value;
+    }
+    // render. When this render exits, either because it finishes or because it is
+    // interrupted, the interleaved updates will be transferred onto the main part
+    // of the queue.
+    var concurrentQueues = null;
+    function pushConcurrentUpdateQueue(queue) {
+        if (concurrentQueues === null) concurrentQueues = [
+            queue
+        ];
+        else concurrentQueues.push(queue);
+    }
+    function finishQueueingConcurrentUpdates() {
+        // Transfer the interleaved updates onto the main queue. Each queue has a
+        // `pending` field and an `interleaved` field. When they are not null, they
+        // point to the last node in a circular linked list. We need to append the
+        // interleaved list to the end of the pending list by joining them into a
+        // single, circular list.
+        if (concurrentQueues !== null) {
+            for(var i = 0; i < concurrentQueues.length; i++){
+                var queue = concurrentQueues[i];
+                var lastInterleavedUpdate = queue.interleaved;
+                if (lastInterleavedUpdate !== null) {
+                    queue.interleaved = null;
+                    var firstInterleavedUpdate = lastInterleavedUpdate.next;
+                    var lastPendingUpdate = queue.pending;
+                    if (lastPendingUpdate !== null) {
+                        var firstPendingUpdate = lastPendingUpdate.next;
+                        lastPendingUpdate.next = firstInterleavedUpdate;
+                        lastInterleavedUpdate.next = firstPendingUpdate;
+                    }
+                    queue.pending = lastInterleavedUpdate;
+                }
+            }
+            concurrentQueues = null;
+        }
+    }
+    function enqueueConcurrentHookUpdate(fiber, queue, update, lane) {
+        var interleaved = queue.interleaved;
+        if (interleaved === null) {
+            // This is the first update. Create a circular list.
+            update.next = update; // At the end of the current render, this queue's interleaved updates will
+            // be transferred to the pending queue.
+            pushConcurrentUpdateQueue(queue);
+        } else {
+            update.next = interleaved.next;
+            interleaved.next = update;
+        }
+        queue.interleaved = update;
+        return markUpdateLaneFromFiberToRoot(fiber, lane);
+    }
+    function enqueueConcurrentHookUpdateAndEagerlyBailout(fiber, queue, update, lane) {
+        var interleaved = queue.interleaved;
+        if (interleaved === null) {
+            // This is the first update. Create a circular list.
+            update.next = update; // At the end of the current render, this queue's interleaved updates will
+            // be transferred to the pending queue.
+            pushConcurrentUpdateQueue(queue);
+        } else {
+            update.next = interleaved.next;
+            interleaved.next = update;
+        }
+        queue.interleaved = update;
+    }
+    function enqueueConcurrentClassUpdate(fiber, queue, update, lane) {
+        var interleaved = queue.interleaved;
+        if (interleaved === null) {
+            // This is the first update. Create a circular list.
+            update.next = update; // At the end of the current render, this queue's interleaved updates will
+            // be transferred to the pending queue.
+            pushConcurrentUpdateQueue(queue);
+        } else {
+            update.next = interleaved.next;
+            interleaved.next = update;
+        }
+        queue.interleaved = update;
+        return markUpdateLaneFromFiberToRoot(fiber, lane);
+    }
+    function enqueueConcurrentRenderForLane(fiber, lane) {
+        return markUpdateLaneFromFiberToRoot(fiber, lane);
+    } // Calling this function outside this module should only be done for backwards
+    // compatibility and should always be accompanied by a warning.
+    var unsafe_markUpdateLaneFromFiberToRoot = markUpdateLaneFromFiberToRoot;
+    function markUpdateLaneFromFiberToRoot(sourceFiber, lane) {
+        // Update the source fiber's lanes
+        sourceFiber.lanes = mergeLanes(sourceFiber.lanes, lane);
+        var alternate = sourceFiber.alternate;
+        if (alternate !== null) alternate.lanes = mergeLanes(alternate.lanes, lane);
+        if (alternate === null && (sourceFiber.flags & (Placement | Hydrating)) !== NoFlags) warnAboutUpdateOnNotYetMountedFiberInDEV(sourceFiber);
+        var node = sourceFiber;
+        var parent = sourceFiber.return;
+        while(parent !== null){
+            parent.childLanes = mergeLanes(parent.childLanes, lane);
+            alternate = parent.alternate;
+            if (alternate !== null) alternate.childLanes = mergeLanes(alternate.childLanes, lane);
+            else if ((parent.flags & (Placement | Hydrating)) !== NoFlags) warnAboutUpdateOnNotYetMountedFiberInDEV(sourceFiber);
+            node = parent;
+            parent = parent.return;
+        }
+        if (node.tag === HostRoot) {
+            var root = node.stateNode;
+            return root;
+        } else return null;
+    }
+    var UpdateState = 0;
+    var ReplaceState = 1;
+    var ForceUpdate = 2;
+    var CaptureUpdate = 3; // Global state that is reset at the beginning of calling `processUpdateQueue`.
+    // It should only be read right after calling `processUpdateQueue`, via
+    // `checkHasForceUpdateAfterProcessing`.
+    var hasForceUpdate = false;
+    var didWarnUpdateInsideUpdate;
+    var currentlyProcessingQueue;
+    didWarnUpdateInsideUpdate = false;
+    currentlyProcessingQueue = null;
+    function initializeUpdateQueue(fiber) {
+        var queue = {
+            baseState: fiber.memoizedState,
+            firstBaseUpdate: null,
+            lastBaseUpdate: null,
+            shared: {
+                pending: null,
+                interleaved: null,
+                lanes: NoLanes
+            },
+            effects: null
+        };
+        fiber.updateQueue = queue;
+    }
+    function cloneUpdateQueue(current, workInProgress) {
+        // Clone the update queue from current. Unless it's already a clone.
+        var queue = workInProgress.updateQueue;
+        var currentQueue = current.updateQueue;
+        if (queue === currentQueue) {
+            var clone = {
+                baseState: currentQueue.baseState,
+                firstBaseUpdate: currentQueue.firstBaseUpdate,
+                lastBaseUpdate: currentQueue.lastBaseUpdate,
+                shared: currentQueue.shared,
+                effects: currentQueue.effects
+            };
+            workInProgress.updateQueue = clone;
+        }
+    }
+    function createUpdate(eventTime, lane) {
+        var update = {
+            eventTime: eventTime,
+            lane: lane,
+            tag: UpdateState,
+            payload: null,
+            callback: null,
+            next: null
+        };
+        return update;
+    }
+    function enqueueUpdate(fiber, update, lane) {
+        var updateQueue = fiber.updateQueue;
+        if (updateQueue === null) // Only occurs if the fiber has been unmounted.
+        return null;
+        var sharedQueue = updateQueue.shared;
+        if (currentlyProcessingQueue === sharedQueue && !didWarnUpdateInsideUpdate) {
+            error("An update (setState, replaceState, or forceUpdate) was scheduled from inside an update function. Update functions should be pure, with zero side-effects. Consider using componentDidUpdate or a callback.");
+            didWarnUpdateInsideUpdate = true;
+        }
+        if (isUnsafeClassRenderPhaseUpdate()) {
+            // This is an unsafe render phase update. Add directly to the update
+            // queue so we can process it immediately during the current render.
+            var pending = sharedQueue.pending;
+            if (pending === null) // This is the first update. Create a circular list.
+            update.next = update;
+            else {
+                update.next = pending.next;
+                pending.next = update;
+            }
+            sharedQueue.pending = update; // Update the childLanes even though we're most likely already rendering
+            // this fiber. This is for backwards compatibility in the case where you
+            // update a different component during render phase than the one that is
+            // currently renderings (a pattern that is accompanied by a warning).
+            return unsafe_markUpdateLaneFromFiberToRoot(fiber, lane);
+        } else return enqueueConcurrentClassUpdate(fiber, sharedQueue, update, lane);
+    }
+    function entangleTransitions(root, fiber, lane) {
+        var updateQueue = fiber.updateQueue;
+        if (updateQueue === null) // Only occurs if the fiber has been unmounted.
+        return;
+        var sharedQueue = updateQueue.shared;
+        if (isTransitionLane(lane)) {
+            var queueLanes = sharedQueue.lanes; // If any entangled lanes are no longer pending on the root, then they must
+            // have finished. We can remove them from the shared queue, which represents
+            // a superset of the actually pending lanes. In some cases we may entangle
+            // more than we need to, but that's OK. In fact it's worse if we *don't*
+            // entangle when we should.
+            queueLanes = intersectLanes(queueLanes, root.pendingLanes); // Entangle the new transition lane with the other transition lanes.
+            var newQueueLanes = mergeLanes(queueLanes, lane);
+            sharedQueue.lanes = newQueueLanes; // Even if queue.lanes already include lane, we don't know for certain if
+            // the lane finished since the last time we entangled it. So we need to
+            // entangle it again, just to be sure.
+            markRootEntangled(root, newQueueLanes);
+        }
+    }
+    function enqueueCapturedUpdate(workInProgress, capturedUpdate) {
+        // Captured updates are updates that are thrown by a child during the render
+        // phase. They should be discarded if the render is aborted. Therefore,
+        // we should only put them on the work-in-progress queue, not the current one.
+        var queue = workInProgress.updateQueue; // Check if the work-in-progress queue is a clone.
+        var current = workInProgress.alternate;
+        if (current !== null) {
+            var currentQueue = current.updateQueue;
+            if (queue === currentQueue) {
+                // The work-in-progress queue is the same as current. This happens when
+                // we bail out on a parent fiber that then captures an error thrown by
+                // a child. Since we want to append the update only to the work-in
+                // -progress queue, we need to clone the updates. We usually clone during
+                // processUpdateQueue, but that didn't happen in this case because we
+                // skipped over the parent when we bailed out.
+                var newFirst = null;
+                var newLast = null;
+                var firstBaseUpdate = queue.firstBaseUpdate;
+                if (firstBaseUpdate !== null) {
+                    // Loop through the updates and clone them.
+                    var update = firstBaseUpdate;
+                    do {
+                        var clone = {
+                            eventTime: update.eventTime,
+                            lane: update.lane,
+                            tag: update.tag,
+                            payload: update.payload,
+                            callback: update.callback,
+                            next: null
+                        };
+                        if (newLast === null) newFirst = newLast = clone;
+                        else {
+                            newLast.next = clone;
+                            newLast = clone;
+                        }
+                        update = update.next;
+                    }while (update !== null); // Append the captured update the end of the cloned list.
+                    if (newLast === null) newFirst = newLast = capturedUpdate;
+                    else {
+                        newLast.next = capturedUpdate;
+                        newLast = capturedUpdate;
+                    }
+                } else // There are no base updates.
+                newFirst = newLast = capturedUpdate;
+                queue = {
+                    baseState: currentQueue.baseState,
+                    firstBaseUpdate: newFirst,
+                    lastBaseUpdate: newLast,
+                    shared: currentQueue.shared,
+                    effects: currentQueue.effects
+                };
+                workInProgress.updateQueue = queue;
+                return;
+            }
+        } // Append the update to the end of the list.
+        var lastBaseUpdate = queue.lastBaseUpdate;
+        if (lastBaseUpdate === null) queue.firstBaseUpdate = capturedUpdate;
+        else lastBaseUpdate.next = capturedUpdate;
+        queue.lastBaseUpdate = capturedUpdate;
+    }
+    function getStateFromUpdate(workInProgress, queue, update, prevState, nextProps, instance) {
+        switch(update.tag){
+            case ReplaceState:
+                var payload = update.payload;
+                if (typeof payload === "function") {
+                    enterDisallowedContextReadInDEV();
+                    var nextState = payload.call(instance, prevState, nextProps);
+                    if (workInProgress.mode & StrictLegacyMode) {
+                        setIsStrictModeForDevtools(true);
+                        try {
+                            payload.call(instance, prevState, nextProps);
+                        } finally{
+                            setIsStrictModeForDevtools(false);
+                        }
+                    }
+                    exitDisallowedContextReadInDEV();
+                    return nextState;
+                } // State object
+                return payload;
+            case CaptureUpdate:
+                workInProgress.flags = workInProgress.flags & ~ShouldCapture | DidCapture;
+            // Intentional fallthrough
+            case UpdateState:
+                var _payload = update.payload;
+                var partialState;
+                if (typeof _payload === "function") {
+                    enterDisallowedContextReadInDEV();
+                    partialState = _payload.call(instance, prevState, nextProps);
+                    if (workInProgress.mode & StrictLegacyMode) {
+                        setIsStrictModeForDevtools(true);
+                        try {
+                            _payload.call(instance, prevState, nextProps);
+                        } finally{
+                            setIsStrictModeForDevtools(false);
+                        }
+                    }
+                    exitDisallowedContextReadInDEV();
+                } else // Partial state object
+                partialState = _payload;
+                if (partialState === null || partialState === undefined) // Null and undefined are treated as no-ops.
+                return prevState;
+                 // Merge the partial state and the previous state.
+                return assign({}, prevState, partialState);
+            case ForceUpdate:
+                hasForceUpdate = true;
+                return prevState;
+        }
+        return prevState;
+    }
+    function processUpdateQueue(workInProgress, props, instance, renderLanes) {
+        // This is always non-null on a ClassComponent or HostRoot
+        var queue = workInProgress.updateQueue;
+        hasForceUpdate = false;
+        currentlyProcessingQueue = queue.shared;
+        var firstBaseUpdate = queue.firstBaseUpdate;
+        var lastBaseUpdate = queue.lastBaseUpdate; // Check if there are pending updates. If so, transfer them to the base queue.
+        var pendingQueue = queue.shared.pending;
+        if (pendingQueue !== null) {
+            queue.shared.pending = null; // The pending queue is circular. Disconnect the pointer between first
+            // and last so that it's non-circular.
+            var lastPendingUpdate = pendingQueue;
+            var firstPendingUpdate = lastPendingUpdate.next;
+            lastPendingUpdate.next = null; // Append pending updates to base queue
+            if (lastBaseUpdate === null) firstBaseUpdate = firstPendingUpdate;
+            else lastBaseUpdate.next = firstPendingUpdate;
+            lastBaseUpdate = lastPendingUpdate; // If there's a current queue, and it's different from the base queue, then
+            // we need to transfer the updates to that queue, too. Because the base
+            // queue is a singly-linked list with no cycles, we can append to both
+            // lists and take advantage of structural sharing.
+            // TODO: Pass `current` as argument
+            var current = workInProgress.alternate;
+            if (current !== null) {
+                // This is always non-null on a ClassComponent or HostRoot
+                var currentQueue = current.updateQueue;
+                var currentLastBaseUpdate = currentQueue.lastBaseUpdate;
+                if (currentLastBaseUpdate !== lastBaseUpdate) {
+                    if (currentLastBaseUpdate === null) currentQueue.firstBaseUpdate = firstPendingUpdate;
+                    else currentLastBaseUpdate.next = firstPendingUpdate;
+                    currentQueue.lastBaseUpdate = lastPendingUpdate;
+                }
+            }
+        } // These values may change as we process the queue.
+        if (firstBaseUpdate !== null) {
+            // Iterate through the list of updates to compute the result.
+            var newState = queue.baseState; // TODO: Don't need to accumulate this. Instead, we can remove renderLanes
+            // from the original lanes.
+            var newLanes = NoLanes;
+            var newBaseState = null;
+            var newFirstBaseUpdate = null;
+            var newLastBaseUpdate = null;
+            var update = firstBaseUpdate;
+            do {
+                var updateLane = update.lane;
+                var updateEventTime = update.eventTime;
+                if (!isSubsetOfLanes(renderLanes, updateLane)) {
+                    // Priority is insufficient. Skip this update. If this is the first
+                    // skipped update, the previous update/state is the new base
+                    // update/state.
+                    var clone = {
+                        eventTime: updateEventTime,
+                        lane: updateLane,
+                        tag: update.tag,
+                        payload: update.payload,
+                        callback: update.callback,
+                        next: null
+                    };
+                    if (newLastBaseUpdate === null) {
+                        newFirstBaseUpdate = newLastBaseUpdate = clone;
+                        newBaseState = newState;
+                    } else newLastBaseUpdate = newLastBaseUpdate.next = clone;
+                     // Update the remaining priority in the queue.
+                    newLanes = mergeLanes(newLanes, updateLane);
+                } else {
+                    // This update does have sufficient priority.
+                    if (newLastBaseUpdate !== null) {
+                        var _clone = {
+                            eventTime: updateEventTime,
+                            // This update is going to be committed so we never want uncommit
+                            // it. Using NoLane works because 0 is a subset of all bitmasks, so
+                            // this will never be skipped by the check above.
+                            lane: NoLane,
+                            tag: update.tag,
+                            payload: update.payload,
+                            callback: update.callback,
+                            next: null
+                        };
+                        newLastBaseUpdate = newLastBaseUpdate.next = _clone;
+                    } // Process this update.
+                    newState = getStateFromUpdate(workInProgress, queue, update, newState, props, instance);
+                    var callback = update.callback;
+                    if (callback !== null && // If the update was already committed, we should not queue its
+                    // callback again.
+                    update.lane !== NoLane) {
+                        workInProgress.flags |= Callback;
+                        var effects = queue.effects;
+                        if (effects === null) queue.effects = [
+                            update
+                        ];
+                        else effects.push(update);
+                    }
+                }
+                update = update.next;
+                if (update === null) {
+                    pendingQueue = queue.shared.pending;
+                    if (pendingQueue === null) break;
+                    else {
+                        // An update was scheduled from inside a reducer. Add the new
+                        // pending updates to the end of the list and keep processing.
+                        var _lastPendingUpdate = pendingQueue; // Intentionally unsound. Pending updates form a circular list, but we
+                        // unravel them when transferring them to the base queue.
+                        var _firstPendingUpdate = _lastPendingUpdate.next;
+                        _lastPendingUpdate.next = null;
+                        update = _firstPendingUpdate;
+                        queue.lastBaseUpdate = _lastPendingUpdate;
+                        queue.shared.pending = null;
+                    }
+                }
+            }while (true);
+            if (newLastBaseUpdate === null) newBaseState = newState;
+            queue.baseState = newBaseState;
+            queue.firstBaseUpdate = newFirstBaseUpdate;
+            queue.lastBaseUpdate = newLastBaseUpdate; // Interleaved updates are stored on a separate queue. We aren't going to
+            // process them during this render, but we do need to track which lanes
+            // are remaining.
+            var lastInterleaved = queue.shared.interleaved;
+            if (lastInterleaved !== null) {
+                var interleaved = lastInterleaved;
+                do {
+                    newLanes = mergeLanes(newLanes, interleaved.lane);
+                    interleaved = interleaved.next;
+                }while (interleaved !== lastInterleaved);
+            } else if (firstBaseUpdate === null) // `queue.lanes` is used for entangling transitions. We can set it back to
+            // zero once the queue is empty.
+            queue.shared.lanes = NoLanes;
+             // Set the remaining expiration time to be whatever is remaining in the queue.
+            // This should be fine because the only two other things that contribute to
+            // expiration time are props and context. We're already in the middle of the
+            // begin phase by the time we start processing the queue, so we've already
+            // dealt with the props. Context in components that specify
+            // shouldComponentUpdate is tricky; but we'll have to account for
+            // that regardless.
+            markSkippedUpdateLanes(newLanes);
+            workInProgress.lanes = newLanes;
+            workInProgress.memoizedState = newState;
+        }
+        currentlyProcessingQueue = null;
+    }
+    function callCallback(callback, context) {
+        if (typeof callback !== "function") throw new Error("Invalid argument passed as callback. Expected a function. Instead " + ("received: " + callback));
+        callback.call(context);
+    }
+    function resetHasForceUpdateBeforeProcessing() {
+        hasForceUpdate = false;
+    }
+    function checkHasForceUpdateAfterProcessing() {
+        return hasForceUpdate;
+    }
+    function commitUpdateQueue(finishedWork, finishedQueue, instance) {
+        // Commit the effects
+        var effects = finishedQueue.effects;
+        finishedQueue.effects = null;
+        if (effects !== null) for(var i = 0; i < effects.length; i++){
+            var effect = effects[i];
+            var callback = effect.callback;
+            if (callback !== null) {
+                effect.callback = null;
+                callCallback(callback, instance);
+            }
         }
     }
     var NO_CONTEXT = {};
@@ -19322,6 +18862,501 @@ module.exports = require("b0f0e6b9e8349dac");
             child = child.sibling;
         }
     }
+    function resolveDefaultProps(Component, baseProps) {
+        if (Component && Component.defaultProps) {
+            // Resolve default props. Taken from ReactElement
+            var props = assign({}, baseProps);
+            var defaultProps = Component.defaultProps;
+            for(var propName in defaultProps)if (props[propName] === undefined) props[propName] = defaultProps[propName];
+            return props;
+        }
+        return baseProps;
+    }
+    var fakeInternalInstance = {};
+    var didWarnAboutStateAssignmentForComponent;
+    var didWarnAboutUninitializedState;
+    var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
+    var didWarnAboutLegacyLifecyclesAndDerivedState;
+    var didWarnAboutUndefinedDerivedState;
+    var warnOnUndefinedDerivedState;
+    var warnOnInvalidCallback;
+    var didWarnAboutDirectlyAssigningPropsToState;
+    var didWarnAboutContextTypeAndContextTypes;
+    var didWarnAboutInvalidateContextType;
+    var didWarnAboutLegacyContext$1;
+    didWarnAboutStateAssignmentForComponent = new Set();
+    didWarnAboutUninitializedState = new Set();
+    didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate = new Set();
+    didWarnAboutLegacyLifecyclesAndDerivedState = new Set();
+    didWarnAboutDirectlyAssigningPropsToState = new Set();
+    didWarnAboutUndefinedDerivedState = new Set();
+    didWarnAboutContextTypeAndContextTypes = new Set();
+    didWarnAboutInvalidateContextType = new Set();
+    didWarnAboutLegacyContext$1 = new Set();
+    var didWarnOnInvalidCallback = new Set();
+    warnOnInvalidCallback = function(callback, callerName) {
+        if (callback === null || typeof callback === "function") return;
+        var key = callerName + "_" + callback;
+        if (!didWarnOnInvalidCallback.has(key)) {
+            didWarnOnInvalidCallback.add(key);
+            error("%s(...): Expected the last optional `callback` argument to be a function. Instead received: %s.", callerName, callback);
+        }
+    };
+    warnOnUndefinedDerivedState = function(type, partialState) {
+        if (partialState === undefined) {
+            var componentName = getComponentNameFromType(type) || "Component";
+            if (!didWarnAboutUndefinedDerivedState.has(componentName)) {
+                didWarnAboutUndefinedDerivedState.add(componentName);
+                error("%s.getDerivedStateFromProps(): A valid state object (or null) must be returned. You have returned undefined.", componentName);
+            }
+        }
+    }; // This is so gross but it's at least non-critical and can be removed if
+    // it causes problems. This is meant to give a nicer error message for
+    // ReactDOM15.unstable_renderSubtreeIntoContainer(reactDOM16Component,
+    // ...)) which otherwise throws a "_processChildContext is not a function"
+    // exception.
+    Object.defineProperty(fakeInternalInstance, "_processChildContext", {
+        enumerable: false,
+        value: function() {
+            throw new Error("_processChildContext is not available in React 16+. This likely means you have multiple copies of React and are attempting to nest a React 15 tree inside a React 16 tree using unstable_renderSubtreeIntoContainer, which isn't supported. Try to make sure you have only one copy of React (and ideally, switch to ReactDOM.createPortal).");
+        }
+    });
+    Object.freeze(fakeInternalInstance);
+    function applyDerivedStateFromProps(workInProgress, ctor, getDerivedStateFromProps, nextProps) {
+        var prevState = workInProgress.memoizedState;
+        var partialState = getDerivedStateFromProps(nextProps, prevState);
+        if (workInProgress.mode & StrictLegacyMode) {
+            setIsStrictModeForDevtools(true);
+            try {
+                // Invoke the function an extra time to help detect side-effects.
+                partialState = getDerivedStateFromProps(nextProps, prevState);
+            } finally{
+                setIsStrictModeForDevtools(false);
+            }
+        }
+        warnOnUndefinedDerivedState(ctor, partialState);
+        var memoizedState = partialState === null || partialState === undefined ? prevState : assign({}, prevState, partialState);
+        workInProgress.memoizedState = memoizedState; // Once the update queue is empty, persist the derived state onto the
+        // base state.
+        if (workInProgress.lanes === NoLanes) {
+            // Queue is always non-null for classes
+            var updateQueue = workInProgress.updateQueue;
+            updateQueue.baseState = memoizedState;
+        }
+    }
+    var classComponentUpdater = {
+        isMounted: isMounted,
+        enqueueSetState: function(inst, payload, callback) {
+            var fiber = get(inst);
+            var eventTime = requestEventTime();
+            var lane = requestUpdateLane(fiber);
+            var update = createUpdate(eventTime, lane);
+            update.payload = payload;
+            if (callback !== undefined && callback !== null) {
+                warnOnInvalidCallback(callback, "setState");
+                update.callback = callback;
+            }
+            var root = enqueueUpdate(fiber, update, lane);
+            if (root !== null) {
+                scheduleUpdateOnFiber(root, fiber, lane, eventTime);
+                entangleTransitions(root, fiber, lane);
+            }
+            markStateUpdateScheduled(fiber, lane);
+        },
+        enqueueReplaceState: function(inst, payload, callback) {
+            var fiber = get(inst);
+            var eventTime = requestEventTime();
+            var lane = requestUpdateLane(fiber);
+            var update = createUpdate(eventTime, lane);
+            update.tag = ReplaceState;
+            update.payload = payload;
+            if (callback !== undefined && callback !== null) {
+                warnOnInvalidCallback(callback, "replaceState");
+                update.callback = callback;
+            }
+            var root = enqueueUpdate(fiber, update, lane);
+            if (root !== null) {
+                scheduleUpdateOnFiber(root, fiber, lane, eventTime);
+                entangleTransitions(root, fiber, lane);
+            }
+            markStateUpdateScheduled(fiber, lane);
+        },
+        enqueueForceUpdate: function(inst, callback) {
+            var fiber = get(inst);
+            var eventTime = requestEventTime();
+            var lane = requestUpdateLane(fiber);
+            var update = createUpdate(eventTime, lane);
+            update.tag = ForceUpdate;
+            if (callback !== undefined && callback !== null) {
+                warnOnInvalidCallback(callback, "forceUpdate");
+                update.callback = callback;
+            }
+            var root = enqueueUpdate(fiber, update, lane);
+            if (root !== null) {
+                scheduleUpdateOnFiber(root, fiber, lane, eventTime);
+                entangleTransitions(root, fiber, lane);
+            }
+            markForceUpdateScheduled(fiber, lane);
+        }
+    };
+    function checkShouldComponentUpdate(workInProgress, ctor, oldProps, newProps, oldState, newState, nextContext) {
+        var instance = workInProgress.stateNode;
+        if (typeof instance.shouldComponentUpdate === "function") {
+            var shouldUpdate = instance.shouldComponentUpdate(newProps, newState, nextContext);
+            if (workInProgress.mode & StrictLegacyMode) {
+                setIsStrictModeForDevtools(true);
+                try {
+                    // Invoke the function an extra time to help detect side-effects.
+                    shouldUpdate = instance.shouldComponentUpdate(newProps, newState, nextContext);
+                } finally{
+                    setIsStrictModeForDevtools(false);
+                }
+            }
+            if (shouldUpdate === undefined) error("%s.shouldComponentUpdate(): Returned undefined instead of a boolean value. Make sure to return true or false.", getComponentNameFromType(ctor) || "Component");
+            return shouldUpdate;
+        }
+        if (ctor.prototype && ctor.prototype.isPureReactComponent) return !shallowEqual(oldProps, newProps) || !shallowEqual(oldState, newState);
+        return true;
+    }
+    function checkClassInstance(workInProgress, ctor, newProps) {
+        var instance = workInProgress.stateNode;
+        var name = getComponentNameFromType(ctor) || "Component";
+        var renderPresent = instance.render;
+        if (!renderPresent) {
+            if (ctor.prototype && typeof ctor.prototype.render === "function") error("%s(...): No `render` method found on the returned component instance: did you accidentally return an object from the constructor?", name);
+            else error("%s(...): No `render` method found on the returned component instance: you may have forgotten to define `render`.", name);
+        }
+        if (instance.getInitialState && !instance.getInitialState.isReactClassApproved && !instance.state) error("getInitialState was defined on %s, a plain JavaScript class. This is only supported for classes created using React.createClass. Did you mean to define a state property instead?", name);
+        if (instance.getDefaultProps && !instance.getDefaultProps.isReactClassApproved) error("getDefaultProps was defined on %s, a plain JavaScript class. This is only supported for classes created using React.createClass. Use a static property to define defaultProps instead.", name);
+        if (instance.propTypes) error("propTypes was defined as an instance property on %s. Use a static property to define propTypes instead.", name);
+        if (instance.contextType) error("contextType was defined as an instance property on %s. Use a static property to define contextType instead.", name);
+        if (ctor.childContextTypes && !didWarnAboutLegacyContext$1.has(ctor) && // Strict Mode has its own warning for legacy context, so we can skip
+        // this one.
+        (workInProgress.mode & StrictLegacyMode) === NoMode) {
+            didWarnAboutLegacyContext$1.add(ctor);
+            error("%s uses the legacy childContextTypes API which is no longer supported and will be removed in the next major release. Use React.createContext() instead\n\n.Learn more about this warning here: https://reactjs.org/link/legacy-context", name);
+        }
+        if (ctor.contextTypes && !didWarnAboutLegacyContext$1.has(ctor) && // Strict Mode has its own warning for legacy context, so we can skip
+        // this one.
+        (workInProgress.mode & StrictLegacyMode) === NoMode) {
+            didWarnAboutLegacyContext$1.add(ctor);
+            error("%s uses the legacy contextTypes API which is no longer supported and will be removed in the next major release. Use React.createContext() with static contextType instead.\n\nLearn more about this warning here: https://reactjs.org/link/legacy-context", name);
+        }
+        if (instance.contextTypes) error("contextTypes was defined as an instance property on %s. Use a static property to define contextTypes instead.", name);
+        if (ctor.contextType && ctor.contextTypes && !didWarnAboutContextTypeAndContextTypes.has(ctor)) {
+            didWarnAboutContextTypeAndContextTypes.add(ctor);
+            error("%s declares both contextTypes and contextType static properties. The legacy contextTypes property will be ignored.", name);
+        }
+        if (typeof instance.componentShouldUpdate === "function") error("%s has a method called componentShouldUpdate(). Did you mean shouldComponentUpdate()? The name is phrased as a question because the function is expected to return a value.", name);
+        if (ctor.prototype && ctor.prototype.isPureReactComponent && typeof instance.shouldComponentUpdate !== "undefined") error("%s has a method called shouldComponentUpdate(). shouldComponentUpdate should not be used when extending React.PureComponent. Please extend React.Component if shouldComponentUpdate is used.", getComponentNameFromType(ctor) || "A pure component");
+        if (typeof instance.componentDidUnmount === "function") error("%s has a method called componentDidUnmount(). But there is no such lifecycle method. Did you mean componentWillUnmount()?", name);
+        if (typeof instance.componentDidReceiveProps === "function") error("%s has a method called componentDidReceiveProps(). But there is no such lifecycle method. If you meant to update the state in response to changing props, use componentWillReceiveProps(). If you meant to fetch data or run side-effects or mutations after React has updated the UI, use componentDidUpdate().", name);
+        if (typeof instance.componentWillRecieveProps === "function") error("%s has a method called componentWillRecieveProps(). Did you mean componentWillReceiveProps()?", name);
+        if (typeof instance.UNSAFE_componentWillRecieveProps === "function") error("%s has a method called UNSAFE_componentWillRecieveProps(). Did you mean UNSAFE_componentWillReceiveProps()?", name);
+        var hasMutatedProps = instance.props !== newProps;
+        if (instance.props !== undefined && hasMutatedProps) error("%s(...): When calling super() in `%s`, make sure to pass up the same props that your component's constructor was passed.", name, name);
+        if (instance.defaultProps) error("Setting defaultProps as an instance property on %s is not supported and will be ignored. Instead, define defaultProps as a static property on %s.", name, name);
+        if (typeof instance.getSnapshotBeforeUpdate === "function" && typeof instance.componentDidUpdate !== "function" && !didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate.has(ctor)) {
+            didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate.add(ctor);
+            error("%s: getSnapshotBeforeUpdate() should be used with componentDidUpdate(). This component defines getSnapshotBeforeUpdate() only.", getComponentNameFromType(ctor));
+        }
+        if (typeof instance.getDerivedStateFromProps === "function") error("%s: getDerivedStateFromProps() is defined as an instance method and will be ignored. Instead, declare it as a static method.", name);
+        if (typeof instance.getDerivedStateFromError === "function") error("%s: getDerivedStateFromError() is defined as an instance method and will be ignored. Instead, declare it as a static method.", name);
+        if (typeof ctor.getSnapshotBeforeUpdate === "function") error("%s: getSnapshotBeforeUpdate() is defined as a static method and will be ignored. Instead, declare it as an instance method.", name);
+        var _state = instance.state;
+        if (_state && (typeof _state !== "object" || isArray(_state))) error("%s.state: must be set to an object or null", name);
+        if (typeof instance.getChildContext === "function" && typeof ctor.childContextTypes !== "object") error("%s.getChildContext(): childContextTypes must be defined in order to use getChildContext().", name);
+    }
+    function adoptClassInstance(workInProgress, instance) {
+        instance.updater = classComponentUpdater;
+        workInProgress.stateNode = instance; // The instance needs access to the fiber so that it can schedule updates
+        set(instance, workInProgress);
+        instance._reactInternalInstance = fakeInternalInstance;
+    }
+    function constructClassInstance(workInProgress, ctor, props) {
+        var isLegacyContextConsumer = false;
+        var unmaskedContext = emptyContextObject;
+        var context = emptyContextObject;
+        var contextType = ctor.contextType;
+        if ("contextType" in ctor) {
+            var isValid = contextType === null || contextType !== undefined && contextType.$$typeof === REACT_CONTEXT_TYPE && contextType._context === undefined; // Not a <Context.Consumer>
+            if (!isValid && !didWarnAboutInvalidateContextType.has(ctor)) {
+                didWarnAboutInvalidateContextType.add(ctor);
+                var addendum = "";
+                if (contextType === undefined) addendum = " However, it is set to undefined. This can be caused by a typo or by mixing up named and default imports. This can also happen due to a circular dependency, so try moving the createContext() call to a separate file.";
+                else if (typeof contextType !== "object") addendum = " However, it is set to a " + typeof contextType + ".";
+                else if (contextType.$$typeof === REACT_PROVIDER_TYPE) addendum = " Did you accidentally pass the Context.Provider instead?";
+                else if (contextType._context !== undefined) // <Context.Consumer>
+                addendum = " Did you accidentally pass the Context.Consumer instead?";
+                else addendum = " However, it is set to an object with keys {" + Object.keys(contextType).join(", ") + "}.";
+                error("%s defines an invalid contextType. contextType should point to the Context object returned by React.createContext().%s", getComponentNameFromType(ctor) || "Component", addendum);
+            }
+        }
+        if (typeof contextType === "object" && contextType !== null) context = readContext(contextType);
+        else {
+            unmaskedContext = getUnmaskedContext(workInProgress, ctor, true);
+            var contextTypes = ctor.contextTypes;
+            isLegacyContextConsumer = contextTypes !== null && contextTypes !== undefined;
+            context = isLegacyContextConsumer ? getMaskedContext(workInProgress, unmaskedContext) : emptyContextObject;
+        }
+        var instance = new ctor(props, context); // Instantiate twice to help detect side-effects.
+        if (workInProgress.mode & StrictLegacyMode) {
+            setIsStrictModeForDevtools(true);
+            try {
+                instance = new ctor(props, context); // eslint-disable-line no-new
+            } finally{
+                setIsStrictModeForDevtools(false);
+            }
+        }
+        var state = workInProgress.memoizedState = instance.state !== null && instance.state !== undefined ? instance.state : null;
+        adoptClassInstance(workInProgress, instance);
+        if (typeof ctor.getDerivedStateFromProps === "function" && state === null) {
+            var componentName = getComponentNameFromType(ctor) || "Component";
+            if (!didWarnAboutUninitializedState.has(componentName)) {
+                didWarnAboutUninitializedState.add(componentName);
+                error("`%s` uses `getDerivedStateFromProps` but its initial state is %s. This is not recommended. Instead, define the initial state by assigning an object to `this.state` in the constructor of `%s`. This ensures that `getDerivedStateFromProps` arguments have a consistent shape.", componentName, instance.state === null ? "null" : "undefined", componentName);
+            }
+        } // If new component APIs are defined, "unsafe" lifecycles won't be called.
+        // Warn about these lifecycles if they are present.
+        // Don't warn about react-lifecycles-compat polyfilled methods though.
+        if (typeof ctor.getDerivedStateFromProps === "function" || typeof instance.getSnapshotBeforeUpdate === "function") {
+            var foundWillMountName = null;
+            var foundWillReceivePropsName = null;
+            var foundWillUpdateName = null;
+            if (typeof instance.componentWillMount === "function" && instance.componentWillMount.__suppressDeprecationWarning !== true) foundWillMountName = "componentWillMount";
+            else if (typeof instance.UNSAFE_componentWillMount === "function") foundWillMountName = "UNSAFE_componentWillMount";
+            if (typeof instance.componentWillReceiveProps === "function" && instance.componentWillReceiveProps.__suppressDeprecationWarning !== true) foundWillReceivePropsName = "componentWillReceiveProps";
+            else if (typeof instance.UNSAFE_componentWillReceiveProps === "function") foundWillReceivePropsName = "UNSAFE_componentWillReceiveProps";
+            if (typeof instance.componentWillUpdate === "function" && instance.componentWillUpdate.__suppressDeprecationWarning !== true) foundWillUpdateName = "componentWillUpdate";
+            else if (typeof instance.UNSAFE_componentWillUpdate === "function") foundWillUpdateName = "UNSAFE_componentWillUpdate";
+            if (foundWillMountName !== null || foundWillReceivePropsName !== null || foundWillUpdateName !== null) {
+                var _componentName = getComponentNameFromType(ctor) || "Component";
+                var newApiName = typeof ctor.getDerivedStateFromProps === "function" ? "getDerivedStateFromProps()" : "getSnapshotBeforeUpdate()";
+                if (!didWarnAboutLegacyLifecyclesAndDerivedState.has(_componentName)) {
+                    didWarnAboutLegacyLifecyclesAndDerivedState.add(_componentName);
+                    error("Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n%s uses %s but also contains the following legacy lifecycles:%s%s%s\n\nThe above lifecycles should be removed. Learn more about this warning here:\nhttps://reactjs.org/link/unsafe-component-lifecycles", _componentName, newApiName, foundWillMountName !== null ? "\n  " + foundWillMountName : "", foundWillReceivePropsName !== null ? "\n  " + foundWillReceivePropsName : "", foundWillUpdateName !== null ? "\n  " + foundWillUpdateName : "");
+                }
+            }
+        }
+        // ReactFiberContext usually updates this cache but can't for newly-created instances.
+        if (isLegacyContextConsumer) cacheContext(workInProgress, unmaskedContext, context);
+        return instance;
+    }
+    function callComponentWillMount(workInProgress, instance) {
+        var oldState = instance.state;
+        if (typeof instance.componentWillMount === "function") instance.componentWillMount();
+        if (typeof instance.UNSAFE_componentWillMount === "function") instance.UNSAFE_componentWillMount();
+        if (oldState !== instance.state) {
+            error("%s.componentWillMount(): Assigning directly to this.state is deprecated (except inside a component's constructor). Use setState instead.", getComponentNameFromFiber(workInProgress) || "Component");
+            classComponentUpdater.enqueueReplaceState(instance, instance.state, null);
+        }
+    }
+    function callComponentWillReceiveProps(workInProgress, instance, newProps, nextContext) {
+        var oldState = instance.state;
+        if (typeof instance.componentWillReceiveProps === "function") instance.componentWillReceiveProps(newProps, nextContext);
+        if (typeof instance.UNSAFE_componentWillReceiveProps === "function") instance.UNSAFE_componentWillReceiveProps(newProps, nextContext);
+        if (instance.state !== oldState) {
+            var componentName = getComponentNameFromFiber(workInProgress) || "Component";
+            if (!didWarnAboutStateAssignmentForComponent.has(componentName)) {
+                didWarnAboutStateAssignmentForComponent.add(componentName);
+                error("%s.componentWillReceiveProps(): Assigning directly to this.state is deprecated (except inside a component's constructor). Use setState instead.", componentName);
+            }
+            classComponentUpdater.enqueueReplaceState(instance, instance.state, null);
+        }
+    } // Invokes the mount life-cycles on a previously never rendered instance.
+    function mountClassInstance(workInProgress, ctor, newProps, renderLanes) {
+        checkClassInstance(workInProgress, ctor, newProps);
+        var instance = workInProgress.stateNode;
+        instance.props = newProps;
+        instance.state = workInProgress.memoizedState;
+        instance.refs = {};
+        initializeUpdateQueue(workInProgress);
+        var contextType = ctor.contextType;
+        if (typeof contextType === "object" && contextType !== null) instance.context = readContext(contextType);
+        else {
+            var unmaskedContext = getUnmaskedContext(workInProgress, ctor, true);
+            instance.context = getMaskedContext(workInProgress, unmaskedContext);
+        }
+        if (instance.state === newProps) {
+            var componentName = getComponentNameFromType(ctor) || "Component";
+            if (!didWarnAboutDirectlyAssigningPropsToState.has(componentName)) {
+                didWarnAboutDirectlyAssigningPropsToState.add(componentName);
+                error("%s: It is not recommended to assign props directly to state because updates to props won't be reflected in state. In most cases, it is better to use props directly.", componentName);
+            }
+        }
+        if (workInProgress.mode & StrictLegacyMode) ReactStrictModeWarnings.recordLegacyContextWarning(workInProgress, instance);
+        ReactStrictModeWarnings.recordUnsafeLifecycleWarnings(workInProgress, instance);
+        instance.state = workInProgress.memoizedState;
+        var getDerivedStateFromProps = ctor.getDerivedStateFromProps;
+        if (typeof getDerivedStateFromProps === "function") {
+            applyDerivedStateFromProps(workInProgress, ctor, getDerivedStateFromProps, newProps);
+            instance.state = workInProgress.memoizedState;
+        } // In order to support react-lifecycles-compat polyfilled components,
+        // Unsafe lifecycles should not be invoked for components using the new APIs.
+        if (typeof ctor.getDerivedStateFromProps !== "function" && typeof instance.getSnapshotBeforeUpdate !== "function" && (typeof instance.UNSAFE_componentWillMount === "function" || typeof instance.componentWillMount === "function")) {
+            callComponentWillMount(workInProgress, instance); // If we had additional state updates during this life-cycle, let's
+            // process them now.
+            processUpdateQueue(workInProgress, newProps, instance, renderLanes);
+            instance.state = workInProgress.memoizedState;
+        }
+        if (typeof instance.componentDidMount === "function") {
+            var fiberFlags = Update;
+            fiberFlags |= LayoutStatic;
+            if ((workInProgress.mode & StrictEffectsMode) !== NoMode) fiberFlags |= MountLayoutDev;
+            workInProgress.flags |= fiberFlags;
+        }
+    }
+    function resumeMountClassInstance(workInProgress, ctor, newProps, renderLanes) {
+        var instance = workInProgress.stateNode;
+        var oldProps = workInProgress.memoizedProps;
+        instance.props = oldProps;
+        var oldContext = instance.context;
+        var contextType = ctor.contextType;
+        var nextContext = emptyContextObject;
+        if (typeof contextType === "object" && contextType !== null) nextContext = readContext(contextType);
+        else {
+            var nextLegacyUnmaskedContext = getUnmaskedContext(workInProgress, ctor, true);
+            nextContext = getMaskedContext(workInProgress, nextLegacyUnmaskedContext);
+        }
+        var getDerivedStateFromProps = ctor.getDerivedStateFromProps;
+        var hasNewLifecycles = typeof getDerivedStateFromProps === "function" || typeof instance.getSnapshotBeforeUpdate === "function"; // Note: During these life-cycles, instance.props/instance.state are what
+        // ever the previously attempted to render - not the "current". However,
+        // during componentDidUpdate we pass the "current" props.
+        // In order to support react-lifecycles-compat polyfilled components,
+        // Unsafe lifecycles should not be invoked for components using the new APIs.
+        if (!hasNewLifecycles && (typeof instance.UNSAFE_componentWillReceiveProps === "function" || typeof instance.componentWillReceiveProps === "function")) {
+            if (oldProps !== newProps || oldContext !== nextContext) callComponentWillReceiveProps(workInProgress, instance, newProps, nextContext);
+        }
+        resetHasForceUpdateBeforeProcessing();
+        var oldState = workInProgress.memoizedState;
+        var newState = instance.state = oldState;
+        processUpdateQueue(workInProgress, newProps, instance, renderLanes);
+        newState = workInProgress.memoizedState;
+        if (oldProps === newProps && oldState === newState && !hasContextChanged() && !checkHasForceUpdateAfterProcessing()) {
+            // If an update was already in progress, we should schedule an Update
+            // effect even though we're bailing out, so that cWU/cDU are called.
+            if (typeof instance.componentDidMount === "function") {
+                var fiberFlags = Update;
+                fiberFlags |= LayoutStatic;
+                if ((workInProgress.mode & StrictEffectsMode) !== NoMode) fiberFlags |= MountLayoutDev;
+                workInProgress.flags |= fiberFlags;
+            }
+            return false;
+        }
+        if (typeof getDerivedStateFromProps === "function") {
+            applyDerivedStateFromProps(workInProgress, ctor, getDerivedStateFromProps, newProps);
+            newState = workInProgress.memoizedState;
+        }
+        var shouldUpdate = checkHasForceUpdateAfterProcessing() || checkShouldComponentUpdate(workInProgress, ctor, oldProps, newProps, oldState, newState, nextContext);
+        if (shouldUpdate) {
+            // In order to support react-lifecycles-compat polyfilled components,
+            // Unsafe lifecycles should not be invoked for components using the new APIs.
+            if (!hasNewLifecycles && (typeof instance.UNSAFE_componentWillMount === "function" || typeof instance.componentWillMount === "function")) {
+                if (typeof instance.componentWillMount === "function") instance.componentWillMount();
+                if (typeof instance.UNSAFE_componentWillMount === "function") instance.UNSAFE_componentWillMount();
+            }
+            if (typeof instance.componentDidMount === "function") {
+                var _fiberFlags = Update;
+                _fiberFlags |= LayoutStatic;
+                if ((workInProgress.mode & StrictEffectsMode) !== NoMode) _fiberFlags |= MountLayoutDev;
+                workInProgress.flags |= _fiberFlags;
+            }
+        } else {
+            // If an update was already in progress, we should schedule an Update
+            // effect even though we're bailing out, so that cWU/cDU are called.
+            if (typeof instance.componentDidMount === "function") {
+                var _fiberFlags2 = Update;
+                _fiberFlags2 |= LayoutStatic;
+                if ((workInProgress.mode & StrictEffectsMode) !== NoMode) _fiberFlags2 |= MountLayoutDev;
+                workInProgress.flags |= _fiberFlags2;
+            } // If shouldComponentUpdate returned false, we should still update the
+            // memoized state to indicate that this work can be reused.
+            workInProgress.memoizedProps = newProps;
+            workInProgress.memoizedState = newState;
+        } // Update the existing instance's state, props, and context pointers even
+        // if shouldComponentUpdate returns false.
+        instance.props = newProps;
+        instance.state = newState;
+        instance.context = nextContext;
+        return shouldUpdate;
+    } // Invokes the update life-cycles and returns false if it shouldn't rerender.
+    function updateClassInstance(current, workInProgress, ctor, newProps, renderLanes) {
+        var instance = workInProgress.stateNode;
+        cloneUpdateQueue(current, workInProgress);
+        var unresolvedOldProps = workInProgress.memoizedProps;
+        var oldProps = workInProgress.type === workInProgress.elementType ? unresolvedOldProps : resolveDefaultProps(workInProgress.type, unresolvedOldProps);
+        instance.props = oldProps;
+        var unresolvedNewProps = workInProgress.pendingProps;
+        var oldContext = instance.context;
+        var contextType = ctor.contextType;
+        var nextContext = emptyContextObject;
+        if (typeof contextType === "object" && contextType !== null) nextContext = readContext(contextType);
+        else {
+            var nextUnmaskedContext = getUnmaskedContext(workInProgress, ctor, true);
+            nextContext = getMaskedContext(workInProgress, nextUnmaskedContext);
+        }
+        var getDerivedStateFromProps = ctor.getDerivedStateFromProps;
+        var hasNewLifecycles = typeof getDerivedStateFromProps === "function" || typeof instance.getSnapshotBeforeUpdate === "function"; // Note: During these life-cycles, instance.props/instance.state are what
+        // ever the previously attempted to render - not the "current". However,
+        // during componentDidUpdate we pass the "current" props.
+        // In order to support react-lifecycles-compat polyfilled components,
+        // Unsafe lifecycles should not be invoked for components using the new APIs.
+        if (!hasNewLifecycles && (typeof instance.UNSAFE_componentWillReceiveProps === "function" || typeof instance.componentWillReceiveProps === "function")) {
+            if (unresolvedOldProps !== unresolvedNewProps || oldContext !== nextContext) callComponentWillReceiveProps(workInProgress, instance, newProps, nextContext);
+        }
+        resetHasForceUpdateBeforeProcessing();
+        var oldState = workInProgress.memoizedState;
+        var newState = instance.state = oldState;
+        processUpdateQueue(workInProgress, newProps, instance, renderLanes);
+        newState = workInProgress.memoizedState;
+        if (unresolvedOldProps === unresolvedNewProps && oldState === newState && !hasContextChanged() && !checkHasForceUpdateAfterProcessing() && !enableLazyContextPropagation) {
+            // If an update was already in progress, we should schedule an Update
+            // effect even though we're bailing out, so that cWU/cDU are called.
+            if (typeof instance.componentDidUpdate === "function") {
+                if (unresolvedOldProps !== current.memoizedProps || oldState !== current.memoizedState) workInProgress.flags |= Update;
+            }
+            if (typeof instance.getSnapshotBeforeUpdate === "function") {
+                if (unresolvedOldProps !== current.memoizedProps || oldState !== current.memoizedState) workInProgress.flags |= Snapshot;
+            }
+            return false;
+        }
+        if (typeof getDerivedStateFromProps === "function") {
+            applyDerivedStateFromProps(workInProgress, ctor, getDerivedStateFromProps, newProps);
+            newState = workInProgress.memoizedState;
+        }
+        var shouldUpdate = checkHasForceUpdateAfterProcessing() || checkShouldComponentUpdate(workInProgress, ctor, oldProps, newProps, oldState, newState, nextContext) || // TODO: In some cases, we'll end up checking if context has changed twice,
+        // both before and after `shouldComponentUpdate` has been called. Not ideal,
+        // but I'm loath to refactor this function. This only happens for memoized
+        // components so it's not that common.
+        enableLazyContextPropagation;
+        if (shouldUpdate) {
+            // In order to support react-lifecycles-compat polyfilled components,
+            // Unsafe lifecycles should not be invoked for components using the new APIs.
+            if (!hasNewLifecycles && (typeof instance.UNSAFE_componentWillUpdate === "function" || typeof instance.componentWillUpdate === "function")) {
+                if (typeof instance.componentWillUpdate === "function") instance.componentWillUpdate(newProps, newState, nextContext);
+                if (typeof instance.UNSAFE_componentWillUpdate === "function") instance.UNSAFE_componentWillUpdate(newProps, newState, nextContext);
+            }
+            if (typeof instance.componentDidUpdate === "function") workInProgress.flags |= Update;
+            if (typeof instance.getSnapshotBeforeUpdate === "function") workInProgress.flags |= Snapshot;
+        } else {
+            // If an update was already in progress, we should schedule an Update
+            // effect even though we're bailing out, so that cWU/cDU are called.
+            if (typeof instance.componentDidUpdate === "function") {
+                if (unresolvedOldProps !== current.memoizedProps || oldState !== current.memoizedState) workInProgress.flags |= Update;
+            }
+            if (typeof instance.getSnapshotBeforeUpdate === "function") {
+                if (unresolvedOldProps !== current.memoizedProps || oldState !== current.memoizedState) workInProgress.flags |= Snapshot;
+            } // If shouldComponentUpdate returned false, we should still update the
+            // memoized props/state to indicate that this work can be reused.
+            workInProgress.memoizedProps = newProps;
+            workInProgress.memoizedState = newState;
+        } // Update the existing instance's state, props, and context pointers even
+        // if shouldComponentUpdate returns false.
+        instance.props = newProps;
+        instance.state = newState;
+        instance.context = nextContext;
+        return shouldUpdate;
+    }
     function createCapturedValueAtFiber(value, source) {
         // If the value is an error, call this function immediately after it is thrown
         // so the stack is accurate.
@@ -19723,6 +19758,7 @@ module.exports = require("b0f0e6b9e8349dac");
     var didWarnAboutReassigningProps;
     var didWarnAboutRevealOrder;
     var didWarnAboutTailOptions;
+    var didWarnAboutDefaultPropsOnFunctionComponent;
     didWarnAboutBadClass = {};
     didWarnAboutModulePatternComponent = {};
     didWarnAboutContextTypeOnFunctionComponent = {};
@@ -19731,6 +19767,7 @@ module.exports = require("b0f0e6b9e8349dac");
     didWarnAboutReassigningProps = false;
     didWarnAboutRevealOrder = {};
     didWarnAboutTailOptions = {};
+    didWarnAboutDefaultPropsOnFunctionComponent = {};
     function reconcileChildren(current, workInProgress, nextChildren, renderLanes) {
         if (current === null) // If this is a fresh new component that hasn't been rendered yet, we
         // won't update its child set by applying minimal side-effects. Instead,
@@ -19815,6 +19852,13 @@ module.exports = require("b0f0e6b9e8349dac");
             if (innerPropTypes) // Inner memo component props aren't currently validated in createElement.
             // We could move it there, but we'd still need this for lazy code path.
             checkPropTypes(innerPropTypes, nextProps, "prop", getComponentNameFromType(type));
+            if (Component.defaultProps !== undefined) {
+                var componentName = getComponentNameFromType(type) || "Unknown";
+                if (!didWarnAboutDefaultPropsOnFunctionComponent[componentName]) {
+                    error("%s: Support for defaultProps will be removed from memo components in a future major release. Use JavaScript default parameters instead.", componentName);
+                    didWarnAboutDefaultPropsOnFunctionComponent[componentName] = true;
+                }
+            }
             var child = createFiberFromTypeAndProps(Component.type, null, nextProps, workInProgress, workInProgress.mode, renderLanes);
             child.ref = workInProgress.ref;
             child.return = workInProgress;
@@ -20387,6 +20431,13 @@ module.exports = require("b0f0e6b9e8349dac");
             if (!didWarnAboutFunctionRefs[warningKey]) {
                 didWarnAboutFunctionRefs[warningKey] = true;
                 error("Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?%s", info);
+            }
+        }
+        if (Component.defaultProps !== undefined) {
+            var componentName = getComponentNameFromType(Component) || "Unknown";
+            if (!didWarnAboutDefaultPropsOnFunctionComponent[componentName]) {
+                error("%s: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.", componentName);
+                didWarnAboutDefaultPropsOnFunctionComponent[componentName] = true;
             }
         }
         if (typeof Component.getDerivedStateFromProps === "function") {
@@ -26010,7 +26061,7 @@ module.exports = require("b0f0e6b9e8349dac");
         initializeUpdateQueue(uninitializedFiber);
         return root;
     }
-    var ReactVersion = "18.2.0";
+    var ReactVersion = "18.3.1";
     function createPortal(children, containerInfo, implementation) {
         var key = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
         checkKeyStringCoercion(key);
@@ -26579,7 +26630,12 @@ module.exports = require("b0f0e6b9e8349dac");
         }
         return getPublicRootInstance(root);
     }
+    var didWarnAboutFindDOMNode = false;
     function findDOMNode(componentOrElement) {
+        if (!didWarnAboutFindDOMNode) {
+            didWarnAboutFindDOMNode = true;
+            error("findDOMNode is deprecated and will be removed in the next major release. Instead, add a ref directly to the element you want to reference. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-find-node");
+        }
         var owner = ReactCurrentOwner$3.current;
         if (owner !== null && owner.stateNode !== null) {
             var warnedAboutRefsInRender = owner.stateNode._warnedAboutRefsInRender;
@@ -26610,7 +26666,12 @@ module.exports = require("b0f0e6b9e8349dac");
         if (parentComponent == null || !has(parentComponent)) throw new Error("parentComponent must be a valid React Component");
         return legacyRenderSubtreeIntoContainer(parentComponent, element, containerNode, false, callback);
     }
+    var didWarnAboutUnmountComponentAtNode = false;
     function unmountComponentAtNode(container) {
+        if (!didWarnAboutUnmountComponentAtNode) {
+            didWarnAboutUnmountComponentAtNode = true;
+            error("unmountComponentAtNode is deprecated and will be removed in the next major release. Switch to the createRoot API. Learn more: https://reactjs.org/link/switch-to-createroot");
+        }
         if (!isValidContainerLegacy(container)) throw new Error("unmountComponentAtNode(...): Target container is not a DOM element.");
         var isModernRoot = isContainerMarkedAsRoot(container) && container._reactRootContainer === undefined;
         if (isModernRoot) error("You are calling ReactDOM.unmountComponentAtNode() on a container that was previously passed to ReactDOMClient.createRoot(). This is not supported. Did you mean to call root.unmount()?");
@@ -26711,11 +26772,11 @@ module.exports = require("b0f0e6b9e8349dac");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{"6f0162e9ab224cd4":"21dqq","8ad4ca65319d28a7":"juvHo"}],"juvHo":[function(require,module,exports) {
+},{"6981e9f7f932245a":"l8X7j","69208e5768203b44":"462to"}],"462to":[function(require,module,exports) {
 "use strict";
-module.exports = require("ef03b89c8fe2794e");
+module.exports = require("b1c37af3627f35e2");
 
-},{"ef03b89c8fe2794e":"RqdIf"}],"RqdIf":[function(require,module,exports) {
+},{"b1c37af3627f35e2":"8fxbE"}],"8fxbE":[function(require,module,exports) {
 /**
  * @license React
  * scheduler.development.js
@@ -27437,7 +27498,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","../navigation-bar/navigation-bar":"bsPVM","../profile-view/profile-view":"2vVqf","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bwuIu":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"bl7WB","react":"l8X7j","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","../navigation-bar/navigation-bar":"bsPVM","../profile-view/profile-view":"2vVqf","react-bootstrap/Row":"41DF5","react-bootstrap/Col":"dAFSF","react-router-dom":"3DXe8","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dvzmY"}],"bwuIu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27582,23 +27643,23 @@ $RefreshReg$(_c, "MovieCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7wKI2":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"bl7WB","react":"l8X7j","prop-types":"389Di","react-bootstrap":"hwlHV","react-router-dom":"3DXe8","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dvzmY"}],"389Di":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */ var ReactIs = require("96e34ae03f5a2631");
+ */ var ReactIs = require("5a1498b47ec955b3");
 // By explicitly using `prop-types` you are opting into new development behavior.
 // http://fb.me/prop-types-in-prod
 var throwOnDirectAccess = true;
-module.exports = require("cb216452e2171041")(ReactIs.isElement, throwOnDirectAccess);
+module.exports = require("6afc1eba9e4ca9d4")(ReactIs.isElement, throwOnDirectAccess);
 
-},{"96e34ae03f5a2631":"7EuwB","cb216452e2171041":"bBUgD"}],"7EuwB":[function(require,module,exports) {
+},{"5a1498b47ec955b3":"6bXls","6afc1eba9e4ca9d4":"dHdz6"}],"6bXls":[function(require,module,exports) {
 "use strict";
-module.exports = require("2255125a8e8b1051");
+module.exports = require("4b0ceaf448a09efa");
 
-},{"2255125a8e8b1051":"5DsXl"}],"5DsXl":[function(require,module,exports) {
+},{"4b0ceaf448a09efa":"9GhJ0"}],"9GhJ0":[function(require,module,exports) {
 /** @license React v16.13.1
  * react-is.development.js
  *
@@ -27755,18 +27816,18 @@ module.exports = require("2255125a8e8b1051");
     exports.typeOf = typeOf;
 })();
 
-},{}],"bBUgD":[function(require,module,exports) {
+},{}],"dHdz6":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */ "use strict";
-var ReactIs = require("c437388b089702c3");
-var assign = require("c067a60101d8520c");
-var ReactPropTypesSecret = require("74a0f89a70b9f3c2");
-var has = require("18441b11647bc78");
-var checkPropTypes = require("bec3f6ff89f0b072");
+var ReactIs = require("b7f4915ae49480c7");
+var assign = require("30726836970d20cc");
+var ReactPropTypesSecret = require("bf34be6fe95cbe71");
+var has = require("b2fbed9d5f326e82");
+var checkPropTypes = require("ff46465831b5d14");
 var printWarning = function() {};
 printWarning = function(text) {
     var message = "Warning: " + text;
@@ -28193,7 +28254,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
     return ReactPropTypes;
 };
 
-},{"c437388b089702c3":"7EuwB","c067a60101d8520c":"7OXxh","74a0f89a70b9f3c2":"jZTZJ","18441b11647bc78":"fqKuf","bec3f6ff89f0b072":"5VwyJ"}],"7OXxh":[function(require,module,exports) {
+},{"b7f4915ae49480c7":"6bXls","30726836970d20cc":"5seeO","bf34be6fe95cbe71":"6hzeM","b2fbed9d5f326e82":"bELLH","ff46465831b5d14":"k2jUe"}],"5seeO":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -28248,7 +28309,7 @@ module.exports = shouldUseNative() ? Object.assign : function(target, source) {
     return to;
 };
 
-},{}],"jZTZJ":[function(require,module,exports) {
+},{}],"6hzeM":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -28258,10 +28319,10 @@ module.exports = shouldUseNative() ? Object.assign : function(target, source) {
 var ReactPropTypesSecret = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
 module.exports = ReactPropTypesSecret;
 
-},{}],"fqKuf":[function(require,module,exports) {
+},{}],"bELLH":[function(require,module,exports) {
 module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
 
-},{}],"5VwyJ":[function(require,module,exports) {
+},{}],"k2jUe":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -28269,9 +28330,9 @@ module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
  * LICENSE file in the root directory of this source tree.
  */ "use strict";
 var printWarning = function() {};
-var ReactPropTypesSecret = require("24ba1e58d167a82c");
+var ReactPropTypesSecret = require("e0ba5665a16deaba");
 var loggedTypeFailures = {};
-var has = require("898bc82f39d83f7c");
+var has = require("f643533bc746add6");
 printWarning = function(text) {
     var message = "Warning: " + text;
     if (typeof console !== "undefined") console.error(message);
@@ -28329,7 +28390,7 @@ printWarning = function(text) {
 };
 module.exports = checkPropTypes;
 
-},{"24ba1e58d167a82c":"jZTZJ","898bc82f39d83f7c":"fqKuf"}],"3AD9A":[function(require,module,exports) {
+},{"e0ba5665a16deaba":"6hzeM","f643533bc746add6":"bELLH"}],"hwlHV":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Accordion", ()=>(0, _accordionDefault.default));
@@ -28337,7 +28398,12 @@ parcelHelpers.export(exports, "AccordionContext", ()=>(0, _accordionContextDefau
 parcelHelpers.export(exports, "AccordionCollapse", ()=>(0, _accordionCollapseDefault.default));
 parcelHelpers.export(exports, "AccordionButton", ()=>(0, _accordionButtonDefault.default));
 parcelHelpers.export(exports, "useAccordionButton", ()=>(0, _accordionButton.useAccordionButton));
+parcelHelpers.export(exports, "AccordionBody", ()=>(0, _accordionBodyDefault.default));
+parcelHelpers.export(exports, "AccordionHeader", ()=>(0, _accordionHeaderDefault.default));
+parcelHelpers.export(exports, "AccordionItem", ()=>(0, _accordionItemDefault.default));
 parcelHelpers.export(exports, "Alert", ()=>(0, _alertDefault.default));
+parcelHelpers.export(exports, "AlertHeading", ()=>(0, _alertHeadingDefault.default));
+parcelHelpers.export(exports, "AlertLink", ()=>(0, _alertLinkDefault.default));
 parcelHelpers.export(exports, "Anchor", ()=>(0, _anchorDefault.default));
 parcelHelpers.export(exports, "Badge", ()=>(0, _badgeDefault.default));
 parcelHelpers.export(exports, "Breadcrumb", ()=>(0, _breadcrumbDefault.default));
@@ -28346,16 +28412,35 @@ parcelHelpers.export(exports, "Button", ()=>(0, _buttonDefault.default));
 parcelHelpers.export(exports, "ButtonGroup", ()=>(0, _buttonGroupDefault.default));
 parcelHelpers.export(exports, "ButtonToolbar", ()=>(0, _buttonToolbarDefault.default));
 parcelHelpers.export(exports, "Card", ()=>(0, _cardDefault.default));
-parcelHelpers.export(exports, "CardImg", ()=>(0, _cardImgDefault.default));
+parcelHelpers.export(exports, "CardBody", ()=>(0, _cardBodyDefault.default));
+parcelHelpers.export(exports, "CardFooter", ()=>(0, _cardFooterDefault.default));
 parcelHelpers.export(exports, "CardGroup", ()=>(0, _cardGroupDefault.default));
+parcelHelpers.export(exports, "CardHeader", ()=>(0, _cardHeaderDefault.default));
+parcelHelpers.export(exports, "CardImg", ()=>(0, _cardImgDefault.default));
+parcelHelpers.export(exports, "CardImgOverlay", ()=>(0, _cardImgOverlayDefault.default));
+parcelHelpers.export(exports, "CardLink", ()=>(0, _cardLinkDefault.default));
+parcelHelpers.export(exports, "CardSubtitle", ()=>(0, _cardSubtitleDefault.default));
+parcelHelpers.export(exports, "CardText", ()=>(0, _cardTextDefault.default));
+parcelHelpers.export(exports, "CardTitle", ()=>(0, _cardTitleDefault.default));
 parcelHelpers.export(exports, "Carousel", ()=>(0, _carouselDefault.default));
+parcelHelpers.export(exports, "CarouselCaption", ()=>(0, _carouselCaptionDefault.default));
 parcelHelpers.export(exports, "CarouselItem", ()=>(0, _carouselItemDefault.default));
 parcelHelpers.export(exports, "CloseButton", ()=>(0, _closeButtonDefault.default));
 parcelHelpers.export(exports, "Col", ()=>(0, _colDefault.default));
 parcelHelpers.export(exports, "Collapse", ()=>(0, _collapseDefault.default));
+parcelHelpers.export(exports, "Container", ()=>(0, _containerDefault.default));
 parcelHelpers.export(exports, "Dropdown", ()=>(0, _dropdownDefault.default));
 parcelHelpers.export(exports, "DropdownButton", ()=>(0, _dropdownButtonDefault.default));
+parcelHelpers.export(exports, "DropdownDivider", ()=>(0, _dropdownDividerDefault.default));
+parcelHelpers.export(exports, "DropdownHeader", ()=>(0, _dropdownHeaderDefault.default));
+parcelHelpers.export(exports, "DropdownItem", ()=>(0, _dropdownItemDefault.default));
+parcelHelpers.export(exports, "DropdownItemText", ()=>(0, _dropdownItemTextDefault.default));
+parcelHelpers.export(exports, "DropdownMenu", ()=>(0, _dropdownMenuDefault.default));
+parcelHelpers.export(exports, "DropdownToggle", ()=>(0, _dropdownToggleDefault.default));
 parcelHelpers.export(exports, "Fade", ()=>(0, _fadeDefault.default));
+parcelHelpers.export(exports, "Figure", ()=>(0, _figureDefault.default));
+parcelHelpers.export(exports, "FigureCaption", ()=>(0, _figureCaptionDefault.default));
+parcelHelpers.export(exports, "FigureImage", ()=>(0, _figureImageDefault.default));
 parcelHelpers.export(exports, "Form", ()=>(0, _formDefault.default));
 parcelHelpers.export(exports, "FormControl", ()=>(0, _formControlDefault.default));
 parcelHelpers.export(exports, "FormCheck", ()=>(0, _formCheckDefault.default));
@@ -28365,28 +28450,31 @@ parcelHelpers.export(exports, "FormGroup", ()=>(0, _formGroupDefault.default));
 parcelHelpers.export(exports, "FormLabel", ()=>(0, _formLabelDefault.default));
 parcelHelpers.export(exports, "FormText", ()=>(0, _formTextDefault.default));
 parcelHelpers.export(exports, "FormSelect", ()=>(0, _formSelectDefault.default));
-parcelHelpers.export(exports, "Container", ()=>(0, _containerDefault.default));
 parcelHelpers.export(exports, "Image", ()=>(0, _imageDefault.default));
-parcelHelpers.export(exports, "Figure", ()=>(0, _figureDefault.default));
 parcelHelpers.export(exports, "InputGroup", ()=>(0, _inputGroupDefault.default));
 parcelHelpers.export(exports, "ListGroup", ()=>(0, _listGroupDefault.default));
 parcelHelpers.export(exports, "ListGroupItem", ()=>(0, _listGroupItemDefault.default));
 parcelHelpers.export(exports, "Modal", ()=>(0, _modalDefault.default));
 parcelHelpers.export(exports, "ModalBody", ()=>(0, _modalBodyDefault.default));
 parcelHelpers.export(exports, "ModalDialog", ()=>(0, _modalDialogDefault.default));
-parcelHelpers.export(exports, "ModalHeader", ()=>(0, _modalHeaderDefault.default));
 parcelHelpers.export(exports, "ModalFooter", ()=>(0, _modalFooterDefault.default));
+parcelHelpers.export(exports, "ModalHeader", ()=>(0, _modalHeaderDefault.default));
 parcelHelpers.export(exports, "ModalTitle", ()=>(0, _modalTitleDefault.default));
 parcelHelpers.export(exports, "Nav", ()=>(0, _navDefault.default));
 parcelHelpers.export(exports, "Navbar", ()=>(0, _navbarDefault.default));
 parcelHelpers.export(exports, "NavbarBrand", ()=>(0, _navbarBrandDefault.default));
+parcelHelpers.export(exports, "NavbarCollapse", ()=>(0, _navbarCollapseDefault.default));
+parcelHelpers.export(exports, "NavbarOffcanvas", ()=>(0, _navbarOffcanvasDefault.default));
+parcelHelpers.export(exports, "NavbarText", ()=>(0, _navbarTextDefault.default));
+parcelHelpers.export(exports, "NavbarToggle", ()=>(0, _navbarToggleDefault.default));
 parcelHelpers.export(exports, "NavDropdown", ()=>(0, _navDropdownDefault.default));
 parcelHelpers.export(exports, "NavItem", ()=>(0, _navItemDefault.default));
 parcelHelpers.export(exports, "NavLink", ()=>(0, _navLinkDefault.default));
 parcelHelpers.export(exports, "Offcanvas", ()=>(0, _offcanvasDefault.default));
+parcelHelpers.export(exports, "OffcanvasBody", ()=>(0, _offcanvasBodyDefault.default));
 parcelHelpers.export(exports, "OffcanvasHeader", ()=>(0, _offcanvasHeaderDefault.default));
 parcelHelpers.export(exports, "OffcanvasTitle", ()=>(0, _offcanvasTitleDefault.default));
-parcelHelpers.export(exports, "OffcanvasBody", ()=>(0, _offcanvasBodyDefault.default));
+parcelHelpers.export(exports, "OffcanvasToggling", ()=>(0, _offcanvasTogglingDefault.default));
 parcelHelpers.export(exports, "Overlay", ()=>(0, _overlayDefault.default));
 parcelHelpers.export(exports, "OverlayTrigger", ()=>(0, _overlayTriggerDefault.default));
 parcelHelpers.export(exports, "PageItem", ()=>(0, _pageItemDefault.default));
@@ -28394,8 +28482,8 @@ parcelHelpers.export(exports, "Pagination", ()=>(0, _paginationDefault.default))
 parcelHelpers.export(exports, "Placeholder", ()=>(0, _placeholderDefault.default));
 parcelHelpers.export(exports, "PlaceholderButton", ()=>(0, _placeholderButtonDefault.default));
 parcelHelpers.export(exports, "Popover", ()=>(0, _popoverDefault.default));
-parcelHelpers.export(exports, "PopoverHeader", ()=>(0, _popoverHeaderDefault.default));
 parcelHelpers.export(exports, "PopoverBody", ()=>(0, _popoverBodyDefault.default));
+parcelHelpers.export(exports, "PopoverHeader", ()=>(0, _popoverHeaderDefault.default));
 parcelHelpers.export(exports, "ProgressBar", ()=>(0, _progressBarDefault.default));
 parcelHelpers.export(exports, "Ratio", ()=>(0, _ratioDefault.default));
 parcelHelpers.export(exports, "Row", ()=>(0, _rowDefault.default));
@@ -28412,8 +28500,8 @@ parcelHelpers.export(exports, "Tabs", ()=>(0, _tabsDefault.default));
 parcelHelpers.export(exports, "ThemeProvider", ()=>(0, _themeProviderDefault.default));
 parcelHelpers.export(exports, "Toast", ()=>(0, _toastDefault.default));
 parcelHelpers.export(exports, "ToastBody", ()=>(0, _toastBodyDefault.default));
-parcelHelpers.export(exports, "ToastHeader", ()=>(0, _toastHeaderDefault.default));
 parcelHelpers.export(exports, "ToastContainer", ()=>(0, _toastContainerDefault.default));
+parcelHelpers.export(exports, "ToastHeader", ()=>(0, _toastHeaderDefault.default));
 parcelHelpers.export(exports, "ToggleButton", ()=>(0, _toggleButtonDefault.default));
 parcelHelpers.export(exports, "ToggleButtonGroup", ()=>(0, _toggleButtonGroupDefault.default));
 parcelHelpers.export(exports, "Tooltip", ()=>(0, _tooltipDefault.default));
@@ -28425,8 +28513,18 @@ var _accordionCollapse = require("./AccordionCollapse");
 var _accordionCollapseDefault = parcelHelpers.interopDefault(_accordionCollapse);
 var _accordionButton = require("./AccordionButton");
 var _accordionButtonDefault = parcelHelpers.interopDefault(_accordionButton);
+var _accordionBody = require("./AccordionBody");
+var _accordionBodyDefault = parcelHelpers.interopDefault(_accordionBody);
+var _accordionHeader = require("./AccordionHeader");
+var _accordionHeaderDefault = parcelHelpers.interopDefault(_accordionHeader);
+var _accordionItem = require("./AccordionItem");
+var _accordionItemDefault = parcelHelpers.interopDefault(_accordionItem);
 var _alert = require("./Alert");
 var _alertDefault = parcelHelpers.interopDefault(_alert);
+var _alertHeading = require("./AlertHeading");
+var _alertHeadingDefault = parcelHelpers.interopDefault(_alertHeading);
+var _alertLink = require("./AlertLink");
+var _alertLinkDefault = parcelHelpers.interopDefault(_alertLink);
 var _anchor = require("./Anchor");
 var _anchorDefault = parcelHelpers.interopDefault(_anchor);
 var _badge = require("./Badge");
@@ -28443,12 +28541,30 @@ var _buttonToolbar = require("./ButtonToolbar");
 var _buttonToolbarDefault = parcelHelpers.interopDefault(_buttonToolbar);
 var _card = require("./Card");
 var _cardDefault = parcelHelpers.interopDefault(_card);
-var _cardImg = require("./CardImg");
-var _cardImgDefault = parcelHelpers.interopDefault(_cardImg);
+var _cardBody = require("./CardBody");
+var _cardBodyDefault = parcelHelpers.interopDefault(_cardBody);
+var _cardFooter = require("./CardFooter");
+var _cardFooterDefault = parcelHelpers.interopDefault(_cardFooter);
 var _cardGroup = require("./CardGroup");
 var _cardGroupDefault = parcelHelpers.interopDefault(_cardGroup);
+var _cardHeader = require("./CardHeader");
+var _cardHeaderDefault = parcelHelpers.interopDefault(_cardHeader);
+var _cardImg = require("./CardImg");
+var _cardImgDefault = parcelHelpers.interopDefault(_cardImg);
+var _cardImgOverlay = require("./CardImgOverlay");
+var _cardImgOverlayDefault = parcelHelpers.interopDefault(_cardImgOverlay);
+var _cardLink = require("./CardLink");
+var _cardLinkDefault = parcelHelpers.interopDefault(_cardLink);
+var _cardSubtitle = require("./CardSubtitle");
+var _cardSubtitleDefault = parcelHelpers.interopDefault(_cardSubtitle);
+var _cardText = require("./CardText");
+var _cardTextDefault = parcelHelpers.interopDefault(_cardText);
+var _cardTitle = require("./CardTitle");
+var _cardTitleDefault = parcelHelpers.interopDefault(_cardTitle);
 var _carousel = require("./Carousel");
 var _carouselDefault = parcelHelpers.interopDefault(_carousel);
+var _carouselCaption = require("./CarouselCaption");
+var _carouselCaptionDefault = parcelHelpers.interopDefault(_carouselCaption);
 var _carouselItem = require("./CarouselItem");
 var _carouselItemDefault = parcelHelpers.interopDefault(_carouselItem);
 var _closeButton = require("./CloseButton");
@@ -28457,12 +28573,32 @@ var _col = require("./Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
 var _collapse = require("./Collapse");
 var _collapseDefault = parcelHelpers.interopDefault(_collapse);
+var _container = require("./Container");
+var _containerDefault = parcelHelpers.interopDefault(_container);
 var _dropdown = require("./Dropdown");
 var _dropdownDefault = parcelHelpers.interopDefault(_dropdown);
 var _dropdownButton = require("./DropdownButton");
 var _dropdownButtonDefault = parcelHelpers.interopDefault(_dropdownButton);
+var _dropdownDivider = require("./DropdownDivider");
+var _dropdownDividerDefault = parcelHelpers.interopDefault(_dropdownDivider);
+var _dropdownHeader = require("./DropdownHeader");
+var _dropdownHeaderDefault = parcelHelpers.interopDefault(_dropdownHeader);
+var _dropdownItem = require("./DropdownItem");
+var _dropdownItemDefault = parcelHelpers.interopDefault(_dropdownItem);
+var _dropdownItemText = require("./DropdownItemText");
+var _dropdownItemTextDefault = parcelHelpers.interopDefault(_dropdownItemText);
+var _dropdownMenu = require("./DropdownMenu");
+var _dropdownMenuDefault = parcelHelpers.interopDefault(_dropdownMenu);
+var _dropdownToggle = require("./DropdownToggle");
+var _dropdownToggleDefault = parcelHelpers.interopDefault(_dropdownToggle);
 var _fade = require("./Fade");
 var _fadeDefault = parcelHelpers.interopDefault(_fade);
+var _figure = require("./Figure");
+var _figureDefault = parcelHelpers.interopDefault(_figure);
+var _figureCaption = require("./FigureCaption");
+var _figureCaptionDefault = parcelHelpers.interopDefault(_figureCaption);
+var _figureImage = require("./FigureImage");
+var _figureImageDefault = parcelHelpers.interopDefault(_figureImage);
 var _form = require("./Form");
 var _formDefault = parcelHelpers.interopDefault(_form);
 var _formControl = require("./FormControl");
@@ -28481,12 +28617,8 @@ var _formText = require("./FormText");
 var _formTextDefault = parcelHelpers.interopDefault(_formText);
 var _formSelect = require("./FormSelect");
 var _formSelectDefault = parcelHelpers.interopDefault(_formSelect);
-var _container = require("./Container");
-var _containerDefault = parcelHelpers.interopDefault(_container);
 var _image = require("./Image");
 var _imageDefault = parcelHelpers.interopDefault(_image);
-var _figure = require("./Figure");
-var _figureDefault = parcelHelpers.interopDefault(_figure);
 var _inputGroup = require("./InputGroup");
 var _inputGroupDefault = parcelHelpers.interopDefault(_inputGroup);
 var _listGroup = require("./ListGroup");
@@ -28499,10 +28631,10 @@ var _modalBody = require("./ModalBody");
 var _modalBodyDefault = parcelHelpers.interopDefault(_modalBody);
 var _modalDialog = require("./ModalDialog");
 var _modalDialogDefault = parcelHelpers.interopDefault(_modalDialog);
-var _modalHeader = require("./ModalHeader");
-var _modalHeaderDefault = parcelHelpers.interopDefault(_modalHeader);
 var _modalFooter = require("./ModalFooter");
 var _modalFooterDefault = parcelHelpers.interopDefault(_modalFooter);
+var _modalHeader = require("./ModalHeader");
+var _modalHeaderDefault = parcelHelpers.interopDefault(_modalHeader);
 var _modalTitle = require("./ModalTitle");
 var _modalTitleDefault = parcelHelpers.interopDefault(_modalTitle);
 var _nav = require("./Nav");
@@ -28511,6 +28643,14 @@ var _navbar = require("./Navbar");
 var _navbarDefault = parcelHelpers.interopDefault(_navbar);
 var _navbarBrand = require("./NavbarBrand");
 var _navbarBrandDefault = parcelHelpers.interopDefault(_navbarBrand);
+var _navbarCollapse = require("./NavbarCollapse");
+var _navbarCollapseDefault = parcelHelpers.interopDefault(_navbarCollapse);
+var _navbarOffcanvas = require("./NavbarOffcanvas");
+var _navbarOffcanvasDefault = parcelHelpers.interopDefault(_navbarOffcanvas);
+var _navbarText = require("./NavbarText");
+var _navbarTextDefault = parcelHelpers.interopDefault(_navbarText);
+var _navbarToggle = require("./NavbarToggle");
+var _navbarToggleDefault = parcelHelpers.interopDefault(_navbarToggle);
 var _navDropdown = require("./NavDropdown");
 var _navDropdownDefault = parcelHelpers.interopDefault(_navDropdown);
 var _navItem = require("./NavItem");
@@ -28519,12 +28659,14 @@ var _navLink = require("./NavLink");
 var _navLinkDefault = parcelHelpers.interopDefault(_navLink);
 var _offcanvas = require("./Offcanvas");
 var _offcanvasDefault = parcelHelpers.interopDefault(_offcanvas);
+var _offcanvasBody = require("./OffcanvasBody");
+var _offcanvasBodyDefault = parcelHelpers.interopDefault(_offcanvasBody);
 var _offcanvasHeader = require("./OffcanvasHeader");
 var _offcanvasHeaderDefault = parcelHelpers.interopDefault(_offcanvasHeader);
 var _offcanvasTitle = require("./OffcanvasTitle");
 var _offcanvasTitleDefault = parcelHelpers.interopDefault(_offcanvasTitle);
-var _offcanvasBody = require("./OffcanvasBody");
-var _offcanvasBodyDefault = parcelHelpers.interopDefault(_offcanvasBody);
+var _offcanvasToggling = require("./OffcanvasToggling");
+var _offcanvasTogglingDefault = parcelHelpers.interopDefault(_offcanvasToggling);
 var _overlay = require("./Overlay");
 var _overlayDefault = parcelHelpers.interopDefault(_overlay);
 var _overlayTrigger = require("./OverlayTrigger");
@@ -28539,10 +28681,10 @@ var _placeholderButton = require("./PlaceholderButton");
 var _placeholderButtonDefault = parcelHelpers.interopDefault(_placeholderButton);
 var _popover = require("./Popover");
 var _popoverDefault = parcelHelpers.interopDefault(_popover);
-var _popoverHeader = require("./PopoverHeader");
-var _popoverHeaderDefault = parcelHelpers.interopDefault(_popoverHeader);
 var _popoverBody = require("./PopoverBody");
 var _popoverBodyDefault = parcelHelpers.interopDefault(_popoverBody);
+var _popoverHeader = require("./PopoverHeader");
+var _popoverHeaderDefault = parcelHelpers.interopDefault(_popoverHeader);
 var _progressBar = require("./ProgressBar");
 var _progressBarDefault = parcelHelpers.interopDefault(_progressBar);
 var _ratio = require("./Ratio");
@@ -28575,10 +28717,10 @@ var _toast = require("./Toast");
 var _toastDefault = parcelHelpers.interopDefault(_toast);
 var _toastBody = require("./ToastBody");
 var _toastBodyDefault = parcelHelpers.interopDefault(_toastBody);
-var _toastHeader = require("./ToastHeader");
-var _toastHeaderDefault = parcelHelpers.interopDefault(_toastHeader);
 var _toastContainer = require("./ToastContainer");
 var _toastContainerDefault = parcelHelpers.interopDefault(_toastContainer);
+var _toastHeader = require("./ToastHeader");
+var _toastHeaderDefault = parcelHelpers.interopDefault(_toastHeader);
 var _toggleButton = require("./ToggleButton");
 var _toggleButtonDefault = parcelHelpers.interopDefault(_toggleButton);
 var _toggleButtonGroup = require("./ToggleButtonGroup");
@@ -28586,7 +28728,7 @@ var _toggleButtonGroupDefault = parcelHelpers.interopDefault(_toggleButtonGroup)
 var _tooltip = require("./Tooltip");
 var _tooltipDefault = parcelHelpers.interopDefault(_tooltip);
 
-},{"./Accordion":false,"./AccordionContext":false,"./AccordionCollapse":false,"./AccordionButton":false,"./Alert":false,"./Anchor":false,"./Badge":false,"./Breadcrumb":false,"./BreadcrumbItem":false,"./Button":"aPzUt","./ButtonGroup":false,"./ButtonToolbar":false,"./Card":"lAynp","./CardImg":false,"./CardGroup":false,"./Carousel":false,"./CarouselItem":false,"./CloseButton":false,"./Col":"2L2I6","./Collapse":false,"./Dropdown":false,"./DropdownButton":false,"./Fade":false,"./Form":"iBZ80","./FormControl":false,"./FormCheck":false,"./FormFloating":false,"./FloatingLabel":false,"./FormGroup":false,"./FormLabel":false,"./FormText":false,"./FormSelect":false,"./Container":"hEdsw","./Image":false,"./Figure":false,"./InputGroup":false,"./ListGroup":false,"./ListGroupItem":false,"./Modal":false,"./ModalBody":false,"./ModalDialog":false,"./ModalHeader":false,"./ModalFooter":false,"./ModalTitle":false,"./Nav":"cXyL2","./Navbar":"1mHjo","./NavbarBrand":false,"./NavDropdown":false,"./NavItem":false,"./NavLink":false,"./Offcanvas":false,"./OffcanvasHeader":false,"./OffcanvasTitle":false,"./OffcanvasBody":false,"./Overlay":false,"./OverlayTrigger":false,"./PageItem":false,"./Pagination":false,"./Placeholder":false,"./PlaceholderButton":false,"./Popover":false,"./PopoverHeader":false,"./PopoverBody":false,"./ProgressBar":false,"./Ratio":false,"./Row":"cMC39","./Spinner":false,"./SplitButton":false,"./SSRProvider":false,"./Stack":false,"./Tab":false,"./TabContainer":false,"./TabContent":false,"./Table":false,"./TabPane":false,"./Tabs":false,"./ThemeProvider":false,"./Toast":false,"./ToastBody":false,"./ToastHeader":false,"./ToastContainer":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Tooltip":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aPzUt":[function(require,module,exports) {
+},{"./Accordion":false,"./AccordionContext":false,"./AccordionCollapse":false,"./AccordionButton":false,"./AccordionBody":false,"./AccordionHeader":false,"./AccordionItem":false,"./Alert":false,"./AlertHeading":false,"./AlertLink":false,"./Anchor":false,"./Badge":false,"./Breadcrumb":false,"./BreadcrumbItem":false,"./Button":"2YoR0","./ButtonGroup":false,"./ButtonToolbar":false,"./Card":"54ALI","./CardBody":false,"./CardFooter":false,"./CardGroup":false,"./CardHeader":false,"./CardImg":false,"./CardImgOverlay":false,"./CardLink":false,"./CardSubtitle":false,"./CardText":false,"./CardTitle":false,"./Carousel":false,"./CarouselCaption":false,"./CarouselItem":false,"./CloseButton":false,"./Col":"dAFSF","./Collapse":false,"./Container":false,"./Dropdown":false,"./DropdownButton":false,"./DropdownDivider":false,"./DropdownHeader":false,"./DropdownItem":false,"./DropdownItemText":false,"./DropdownMenu":false,"./DropdownToggle":false,"./Fade":false,"./Figure":false,"./FigureCaption":false,"./FigureImage":false,"./Form":"athQu","./FormControl":false,"./FormCheck":false,"./FormFloating":false,"./FloatingLabel":false,"./FormGroup":false,"./FormLabel":false,"./FormText":false,"./FormSelect":false,"./Image":false,"./InputGroup":false,"./ListGroup":false,"./ListGroupItem":false,"./Modal":false,"./ModalBody":false,"./ModalDialog":false,"./ModalFooter":false,"./ModalHeader":false,"./ModalTitle":false,"./Nav":false,"./Navbar":false,"./NavbarBrand":false,"./NavbarCollapse":false,"./NavbarOffcanvas":false,"./NavbarText":false,"./NavbarToggle":false,"./NavDropdown":false,"./NavItem":false,"./NavLink":false,"./Offcanvas":false,"./OffcanvasBody":false,"./OffcanvasHeader":false,"./OffcanvasTitle":false,"./OffcanvasToggling":false,"./Overlay":false,"./OverlayTrigger":false,"./PageItem":false,"./Pagination":false,"./Placeholder":false,"./PlaceholderButton":false,"./Popover":false,"./PopoverBody":false,"./PopoverHeader":false,"./ProgressBar":false,"./Ratio":false,"./Row":"41DF5","./Spinner":false,"./SplitButton":false,"./SSRProvider":false,"./Stack":false,"./Tab":false,"./TabContainer":false,"./TabContent":false,"./Table":false,"./TabPane":false,"./Tabs":false,"./ThemeProvider":false,"./Toast":false,"./ToastBody":false,"./ToastContainer":false,"./ToastHeader":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Tooltip":false,"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"2YoR0":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -28595,15 +28737,12 @@ var _react = require("react");
 var _button = require("@restart/ui/Button");
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
-const defaultProps = {
-    variant: "primary",
-    active: false,
-    disabled: false
-};
-const Button = /*#__PURE__*/ _react.forwardRef(({ as, bsPrefix, variant, size, active, className, ...props }, ref)=>{
+"use client";
+const Button = /*#__PURE__*/ _react.forwardRef(({ as, bsPrefix, variant = "primary", size, active = false, disabled = false, className, ...props }, ref)=>{
     const prefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "btn");
     const [buttonProps, { tagName }] = (0, _button.useButtonProps)({
         tagName: as,
+        disabled,
         ...props
     });
     const Component = tagName;
@@ -28611,14 +28750,14 @@ const Button = /*#__PURE__*/ _react.forwardRef(({ as, bsPrefix, variant, size, a
         ...buttonProps,
         ...props,
         ref: ref,
-        className: (0, _classnamesDefault.default)(className, prefix, active && "active", variant && `${prefix}-${variant}`, size && `${prefix}-${size}`, props.href && props.disabled && "disabled")
+        disabled: disabled,
+        className: (0, _classnamesDefault.default)(className, prefix, active && "active", variant && `${prefix}-${variant}`, size && `${prefix}-${size}`, props.href && disabled && "disabled")
     });
 });
 Button.displayName = "Button";
-Button.defaultProps = defaultProps;
 exports.default = Button;
 
-},{"classnames":"jocGM","react":"21dqq","@restart/ui/Button":"8YUbR","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jocGM":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","@restart/ui/Button":"2FeZm","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"92LQ1":[function(require,module,exports) {
 /*!
 	Copyright (c) 2018 Jed Watson.
 	Licensed under the MIT License (MIT), see
@@ -28658,7 +28797,7 @@ exports.default = Button;
     else window.classNames = classNames;
 })();
 
-},{}],"8YUbR":[function(require,module,exports) {
+},{}],"2FeZm":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isTrivialHref", ()=>isTrivialHref);
@@ -28748,11 +28887,11 @@ const Button = /*#__PURE__*/ _react.forwardRef((_ref, ref)=>{
 Button.displayName = "Button";
 exports.default = Button;
 
-},{"react":"21dqq","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6AEwr":[function(require,module,exports) {
+},{"react":"l8X7j","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"iMohQ":[function(require,module,exports) {
 "use strict";
-module.exports = require("c4c10cbba9862d5f");
+module.exports = require("3e5499915bcdd33e");
 
-},{"c4c10cbba9862d5f":"kujY4"}],"kujY4":[function(require,module,exports) {
+},{"3e5499915bcdd33e":"lG3su"}],"lG3su":[function(require,module,exports) {
 /**
  * @license React
  * react-jsx-runtime.development.js
@@ -28764,7 +28903,7 @@ module.exports = require("c4c10cbba9862d5f");
  */ "use strict";
 (function() {
     "use strict";
-    var React = require("593632ccebda0d3a");
+    var React = require("340d125a10d68b72");
     // ATTENTION
     // When adding new symbols to this file,
     // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
@@ -29537,6 +29676,7 @@ module.exports = require("c4c10cbba9862d5f");
             setCurrentlyValidatingElement$1(null);
         }
     }
+    var didWarnAboutKeySpread = {};
     function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
         var validType = isValidElementType(type); // We warn in this case but don't throw. We expect the element creation to
         // succeed and there will likely be errors in render.
@@ -29574,6 +29714,18 @@ module.exports = require("c4c10cbba9862d5f");
                 } else validateChildKeys(children, type);
             }
         }
+        if (hasOwnProperty.call(props, "key")) {
+            var componentName = getComponentNameFromType(type);
+            var keys = Object.keys(props).filter(function(k) {
+                return k !== "key";
+            });
+            var beforeExample = keys.length > 0 ? "{key: someKey, " + keys.join(": ..., ") + ": ...}" : "{key: someKey}";
+            if (!didWarnAboutKeySpread[componentName + beforeExample]) {
+                var afterExample = keys.length > 0 ? "{" + keys.join(": ..., ") + ": ...}" : "{}";
+                error('A props object containing a "key" prop is being spread into JSX:\n  let props = %s;\n  <%s {...props} />\nReact keys must be passed directly to JSX without using spread:\n  let props = %s;\n  <%s key={someKey} {...props} />', beforeExample, componentName, afterExample, componentName);
+                didWarnAboutKeySpread[componentName + beforeExample] = true;
+            }
+        }
         if (type === REACT_FRAGMENT_TYPE) validateFragmentProps(element);
         else validatePropTypes(element);
         return element;
@@ -29595,7 +29747,7 @@ module.exports = require("c4c10cbba9862d5f");
     exports.jsxs = jsxs;
 })();
 
-},{"593632ccebda0d3a":"21dqq"}],"gkKU3":[function(require,module,exports) {
+},{"340d125a10d68b72":"l8X7j"}],"1Iizd":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -29625,7 +29777,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"dVixI":[function(require,module,exports) {
+},{}],"aQxwt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "DEFAULT_BREAKPOINTS", ()=>DEFAULT_BREAKPOINTS);
@@ -29638,6 +29790,7 @@ parcelHelpers.export(exports, "createBootstrapComponent", ()=>createBootstrapCom
 parcelHelpers.export(exports, "ThemeConsumer", ()=>Consumer);
 var _react = require("react");
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const DEFAULT_BREAKPOINTS = [
     "xxl",
     "xl",
@@ -29692,7 +29845,8 @@ function createBootstrapComponent(Component, opts) {
     if (typeof opts === "string") opts = {
         prefix: opts
     };
-    const isClassy = Component.prototype && Component.prototype.isReactComponent; // If it's a functional component make sure we don't break it with a ref
+    const isClassy = Component.prototype && Component.prototype.isReactComponent;
+    // If it's a functional component make sure we don't break it with a ref
     const { prefix, forwardRefAs = isClassy ? "ref" : "innerRef" } = opts;
     const Wrapped = /*#__PURE__*/ _react.forwardRef(({ ...props }, ref)=>{
         props[forwardRefAs] = ref;
@@ -29707,138 +29861,99 @@ function createBootstrapComponent(Component, opts) {
 }
 exports.default = ThemeProvider;
 
-},{"react":"21dqq","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lAynp":[function(require,module,exports) {
+},{"react":"l8X7j","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"54ALI":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
 var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
 var _react = require("react");
 var _themeProvider = require("./ThemeProvider");
-var _createWithBsPrefix = require("./createWithBsPrefix");
-var _createWithBsPrefixDefault = parcelHelpers.interopDefault(_createWithBsPrefix);
-var _divWithClassName = require("./divWithClassName");
-var _divWithClassNameDefault = parcelHelpers.interopDefault(_divWithClassName);
-var _cardImg = require("./CardImg");
-var _cardImgDefault = parcelHelpers.interopDefault(_cardImg);
+var _cardBody = require("./CardBody");
+var _cardBodyDefault = parcelHelpers.interopDefault(_cardBody);
+var _cardFooter = require("./CardFooter");
+var _cardFooterDefault = parcelHelpers.interopDefault(_cardFooter);
 var _cardHeader = require("./CardHeader");
 var _cardHeaderDefault = parcelHelpers.interopDefault(_cardHeader);
+var _cardImg = require("./CardImg");
+var _cardImgDefault = parcelHelpers.interopDefault(_cardImg);
+var _cardImgOverlay = require("./CardImgOverlay");
+var _cardImgOverlayDefault = parcelHelpers.interopDefault(_cardImgOverlay);
+var _cardLink = require("./CardLink");
+var _cardLinkDefault = parcelHelpers.interopDefault(_cardLink);
+var _cardSubtitle = require("./CardSubtitle");
+var _cardSubtitleDefault = parcelHelpers.interopDefault(_cardSubtitle);
+var _cardText = require("./CardText");
+var _cardTextDefault = parcelHelpers.interopDefault(_cardText);
+var _cardTitle = require("./CardTitle");
+var _cardTitleDefault = parcelHelpers.interopDefault(_cardTitle);
 var _jsxRuntime = require("react/jsx-runtime");
-const DivStyledAsH5 = (0, _divWithClassNameDefault.default)("h5");
-const DivStyledAsH6 = (0, _divWithClassNameDefault.default)("h6");
-const CardBody = (0, _createWithBsPrefixDefault.default)("card-body");
-const CardTitle = (0, _createWithBsPrefixDefault.default)("card-title", {
-    Component: DivStyledAsH5
-});
-const CardSubtitle = (0, _createWithBsPrefixDefault.default)("card-subtitle", {
-    Component: DivStyledAsH6
-});
-const CardLink = (0, _createWithBsPrefixDefault.default)("card-link", {
-    Component: "a"
-});
-const CardText = (0, _createWithBsPrefixDefault.default)("card-text", {
-    Component: "p"
-});
-const CardFooter = (0, _createWithBsPrefixDefault.default)("card-footer");
-const CardImgOverlay = (0, _createWithBsPrefixDefault.default)("card-img-overlay");
-const defaultProps = {
-    body: false
-};
-const Card = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, bg, text, border, body, children, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+"use client";
+const Card = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, bg, text, border, body = false, children, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
 as: Component = "div", ...props }, ref)=>{
     const prefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card");
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
         ref: ref,
         ...props,
         className: (0, _classnamesDefault.default)(className, prefix, bg && `bg-${bg}`, text && `text-${text}`, border && `border-${border}`),
-        children: body ? /*#__PURE__*/ (0, _jsxRuntime.jsx)(CardBody, {
+        children: body ? /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _cardBodyDefault.default), {
             children: children
         }) : children
     });
 });
 Card.displayName = "Card";
-Card.defaultProps = defaultProps;
 exports.default = Object.assign(Card, {
     Img: (0, _cardImgDefault.default),
-    Title: CardTitle,
-    Subtitle: CardSubtitle,
-    Body: CardBody,
-    Link: CardLink,
-    Text: CardText,
+    Title: (0, _cardTitleDefault.default),
+    Subtitle: (0, _cardSubtitleDefault.default),
+    Body: (0, _cardBodyDefault.default),
+    Link: (0, _cardLinkDefault.default),
+    Text: (0, _cardTextDefault.default),
     Header: (0, _cardHeaderDefault.default),
-    Footer: CardFooter,
-    ImgOverlay: CardImgOverlay
+    Footer: (0, _cardFooterDefault.default),
+    ImgOverlay: (0, _cardImgOverlayDefault.default)
 });
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./createWithBsPrefix":"itt7e","./divWithClassName":"eDg7t","./CardImg":"1reTi","./CardHeader":"dXnnx","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"itt7e":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./ThemeProvider":"aQxwt","./CardBody":"cwVA4","./CardFooter":"jKsPV","./CardHeader":"6JJAL","./CardImg":"cuOap","./CardImgOverlay":"arCU0","./CardLink":"kDiBh","./CardSubtitle":"91wN3","./CardText":"kcczh","./CardTitle":"2Utwn","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"cwVA4":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>createWithBsPrefix);
+var _react = require("react");
 var _classnames = require("classnames");
 var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
-var _camelize = require("dom-helpers/camelize");
-var _camelizeDefault = parcelHelpers.interopDefault(_camelize);
-var _react = require("react");
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
-const pascalCase = (str)=>str[0].toUpperCase() + (0, _camelizeDefault.default)(str).slice(1);
-function createWithBsPrefix(prefix, { displayName = pascalCase(prefix), Component, defaultProps } = {}) {
-    const BsComponent = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Tag = Component || "div", ...props }, ref)=>{
-        const resolvedPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, prefix);
-        return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Tag, {
-            ref: ref,
-            className: (0, _classnamesDefault.default)(className, resolvedPrefix),
-            ...props
-        });
-    });
-    BsComponent.defaultProps = defaultProps;
-    BsComponent.displayName = displayName;
-    return BsComponent;
-}
-
-},{"classnames":"jocGM","dom-helpers/camelize":"kbWDq","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kbWDq":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>camelize);
-var rHyphen = /-(.)/g;
-function camelize(string) {
-    return string.replace(rHyphen, function(_, chr) {
-        return chr.toUpperCase();
-    });
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eDg7t":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _classnames = require("classnames");
-var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
-var _jsxRuntime = require("react/jsx-runtime");
-exports.default = (className)=>/*#__PURE__*/ _react.forwardRef((p, ref)=>/*#__PURE__*/ (0, _jsxRuntime.jsx)("div", {
-            ...p,
-            ref: ref,
-            className: (0, _classnamesDefault.default)(p.className, className)
-        }));
-
-},{"react":"21dqq","classnames":"jocGM","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1reTi":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _classnames = require("classnames");
-var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
-var _react = require("react");
-var _themeProvider = require("./ThemeProvider");
-var _jsxRuntime = require("react/jsx-runtime");
-const CardImg = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, variant, as: Component = "img", ...props }, ref)=>{
-    const prefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card-img");
+"use client";
+const CardBody = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = "div", ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card-body");
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
         ref: ref,
-        className: (0, _classnamesDefault.default)(variant ? `${prefix}-${variant}` : prefix, className),
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
         ...props
     });
 });
-CardImg.displayName = "CardImg";
-exports.default = CardImg;
+CardBody.displayName = "CardBody";
+exports.default = CardBody;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dXnnx":[function(require,module,exports) {
+},{"react":"l8X7j","classnames":"92LQ1","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"jKsPV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const CardFooter = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = "div", ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card-footer");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        ...props
+    });
+});
+CardFooter.displayName = "CardFooter";
+exports.default = CardFooter;
+
+},{"react":"l8X7j","classnames":"92LQ1","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"6JJAL":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -29848,6 +29963,7 @@ var _themeProvider = require("./ThemeProvider");
 var _cardHeaderContext = require("./CardHeaderContext");
 var _cardHeaderContextDefault = parcelHelpers.interopDefault(_cardHeaderContext);
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const CardHeader = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
 as: Component = "div", ...props }, ref)=>{
     const prefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card-header");
@@ -29868,15 +29984,156 @@ as: Component = "div", ...props }, ref)=>{
 CardHeader.displayName = "CardHeader";
 exports.default = CardHeader;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./CardHeaderContext":"36cNB","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"36cNB":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./ThemeProvider":"aQxwt","./CardHeaderContext":"8njv2","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"8njv2":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
+"use client";
 const context = /*#__PURE__*/ _react.createContext(null);
 context.displayName = "CardHeaderContext";
 exports.default = context;
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1wmVl":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"cuOap":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const CardImg = /*#__PURE__*/ _react.forwardRef(// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+({ bsPrefix, className, variant, as: Component = "img", ...props }, ref)=>{
+    const prefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card-img");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(variant ? `${prefix}-${variant}` : prefix, className),
+        ...props
+    });
+});
+CardImg.displayName = "CardImg";
+exports.default = CardImg;
+
+},{"classnames":"92LQ1","react":"l8X7j","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"arCU0":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const CardImgOverlay = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = "div", ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card-img-overlay");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        ...props
+    });
+});
+CardImgOverlay.displayName = "CardImgOverlay";
+exports.default = CardImgOverlay;
+
+},{"react":"l8X7j","classnames":"92LQ1","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"kDiBh":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const CardLink = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = "a", ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card-link");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        ...props
+    });
+});
+CardLink.displayName = "CardLink";
+exports.default = CardLink;
+
+},{"react":"l8X7j","classnames":"92LQ1","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"91wN3":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _themeProvider = require("./ThemeProvider");
+var _divWithClassName = require("./divWithClassName");
+var _divWithClassNameDefault = parcelHelpers.interopDefault(_divWithClassName);
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const DivStyledAsH6 = (0, _divWithClassNameDefault.default)("h6");
+const CardSubtitle = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = DivStyledAsH6, ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card-subtitle");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        ...props
+    });
+});
+CardSubtitle.displayName = "CardSubtitle";
+exports.default = CardSubtitle;
+
+},{"react":"l8X7j","classnames":"92LQ1","./ThemeProvider":"aQxwt","./divWithClassName":"1OHVZ","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"1OHVZ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _jsxRuntime = require("react/jsx-runtime");
+exports.default = (className)=>/*#__PURE__*/ _react.forwardRef((p, ref)=>/*#__PURE__*/ (0, _jsxRuntime.jsx)("div", {
+            ...p,
+            ref: ref,
+            className: (0, _classnamesDefault.default)(p.className, className)
+        }));
+
+},{"react":"l8X7j","classnames":"92LQ1","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"kcczh":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const CardText = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = "p", ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card-text");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        ...props
+    });
+});
+CardText.displayName = "CardText";
+exports.default = CardText;
+
+},{"react":"l8X7j","classnames":"92LQ1","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"2Utwn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _themeProvider = require("./ThemeProvider");
+var _divWithClassName = require("./divWithClassName");
+var _divWithClassNameDefault = parcelHelpers.interopDefault(_divWithClassName);
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const DivStyledAsH5 = (0, _divWithClassNameDefault.default)("h5");
+const CardTitle = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = DivStyledAsH5, ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card-title");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        ...props
+    });
+});
+CardTitle.displayName = "CardTitle";
+exports.default = CardTitle;
+
+},{"react":"l8X7j","classnames":"92LQ1","./ThemeProvider":"aQxwt","./divWithClassName":"1OHVZ","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"69V9d":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _propTypes = require("prop-types");
@@ -29886,8 +30143,8 @@ var _classnames = require("classnames");
 var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
 var _jsxRuntime = require("react/jsx-runtime");
 const propTypes = {
-    "aria-label": (0, _propTypesDefault.default).string,
-    onClick: (0, _propTypesDefault.default).func,
+    /** An accessible label indicating the relevant information about the Close Button. */ "aria-label": (0, _propTypesDefault.default).string,
+    /** A callback fired after the Close Button is clicked. */ onClick: (0, _propTypesDefault.default).func,
     /**
    * Render different color variant for the button.
    *
@@ -29896,21 +30153,18 @@ const propTypes = {
         "white"
     ])
 };
-const defaultProps = {
-    "aria-label": "Close"
-};
-const CloseButton = /*#__PURE__*/ _react.forwardRef(({ className, variant, ...props }, ref)=>/*#__PURE__*/ (0, _jsxRuntime.jsx)("button", {
+const CloseButton = /*#__PURE__*/ _react.forwardRef(({ className, variant, "aria-label": ariaLabel = "Close", ...props }, ref)=>/*#__PURE__*/ (0, _jsxRuntime.jsx)("button", {
         ref: ref,
         type: "button",
         className: (0, _classnamesDefault.default)("btn-close", variant && `btn-close-${variant}`, className),
+        "aria-label": ariaLabel,
         ...props
     }));
 CloseButton.displayName = "CloseButton";
 CloseButton.propTypes = propTypes;
-CloseButton.defaultProps = defaultProps;
 exports.default = CloseButton;
 
-},{"prop-types":"7wKI2","react":"21dqq","classnames":"jocGM","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2L2I6":[function(require,module,exports) {
+},{"prop-types":"389Di","react":"l8X7j","classnames":"92LQ1","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"dAFSF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useCol", ()=>useCol);
@@ -29919,6 +30173,7 @@ var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
 var _react = require("react");
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 function useCol({ as, bsPrefix, className, ...props }) {
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "col");
     const breakpoints = (0, _themeProvider.useBootstrapBreakpoints)();
@@ -29950,7 +30205,8 @@ function useCol({ as, bsPrefix, className, ...props }) {
         }
     ];
 }
-const Col = /*#__PURE__*/ _react.forwardRef((props, ref)=>{
+const Col = /*#__PURE__*/ _react.forwardRef(// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+(props, ref)=>{
     const [{ className, ...colProps }, { as: Component = "div", bsPrefix, spans }] = useCol(props);
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
         ...colProps,
@@ -29961,7 +30217,7 @@ const Col = /*#__PURE__*/ _react.forwardRef((props, ref)=>{
 Col.displayName = "Col";
 exports.default = Col;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"acuzI":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"6b1Hq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -30004,15 +30260,7 @@ const collapseStyles = {
     [(0, _transition.ENTERING)]: "collapsing",
     [(0, _transition.ENTERED)]: "collapse show"
 };
-const defaultProps = {
-    in: false,
-    timeout: 300,
-    mountOnEnter: false,
-    unmountOnExit: false,
-    appear: false,
-    getDimensionValue: getDefaultDimensionValue
-};
-const Collapse = /*#__PURE__*/ (0, _reactDefault.default).forwardRef(({ onEnter, onEntering, onEntered, onExit, onExiting, className, children, dimension = "height", getDimensionValue = getDefaultDimensionValue, ...props }, ref)=>{
+const Collapse = /*#__PURE__*/ (0, _reactDefault.default).forwardRef(({ onEnter, onEntering, onEntered, onExit, onExiting, className, children, dimension = "height", in: inProp = false, timeout = 300, mountOnEnter = false, unmountOnExit = false, appear = false, getDimensionValue = getDefaultDimensionValue, ...props }, ref)=>{
     /* Compute dimension */ const computedDimension = typeof dimension === "function" ? dimension() : dimension;
     /* -- Expanding -- */ const handleEnter = (0, _react.useMemo)(()=>(0, _createChainedFunctionDefault.default)((elem)=>{
             elem.style[computedDimension] = "0";
@@ -30051,24 +30299,28 @@ const Collapse = /*#__PURE__*/ (0, _reactDefault.default).forwardRef(({ onEnter,
         ref: ref,
         addEndListener: (0, _transitionEndListenerDefault.default),
         ...props,
-        "aria-expanded": props.role ? props.in : null,
+        "aria-expanded": props.role ? inProp : null,
         onEnter: handleEnter,
         onEntering: handleEntering,
         onEntered: handleEntered,
         onExit: handleExit,
         onExiting: handleExiting,
         childRef: children.ref,
+        in: inProp,
+        timeout: timeout,
+        mountOnEnter: mountOnEnter,
+        unmountOnExit: unmountOnExit,
+        appear: appear,
         children: (state, innerProps)=>/*#__PURE__*/ (0, _reactDefault.default).cloneElement(children, {
                 ...innerProps,
                 className: (0, _classnamesDefault.default)(className, children.props.className, collapseStyles[state], computedDimension === "width" && "collapse-horizontal")
             })
     });
-}); // @ts-ignore
+});
 // @ts-ignore
-Collapse.defaultProps = defaultProps;
 exports.default = Collapse;
 
-},{"classnames":"jocGM","dom-helpers/css":"klmhr","react":"21dqq","react-transition-group/Transition":"cKsrS","./transitionEndListener":"68oh7","./createChainedFunction":"1KNLM","./triggerBrowserReflow":"eWjs5","./TransitionWrapper":"jKUqZ","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"klmhr":[function(require,module,exports) {
+},{"classnames":"92LQ1","dom-helpers/css":"cOlGj","react":"l8X7j","react-transition-group/Transition":"4yGgx","./transitionEndListener":"fbsaD","./createChainedFunction":"aSBUo","./triggerBrowserReflow":"bBPfW","./TransitionWrapper":"1TbqG","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"cOlGj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _getComputedStyle = require("./getComputedStyle");
@@ -30092,7 +30344,7 @@ function style(node, property) {
 }
 exports.default = style;
 
-},{"./getComputedStyle":"adqGa","./hyphenateStyle":"hbsNp","./isTransform":"gnxjD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"adqGa":[function(require,module,exports) {
+},{"./getComputedStyle":"hQrMs","./hyphenateStyle":"iTtGh","./isTransform":"6Cpj5","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"hQrMs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getComputedStyle);
@@ -30102,7 +30354,7 @@ function getComputedStyle(node, psuedoElement) {
     return (0, _ownerWindowDefault.default)(node).getComputedStyle(node, psuedoElement);
 }
 
-},{"./ownerWindow":"3nPSD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3nPSD":[function(require,module,exports) {
+},{"./ownerWindow":"exYiL","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"exYiL":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>ownerWindow);
@@ -30113,7 +30365,7 @@ function ownerWindow(node) {
     return doc && doc.defaultView || window;
 }
 
-},{"./ownerDocument":"2WpOk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2WpOk":[function(require,module,exports) {
+},{"./ownerDocument":"aZZxr","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"aZZxr":[function(require,module,exports) {
 /**
  * Returns the owner document of a given element.
  * 
@@ -30125,7 +30377,7 @@ function ownerDocument(node) {
     return node && node.ownerDocument || document;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hbsNp":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"iTtGh":[function(require,module,exports) {
 /**
  * Copyright 2013-2014, Facebook, Inc.
  * All rights reserved.
@@ -30140,7 +30392,7 @@ function hyphenateStyleName(string) {
     return (0, _hyphenateDefault.default)(string).replace(msPattern, "-ms-");
 }
 
-},{"./hyphenate":"3UJRr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3UJRr":[function(require,module,exports) {
+},{"./hyphenate":"d7T91","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"d7T91":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>hyphenate);
@@ -30149,7 +30401,7 @@ function hyphenate(string) {
     return string.replace(rUpper, "-$1").toLowerCase();
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gnxjD":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"6Cpj5":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>isTransform);
@@ -30158,7 +30410,7 @@ function isTransform(value) {
     return !!(value && supportedTransforms.test(value));
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cKsrS":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"4yGgx":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "UNMOUNTED", ()=>UNMOUNTED);
@@ -30674,7 +30926,7 @@ Transition.ENTERED = ENTERED;
 Transition.EXITING = EXITING;
 exports.default = Transition;
 
-},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/inheritsLoose":"9u2Z8","prop-types":"7wKI2","react":"21dqq","react-dom":"j6uA9","./config":"cepoZ","./utils/PropTypes":"9Zqaa","./TransitionGroupContext":"47LXo","./utils/reflow":"V4VjQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"adHgr":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"ftsBR","@babel/runtime/helpers/esm/inheritsLoose":"NlfKM","prop-types":"389Di","react":"l8X7j","react-dom":"ibfHo","./config":"bcX6x","./utils/PropTypes":"77G4E","./TransitionGroupContext":"lK7Jo","./utils/reflow":"hesyk","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"ftsBR":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>_objectWithoutPropertiesLoose);
@@ -30691,7 +30943,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
     return target;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9u2Z8":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"NlfKM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>_inheritsLoose);
@@ -30703,7 +30955,7 @@ function _inheritsLoose(subClass, superClass) {
     (0, _setPrototypeOfJsDefault.default)(subClass, superClass);
 }
 
-},{"./setPrototypeOf.js":"3XDFA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3XDFA":[function(require,module,exports) {
+},{"./setPrototypeOf.js":"j4ksb","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"j4ksb":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>_setPrototypeOf);
@@ -30715,14 +30967,14 @@ function _setPrototypeOf(o, p) {
     return _setPrototypeOf(o, p);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cepoZ":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"bcX6x":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = {
     disabled: false
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Zqaa":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"77G4E":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "timeoutsShape", ()=>timeoutsShape);
@@ -30754,14 +31006,14 @@ var classNamesShape = (0, _propTypesDefault.default).oneOfType([
     })
 ]);
 
-},{"prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"47LXo":[function(require,module,exports) {
+},{"prop-types":"389Di","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"lK7Jo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 exports.default = (0, _reactDefault.default).createContext(null);
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"V4VjQ":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"hesyk":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "forceReflow", ()=>forceReflow);
@@ -30769,7 +31021,7 @@ var forceReflow = function forceReflow(node) {
     return node.scrollTop;
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"68oh7":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"fbsaD":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>transitionEndListener);
@@ -30793,7 +31045,7 @@ function transitionEndListener(element, handler) {
     }, duration + delay);
 }
 
-},{"dom-helpers/css":"klmhr","dom-helpers/transitionEnd":"7hVJq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7hVJq":[function(require,module,exports) {
+},{"dom-helpers/css":"cOlGj","dom-helpers/transitionEnd":"lzoLD","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"lzoLD":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>transitionEnd);
@@ -30834,7 +31086,7 @@ function transitionEnd(element, handler, duration, padding) {
     };
 }
 
-},{"./css":"klmhr","./listen":"1i4e7","./triggerEvent":"lQ70W","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1i4e7":[function(require,module,exports) {
+},{"./css":"cOlGj","./listen":"3xFZB","./triggerEvent":"3kGog","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"3xFZB":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _addEventListener = require("./addEventListener");
@@ -30849,7 +31101,7 @@ function listen(node, eventName, handler, options) {
 }
 exports.default = listen;
 
-},{"./addEventListener":"c5x2p","./removeEventListener":"la8JB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c5x2p":[function(require,module,exports) {
+},{"./addEventListener":"dldIt","./removeEventListener":"fFh5H","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"dldIt":[function(require,module,exports) {
 /* eslint-disable no-return-assign */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "optionsSupported", ()=>optionsSupported);
@@ -30898,12 +31150,12 @@ try {
 }
 exports.default = addEventListener;
 
-},{"./canUseDOM":"9AwUB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9AwUB":[function(require,module,exports) {
+},{"./canUseDOM":"6f7YI","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"6f7YI":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = !!(typeof window !== "undefined" && window.document && window.document.createElement);
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"la8JB":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"fFh5H":[function(require,module,exports) {
 /**
  * A `removeEventListener` ponyfill
  * 
@@ -30920,7 +31172,7 @@ function removeEventListener(node, eventName, handler, options) {
 }
 exports.default = removeEventListener;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lQ70W":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"3kGog":[function(require,module,exports) {
 /**
  * Triggers an event on a given element.
  * 
@@ -30941,7 +31193,7 @@ function triggerEvent(node, eventName, bubbles, cancelable) {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1KNLM":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"aSBUo":[function(require,module,exports) {
 /**
  * Safe chained function
  *
@@ -30958,14 +31210,15 @@ function createChainedFunction(...funcs) {
         if (acc === null) return f;
         return function chainedFunction(...args) {
             // @ts-ignore
-            acc.apply(this, args); // @ts-ignore
+            acc.apply(this, args);
+            // @ts-ignore
             f.apply(this, args);
         };
     }, null);
 }
 exports.default = createChainedFunction;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eWjs5":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"bBPfW":[function(require,module,exports) {
 // reading a dimension prop will cause the browser to recalculate,
 // which will let our animations work
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -30976,7 +31229,7 @@ function triggerBrowserReflow(node) {
     node.offsetHeight;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jKUqZ":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"1TbqG":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -30988,6 +31241,7 @@ var _useMergedRefsDefault = parcelHelpers.interopDefault(_useMergedRefs);
 var _safeFindDOMNode = require("./safeFindDOMNode");
 var _safeFindDOMNodeDefault = parcelHelpers.interopDefault(_safeFindDOMNode);
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 // Normalizes Transition callbacks when nodeRef is used.
 const TransitionWrapper = /*#__PURE__*/ (0, _reactDefault.default).forwardRef(({ onEnter, onEntering, onEntered, onExit, onExiting, onExited, addEndListener, children, childRef, ...props }, ref)=>{
     const nodeRef = (0, _react.useRef)(null);
@@ -31030,7 +31284,8 @@ const TransitionWrapper = /*#__PURE__*/ (0, _reactDefault.default).forwardRef(({
         onExiting: handleExiting,
         addEndListener: handleAddEndListener,
         nodeRef: nodeRef,
-        children: typeof children === "function" ? (status, innerProps)=>children(status, {
+        children: typeof children === "function" ? (status, innerProps)=>// TODO: Types for RTG missing innerProps, so need to cast.
+            children(status, {
                 ...innerProps,
                 ref: attachRef
             }) : /*#__PURE__*/ (0, _reactDefault.default).cloneElement(children, {
@@ -31040,7 +31295,7 @@ const TransitionWrapper = /*#__PURE__*/ (0, _reactDefault.default).forwardRef(({
 });
 exports.default = TransitionWrapper;
 
-},{"react":"21dqq","react-transition-group/Transition":"cKsrS","@restart/hooks/useMergedRefs":"6hhuo","./safeFindDOMNode":"XsXw9","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6hhuo":[function(require,module,exports) {
+},{"react":"l8X7j","react-transition-group/Transition":"4yGgx","@restart/hooks/useMergedRefs":"hofA3","./safeFindDOMNode":"7Cr1J","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"hofA3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "mergeRefs", ()=>mergeRefs);
@@ -31079,7 +31334,7 @@ function mergeRefs(refA, refB) {
 }
 exports.default = useMergedRefs;
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"XsXw9":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"7Cr1J":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>safeFindDOMNode);
@@ -31090,7 +31345,29 @@ function safeFindDOMNode(componentOrElement) {
     return componentOrElement != null ? componentOrElement : null;
 }
 
-},{"react-dom":"j6uA9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aH18S":[function(require,module,exports) {
+},{"react-dom":"ibfHo","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"7vJU3":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const Container = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, fluid = false, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = "div", className, ...props }, ref)=>{
+    const prefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "container");
+    const suffix = typeof fluid === "string" ? `-${fluid}` : "-fluid";
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        ...props,
+        className: (0, _classnamesDefault.default)(className, fluid ? `${prefix}${suffix}` : prefix)
+    });
+});
+Container.displayName = "Container";
+exports.default = Container;
+
+},{"classnames":"92LQ1","react":"l8X7j","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"9IyZU":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31104,23 +31381,24 @@ var _triggerBrowserReflowDefault = parcelHelpers.interopDefault(_triggerBrowserR
 var _transitionWrapper = require("./TransitionWrapper");
 var _transitionWrapperDefault = parcelHelpers.interopDefault(_transitionWrapper);
 var _jsxRuntime = require("react/jsx-runtime");
-const defaultProps = {
-    in: false,
-    timeout: 300,
-    mountOnEnter: false,
-    unmountOnExit: false,
-    appear: false
-};
 const fadeStyles = {
     [(0, _transition.ENTERING)]: "show",
     [(0, _transition.ENTERED)]: "show"
 };
-const Fade = /*#__PURE__*/ _react.forwardRef(({ className, children, transitionClasses = {}, ...props }, ref)=>{
+const Fade = /*#__PURE__*/ _react.forwardRef(({ className, children, transitionClasses = {}, onEnter, ...rest }, ref)=>{
+    const props = {
+        in: false,
+        timeout: 300,
+        mountOnEnter: false,
+        unmountOnExit: false,
+        appear: false,
+        ...rest
+    };
     const handleEnter = (0, _react.useCallback)((node, isAppearing)=>{
         (0, _triggerBrowserReflowDefault.default)(node);
-        props.onEnter == null || props.onEnter(node, isAppearing);
+        onEnter == null || onEnter(node, isAppearing);
     }, [
-        props
+        onEnter
     ]);
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _transitionWrapperDefault.default), {
         ref: ref,
@@ -31134,11 +31412,10 @@ const Fade = /*#__PURE__*/ _react.forwardRef(({ className, children, transitionC
             })
     });
 });
-Fade.defaultProps = defaultProps;
 Fade.displayName = "Fade";
 exports.default = Fade;
 
-},{"classnames":"jocGM","react":"21dqq","react-transition-group/Transition":"cKsrS","./transitionEndListener":"68oh7","./triggerBrowserReflow":"eWjs5","./TransitionWrapper":"jKUqZ","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iBZ80":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","react-transition-group/Transition":"4yGgx","./transitionEndListener":"fbsaD","./triggerBrowserReflow":"bBPfW","./TransitionWrapper":"1TbqG","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"athQu":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31203,7 +31480,7 @@ exports.default = Object.assign(Form, {
     FloatingLabel: (0, _floatingLabelDefault.default)
 });
 
-},{"classnames":"jocGM","prop-types":"7wKI2","react":"21dqq","./FormCheck":"idkr0","./FormControl":"iynMc","./FormFloating":"aj346","./FormGroup":"1qBHH","./FormLabel":"66epi","./FormRange":"8zsCO","./FormSelect":"hHWyB","./FormText":"ffeC7","./Switch":"9O81i","./FloatingLabel":"coYzo","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"idkr0":[function(require,module,exports) {
+},{"classnames":"92LQ1","prop-types":"389Di","react":"l8X7j","./FormCheck":"4Yxp5","./FormControl":"lCtBq","./FormFloating":"jYPu8","./FormGroup":"3zmDX","./FormLabel":"24bl8","./FormRange":"aT3QQ","./FormSelect":"jledy","./FormText":"kKniH","./Switch":"1T9Tv","./FloatingLabel":"5UApm","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"4Yxp5":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31220,6 +31497,7 @@ var _formContextDefault = parcelHelpers.interopDefault(_formContext);
 var _themeProvider = require("./ThemeProvider");
 var _elementChildren = require("./ElementChildren");
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const FormCheck = /*#__PURE__*/ _react.forwardRef(({ id, bsPrefix, bsSwitchPrefix, inline = false, reverse = false, disabled = false, isValid = false, isInvalid = false, feedbackTooltip = false, feedback, feedbackType, className, style, title = "", type = "checkbox", label, children, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
 as = "input", ...props }, ref)=>{
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-check");
@@ -31269,7 +31547,7 @@ exports.default = Object.assign(FormCheck, {
     Label: (0, _formCheckLabelDefault.default)
 });
 
-},{"classnames":"jocGM","react":"21dqq","./Feedback":"aWeg2","./FormCheckInput":"dPzD9","./FormCheckLabel":"fGhS2","./FormContext":"gjvSt","./ThemeProvider":"dVixI","./ElementChildren":"fdyAp","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aWeg2":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./Feedback":"2Up0Q","./FormCheckInput":"2MtVG","./FormCheckLabel":"7oYa9","./FormContext":"wcmIW","./ThemeProvider":"aQxwt","./ElementChildren":"8KLgk","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"2Up0Q":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31287,7 +31565,8 @@ const propTypes = {
     /** Display feedback as a tooltip. */ tooltip: (0, _propTypesDefault.default).bool,
     as: (0, _propTypesDefault.default).elementType
 };
-const Feedback = /*#__PURE__*/ _react.forwardRef(({ as: Component = "div", className, type = "valid", tooltip = false, ...props }, ref)=>/*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+const Feedback = /*#__PURE__*/ _react.forwardRef(// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+({ as: Component = "div", className, type = "valid", tooltip = false, ...props }, ref)=>/*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
         ...props,
         ref: ref,
         className: (0, _classnamesDefault.default)(className, `${type}-${tooltip ? "tooltip" : "feedback"}`)
@@ -31296,7 +31575,7 @@ Feedback.displayName = "Feedback";
 Feedback.propTypes = propTypes;
 exports.default = Feedback;
 
-},{"classnames":"jocGM","react":"21dqq","prop-types":"7wKI2","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dPzD9":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","prop-types":"389Di","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"2MtVG":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31306,6 +31585,7 @@ var _formContext = require("./FormContext");
 var _formContextDefault = parcelHelpers.interopDefault(_formContext);
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const FormCheckInput = /*#__PURE__*/ _react.forwardRef(({ id, bsPrefix, className, type = "checkbox", isValid = false, isInvalid = false, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
 as: Component = "input", ...props }, ref)=>{
     const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
@@ -31321,14 +31601,16 @@ as: Component = "input", ...props }, ref)=>{
 FormCheckInput.displayName = "FormCheckInput";
 exports.default = FormCheckInput;
 
-},{"classnames":"jocGM","react":"21dqq","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gjvSt":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./FormContext":"wcmIW","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"wcmIW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _react = require("react"); // TODO
+var _react = require("react");
+"use client";
+// TODO
 const FormContext = /*#__PURE__*/ _react.createContext({});
 exports.default = FormContext;
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fGhS2":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"7oYa9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31338,6 +31620,7 @@ var _formContext = require("./FormContext");
 var _formContextDefault = parcelHelpers.interopDefault(_formContext);
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const FormCheckLabel = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, htmlFor, ...props }, ref)=>{
     const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-check-label");
@@ -31351,7 +31634,7 @@ const FormCheckLabel = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, h
 FormCheckLabel.displayName = "FormCheckLabel";
 exports.default = FormCheckLabel;
 
-},{"classnames":"jocGM","react":"21dqq","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fdyAp":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./FormContext":"wcmIW","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"8KLgk":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "map", ()=>map);
@@ -31387,7 +31670,7 @@ var _react = require("react");
     return _react.Children.toArray(children).some((child)=>/*#__PURE__*/ _react.isValidElement(child) && child.type === type);
 }
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iynMc":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"lCtBq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31401,18 +31684,11 @@ var _formContext = require("./FormContext");
 var _formContextDefault = parcelHelpers.interopDefault(_formContext);
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const FormControl = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, type, size, htmlSize, id, className, isValid = false, isInvalid = false, plaintext, readOnly, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
 as: Component = "input", ...props }, ref)=>{
     const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-control");
-    let classes;
-    if (plaintext) classes = {
-        [`${bsPrefix}-plaintext`]: true
-    };
-    else classes = {
-        [bsPrefix]: true,
-        [`${bsPrefix}-${size}`]: size
-    };
     (0, _warningDefault.default)(controlId == null || !id, "`controlId` is ignored on `<FormControl>` when `id` is specified.");
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
         ...props,
@@ -31421,7 +31697,7 @@ as: Component = "input", ...props }, ref)=>{
         ref: ref,
         readOnly: readOnly,
         id: id || controlId,
-        className: (0, _classnamesDefault.default)(className, classes, isValid && `is-valid`, isInvalid && `is-invalid`, type === "color" && `${bsPrefix}-color`)
+        className: (0, _classnamesDefault.default)(className, plaintext ? `${bsPrefix}-plaintext` : bsPrefix, size && `${bsPrefix}-${size}`, type === "color" && `${bsPrefix}-color`, isValid && "is-valid", isInvalid && "is-invalid")
     });
 });
 FormControl.displayName = "FormControl";
@@ -31429,7 +31705,7 @@ exports.default = Object.assign(FormControl, {
     Feedback: (0, _feedbackDefault.default)
 });
 
-},{"classnames":"jocGM","react":"21dqq","warning":"eUVzU","./Feedback":"aWeg2","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eUVzU":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","warning":"3cyo2","./Feedback":"2Up0Q","./FormContext":"wcmIW","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"3cyo2":[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -31472,14 +31748,27 @@ if (__DEV__) {
 }
 module.exports = warning;
 
-},{}],"aj346":[function(require,module,exports) {
+},{}],"jYPu8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _createWithBsPrefix = require("./createWithBsPrefix");
-var _createWithBsPrefixDefault = parcelHelpers.interopDefault(_createWithBsPrefix);
-exports.default = (0, _createWithBsPrefixDefault.default)("form-floating");
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const FormFloating = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = "div", ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-floating");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        ...props
+    });
+});
+FormFloating.displayName = "FormFloating";
+exports.default = FormFloating;
 
-},{"./createWithBsPrefix":"itt7e","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1qBHH":[function(require,module,exports) {
+},{"react":"l8X7j","classnames":"92LQ1","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"3zmDX":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -31504,7 +31793,7 @@ as: Component = "div", ...props }, ref)=>{
 FormGroup.displayName = "FormGroup";
 exports.default = FormGroup;
 
-},{"react":"21dqq","./FormContext":"gjvSt","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"66epi":[function(require,module,exports) {
+},{"react":"l8X7j","./FormContext":"wcmIW","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"24bl8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31518,12 +31807,9 @@ var _formContext = require("./FormContext");
 var _formContextDefault = parcelHelpers.interopDefault(_formContext);
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
-const defaultProps = {
-    column: false,
-    visuallyHidden: false
-};
+"use client";
 const FormLabel = /*#__PURE__*/ _react.forwardRef(({ // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
-as: Component = "label", bsPrefix, column, visuallyHidden, className, htmlFor, ...props }, ref)=>{
+as: Component = "label", bsPrefix, column = false, visuallyHidden = false, className, htmlFor, ...props }, ref)=>{
     const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-label");
     let columnClass = "col-form-label";
@@ -31547,10 +31833,9 @@ as: Component = "label", bsPrefix, column, visuallyHidden, className, htmlFor, .
     }));
 });
 FormLabel.displayName = "FormLabel";
-FormLabel.defaultProps = defaultProps;
 exports.default = FormLabel;
 
-},{"classnames":"jocGM","react":"21dqq","warning":"eUVzU","./Col":"2L2I6","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8zsCO":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","warning":"3cyo2","./Col":"dAFSF","./FormContext":"wcmIW","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"aT3QQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31560,6 +31845,7 @@ var _themeProvider = require("./ThemeProvider");
 var _formContext = require("./FormContext");
 var _formContextDefault = parcelHelpers.interopDefault(_formContext);
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const FormRange = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, id, ...props }, ref)=>{
     const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-range");
@@ -31574,7 +31860,7 @@ const FormRange = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, id, ..
 FormRange.displayName = "FormRange";
 exports.default = FormRange;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./FormContext":"gjvSt","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hHWyB":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./ThemeProvider":"aQxwt","./FormContext":"wcmIW","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"jledy":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31584,6 +31870,7 @@ var _themeProvider = require("./ThemeProvider");
 var _formContext = require("./FormContext");
 var _formContextDefault = parcelHelpers.interopDefault(_formContext);
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const FormSelect = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, size, htmlSize, className, isValid = false, isInvalid = false, id, ...props }, ref)=>{
     const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-select");
@@ -31598,7 +31885,7 @@ const FormSelect = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, size, htmlSize, 
 FormSelect.displayName = "FormSelect";
 exports.default = FormSelect;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./FormContext":"gjvSt","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ffeC7":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./ThemeProvider":"aQxwt","./FormContext":"wcmIW","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"kKniH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31606,7 +31893,9 @@ var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
 var _react = require("react");
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
-const FormText = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, as: Component = "small", muted, ...props }, ref)=>{
+"use client";
+const FormText = /*#__PURE__*/ _react.forwardRef(// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+({ bsPrefix, className, as: Component = "small", muted, ...props }, ref)=>{
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-text");
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
         ...props,
@@ -31617,7 +31906,7 @@ const FormText = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, as: Com
 FormText.displayName = "FormText";
 exports.default = FormText;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9O81i":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"1T9Tv":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -31635,7 +31924,7 @@ exports.default = Object.assign(Switch, {
     Label: (0, _formCheckDefault.default).Label
 });
 
-},{"react":"21dqq","./FormCheck":"idkr0","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"coYzo":[function(require,module,exports) {
+},{"react":"l8X7j","./FormCheck":"4Yxp5","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"5UApm":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31645,6 +31934,7 @@ var _formGroup = require("./FormGroup");
 var _formGroupDefault = parcelHelpers.interopDefault(_formGroup);
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const FloatingLabel = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, children, controlId, label, ...props }, ref)=>{
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-floating");
     return /*#__PURE__*/ (0, _jsxRuntime.jsxs)((0, _formGroupDefault.default), {
@@ -31664,32 +31954,7 @@ const FloatingLabel = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, ch
 FloatingLabel.displayName = "FloatingLabel";
 exports.default = FloatingLabel;
 
-},{"classnames":"jocGM","react":"21dqq","./FormGroup":"1qBHH","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hEdsw":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _classnames = require("classnames");
-var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
-var _react = require("react");
-var _themeProvider = require("./ThemeProvider");
-var _jsxRuntime = require("react/jsx-runtime");
-const defaultProps = {
-    fluid: false
-};
-const Container = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, fluid, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
-as: Component = "div", className, ...props }, ref)=>{
-    const prefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "container");
-    const suffix = typeof fluid === "string" ? `-${fluid}` : "-fluid";
-    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
-        ref: ref,
-        ...props,
-        className: (0, _classnamesDefault.default)(className, fluid ? `${prefix}${suffix}` : prefix)
-    });
-});
-Container.displayName = "Container";
-Container.defaultProps = defaultProps;
-exports.default = Container;
-
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cXyL2":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./FormGroup":"3zmDX","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"874l3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -31710,12 +31975,9 @@ var _navItemDefault = parcelHelpers.interopDefault(_navItem);
 var _navLink = require("./NavLink");
 var _navLinkDefault = parcelHelpers.interopDefault(_navLink);
 var _jsxRuntime = require("react/jsx-runtime");
-const defaultProps = {
-    justify: false,
-    fill: false
-};
+"use client";
 const Nav = /*#__PURE__*/ _react.forwardRef((uncontrolledProps, ref)=>{
-    const { as = "div", bsPrefix: initialBsPrefix, variant, fill, justify, navbar, navbarScroll, className, activeKey, ...props } = (0, _uncontrollable.useUncontrolled)(uncontrolledProps, {
+    const { as = "div", bsPrefix: initialBsPrefix, variant, fill = false, justify = false, navbar, navbarScroll, className, activeKey, ...props } = (0, _uncontrollable.useUncontrolled)(uncontrolledProps, {
         activeKey: "onSelect"
     });
     const bsPrefix = (0, _themeProvider.useBootstrapPrefix)(initialBsPrefix, "nav");
@@ -31745,19 +32007,18 @@ const Nav = /*#__PURE__*/ _react.forwardRef((uncontrolledProps, ref)=>{
     });
 });
 Nav.displayName = "Nav";
-Nav.defaultProps = defaultProps;
 exports.default = Object.assign(Nav, {
     Item: (0, _navItemDefault.default),
     Link: (0, _navLinkDefault.default)
 });
 
-},{"classnames":"jocGM","prop-types-extra/lib/all":"37Ank","react":"21dqq","uncontrollable":"b3yWY","@restart/ui/Nav":"fZdNd","./ThemeProvider":"dVixI","./NavbarContext":"dpn1g","./CardHeaderContext":"36cNB","./NavItem":"ew05W","./NavLink":"7geL8","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"37Ank":[function(require,module,exports) {
+},{"classnames":"92LQ1","prop-types-extra/lib/all":"9UCE5","react":"l8X7j","uncontrollable":"bZk6u","@restart/ui/Nav":"96CV5","./ThemeProvider":"aQxwt","./NavbarContext":"5RibS","./CardHeaderContext":"8njv2","./NavItem":"jvpvU","./NavLink":"f67LF","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"9UCE5":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = all;
-var _createChainableTypeChecker = require("d69c03d3e91a1136");
+var _createChainableTypeChecker = require("72f820a23c227f08");
 var _createChainableTypeChecker2 = _interopRequireDefault(_createChainableTypeChecker);
 function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
@@ -31780,7 +32041,7 @@ function all() {
 }
 module.exports = exports["default"];
 
-},{"d69c03d3e91a1136":"1m8lT"}],"1m8lT":[function(require,module,exports) {
+},{"72f820a23c227f08":"d3ooh"}],"d3ooh":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -31817,7 +32078,7 @@ function createChainableTypeChecker(validate) {
 }
 module.exports = exports["default"];
 
-},{}],"b3yWY":[function(require,module,exports) {
+},{}],"bZk6u":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useUncontrolled", ()=>(0, _hookDefault.default));
@@ -31828,7 +32089,7 @@ var _hookDefault = parcelHelpers.interopDefault(_hook);
 var _uncontrollable = require("./uncontrollable");
 var _uncontrollableDefault = parcelHelpers.interopDefault(_uncontrollable);
 
-},{"./hook":"cv9oS","./uncontrollable":"aqbCD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cv9oS":[function(require,module,exports) {
+},{"./hook":"5A2NU","./uncontrollable":"6L7T2","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"5A2NU":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useUncontrolledProp", ()=>useUncontrolledProp);
@@ -31889,7 +32150,7 @@ function useUncontrolled(props, config) {
     }, props);
 }
 
-},{"@babel/runtime/helpers/esm/extends":"fTBFS","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","react":"21dqq","./utils":"7UQ73","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fTBFS":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"5UEok","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"ftsBR","react":"l8X7j","./utils":"ishNY","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"5UEok":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>_extends);
@@ -31904,7 +32165,7 @@ function _extends() {
     return _extends.apply(this, arguments);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7UQ73":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"ishNY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "uncontrolledPropTypes", ()=>uncontrolledPropTypes);
@@ -31949,7 +32210,7 @@ function canAcceptRef(component) {
     return !!component && (typeof component !== "function" || component.prototype && component.prototype.isReactComponent);
 }
 
-},{"invariant":"d1QgR","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d1QgR":[function(require,module,exports) {
+},{"invariant":"dEBvY","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"dEBvY":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -31991,7 +32252,7 @@ function canAcceptRef(component) {
 };
 module.exports = invariant;
 
-},{}],"aqbCD":[function(require,module,exports) {
+},{}],"6L7T2":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>uncontrollable);
@@ -32137,7 +32398,7 @@ function uncontrollable(Component, controlledValues, methods) {
     return WrappedComponent;
 }
 
-},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","@babel/runtime/helpers/esm/inheritsLoose":"9u2Z8","react":"21dqq","react-lifecycles-compat":"3f3fU","invariant":"d1QgR","./utils":"7UQ73","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3f3fU":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"ftsBR","@babel/runtime/helpers/esm/extends":"5UEok","@babel/runtime/helpers/esm/inheritsLoose":"NlfKM","react":"l8X7j","react-lifecycles-compat":"lJrSB","invariant":"dEBvY","./utils":"ishNY","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"lJrSB":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -32230,7 +32491,7 @@ function polyfill(Component) {
     return Component;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fZdNd":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"96CV5":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _querySelectorAll = require("dom-helpers/querySelectorAll");
@@ -32361,7 +32622,7 @@ exports.default = Object.assign(Nav, {
     Item: (0, _navItemDefault.default)
 });
 
-},{"dom-helpers/querySelectorAll":"g5Sx6","react":"21dqq","@restart/hooks/useForceUpdate":"3Y4bz","@restart/hooks/useMergedRefs":"6hhuo","./NavContext":"j1SMA","./SelectableContext":"8zLqy","./TabContext":"cI3G3","./DataKey":"9vwZh","./NavItem":"2cGYS","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"g5Sx6":[function(require,module,exports) {
+},{"dom-helpers/querySelectorAll":"hCr29","react":"l8X7j","@restart/hooks/useForceUpdate":"3fB9E","@restart/hooks/useMergedRefs":"hofA3","./NavContext":"l5aqW","./SelectableContext":"8HduR","./TabContext":"4BWVt","./DataKey":"ga7Rh","./NavItem":"3eEXg","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"hCr29":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>qsa);
@@ -32370,7 +32631,7 @@ function qsa(element, selector) {
     return toArray(element.querySelectorAll(selector));
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3Y4bz":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"3fB9E":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useForceUpdate);
@@ -32382,7 +32643,7 @@ function useForceUpdate() {
     return dispatch;
 }
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"j1SMA":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"l5aqW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -32390,7 +32651,7 @@ const NavContext = /*#__PURE__*/ _react.createContext(null);
 NavContext.displayName = "NavContext";
 exports.default = NavContext;
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8zLqy":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"8HduR":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "makeEventKey", ()=>makeEventKey);
@@ -32402,14 +32663,14 @@ const makeEventKey = (eventKey, href = null)=>{
 };
 exports.default = SelectableContext;
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cI3G3":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"4BWVt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 const TabContext = /*#__PURE__*/ _react.createContext(null);
 exports.default = TabContext;
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9vwZh":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"ga7Rh":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ATTRIBUTE_PREFIX", ()=>ATTRIBUTE_PREFIX);
@@ -32425,7 +32686,7 @@ function dataProp(property) {
     return `${PROPERTY_PREFIX}${property}`;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2cGYS":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"3eEXg":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useNavItem", ()=>useNavItem);
@@ -32521,7 +32782,7 @@ const NavItem = /*#__PURE__*/ _react.forwardRef((_ref, ref)=>{
 NavItem.displayName = "NavItem";
 exports.default = NavItem;
 
-},{"react":"21dqq","@restart/hooks/useEventCallback":"7ONdq","./NavContext":"j1SMA","./SelectableContext":"8zLqy","./Button":"8YUbR","./DataKey":"9vwZh","./TabContext":"cI3G3","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7ONdq":[function(require,module,exports) {
+},{"react":"l8X7j","@restart/hooks/useEventCallback":"66mpy","./NavContext":"l5aqW","./SelectableContext":"8HduR","./Button":"2FeZm","./DataKey":"ga7Rh","./TabContext":"4BWVt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"66mpy":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useEventCallback);
@@ -32537,7 +32798,7 @@ function useEventCallback(fn) {
     ]);
 }
 
-},{"react":"21dqq","./useCommittedRef":"g5BYG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"g5BYG":[function(require,module,exports) {
+},{"react":"l8X7j","./useCommittedRef":"elVJF","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"elVJF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -32560,22 +32821,37 @@ var _react = require("react");
 }
 exports.default = useCommittedRef;
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dpn1g":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"5RibS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _react = require("react"); // TODO: check
+var _react = require("react");
+"use client";
+// TODO: check
 const context = /*#__PURE__*/ _react.createContext(null);
 context.displayName = "NavbarContext";
 exports.default = context;
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ew05W":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"jvpvU":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _createWithBsPrefix = require("./createWithBsPrefix");
-var _createWithBsPrefixDefault = parcelHelpers.interopDefault(_createWithBsPrefix);
-exports.default = (0, _createWithBsPrefixDefault.default)("nav-item");
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const NavItem = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = "div", ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "nav-item");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        ...props
+    });
+});
+NavItem.displayName = "NavItem";
+exports.default = NavItem;
 
-},{"./createWithBsPrefix":"itt7e","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7geL8":[function(require,module,exports) {
+},{"react":"l8X7j","classnames":"92LQ1","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"f67LF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -32587,28 +32863,27 @@ var _navItem = require("@restart/ui/NavItem");
 var _selectableContext = require("@restart/ui/SelectableContext");
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
-const defaultProps = {
-    disabled: false
-};
-const NavLink = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, as: Component = (0, _anchorDefault.default), active, eventKey, ...props }, ref)=>{
+"use client";
+const NavLink = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, as: Component = (0, _anchorDefault.default), active, eventKey, disabled = false, ...props }, ref)=>{
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "nav-link");
     const [navItemProps, meta] = (0, _navItem.useNavItem)({
         key: (0, _selectableContext.makeEventKey)(eventKey, props.href),
         active,
+        disabled,
         ...props
     });
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
         ...props,
         ...navItemProps,
         ref: ref,
-        className: (0, _classnamesDefault.default)(className, bsPrefix, props.disabled && "disabled", meta.isActive && "active")
+        disabled: disabled,
+        className: (0, _classnamesDefault.default)(className, bsPrefix, disabled && "disabled", meta.isActive && "active")
     });
 });
 NavLink.displayName = "NavLink";
-NavLink.defaultProps = defaultProps;
 exports.default = NavLink;
 
-},{"classnames":"jocGM","react":"21dqq","@restart/ui/Anchor":"cQOWi","@restart/ui/NavItem":"2cGYS","@restart/ui/SelectableContext":"8zLqy","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cQOWi":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","@restart/ui/Anchor":"26ADt","@restart/ui/NavItem":"3eEXg","@restart/ui/SelectableContext":"8HduR","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"26ADt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isTrivialHref", ()=>isTrivialHref);
@@ -32660,7 +32935,7 @@ function isTrivialHref(href) {
 Anchor.displayName = "Anchor";
 exports.default = Anchor;
 
-},{"react":"21dqq","@restart/hooks":"5ErkJ","./Button":"8YUbR","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5ErkJ":[function(require,module,exports) {
+},{"react":"l8X7j","@restart/hooks":"9zI4F","./Button":"2FeZm","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"9zI4F":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useCallbackRef", ()=>(0, _useCallbackRefDefault.default));
@@ -32703,7 +32978,7 @@ var _useImageDefault = parcelHelpers.interopDefault(_useImage);
 var _useResizeObserver = require("./useResizeObserver");
 var _useResizeObserverDefault = parcelHelpers.interopDefault(_useResizeObserver);
 
-},{"./useCallbackRef":"82p6M","./useCommittedRef":"g5BYG","./useEventCallback":"7ONdq","./useEventListener":"dBDI3","./useGlobalListener":"iey73","./useInterval":"hnmo4","./useRafInterval":"4qbLw","./useMergeState":"7E8IK","./useMergeStateFromProps":"6f6Me","./useMounted":"iK6A1","./usePrevious":"gDCGm","./useImage":"iuAlv","./useResizeObserver":"edwGv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"82p6M":[function(require,module,exports) {
+},{"./useCallbackRef":"fBpZB","./useCommittedRef":"elVJF","./useEventCallback":"66mpy","./useEventListener":"isxOa","./useGlobalListener":"llkSN","./useInterval":"kUkVs","./useRafInterval":"9SC77","./useMergeState":"aYClU","./useMergeStateFromProps":"jKRoq","./useMounted":"5TwgX","./usePrevious":"gAX6f","./useImage":"3uoW9","./useResizeObserver":"kwmOx","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"fBpZB":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useCallbackRef);
@@ -32712,7 +32987,7 @@ function useCallbackRef() {
     return (0, _react.useState)(null);
 }
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dBDI3":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"isxOa":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useEventListener);
@@ -32730,7 +33005,7 @@ function useEventListener(eventTarget, event, listener, capture = false) {
     ]);
 }
 
-},{"react":"21dqq","./useEventCallback":"7ONdq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iey73":[function(require,module,exports) {
+},{"react":"l8X7j","./useEventCallback":"66mpy","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"llkSN":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useGlobalListener);
@@ -32742,7 +33017,7 @@ function useGlobalListener(event, handler, capture = false) {
     return (0, _useEventListenerDefault.default)(documentTarget, event, handler, capture);
 }
 
-},{"./useEventListener":"dBDI3","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hnmo4":[function(require,module,exports) {
+},{"./useEventListener":"isxOa","react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"kUkVs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -32828,7 +33103,7 @@ var _useCommittedRefDefault = parcelHelpers.interopDefault(_useCommittedRef);
 }
 exports.default = useInterval;
 
-},{"react":"21dqq","./useCommittedRef":"g5BYG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4qbLw":[function(require,module,exports) {
+},{"react":"l8X7j","./useCommittedRef":"elVJF","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"9SC77":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -32859,7 +33134,7 @@ function useRafInterval(fn, ms, paused = false) {
 }
 exports.default = useRafInterval;
 
-},{"react":"21dqq","./useCommittedRef":"g5BYG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7E8IK":[function(require,module,exports) {
+},{"react":"l8X7j","./useCommittedRef":"elVJF","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"aYClU":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useMergeState);
@@ -32882,7 +33157,7 @@ function useMergeState(initialState) {
     ];
 }
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6f6Me":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"jKRoq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useMergeStateFromProps);
@@ -32898,7 +33173,7 @@ function useMergeStateFromProps(props, gDSFP, initialState) {
     ];
 }
 
-},{"./useMergeState":"7E8IK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iK6A1":[function(require,module,exports) {
+},{"./useMergeState":"aYClU","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"5TwgX":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useMounted);
@@ -32915,7 +33190,7 @@ function useMounted() {
     return isMounted.current;
 }
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gDCGm":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"gAX6f":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>usePrevious);
@@ -32928,7 +33203,7 @@ function usePrevious(value) {
     return ref.current;
 }
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iuAlv":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"3uoW9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useImage);
@@ -32980,7 +33255,7 @@ function useImage(imageOrUrl, crossOrigin) {
     return state;
 }
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"edwGv":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"kwmOx":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useResizeObserver);
@@ -33016,7 +33291,7 @@ function useResizeObserver(element) {
     return rect;
 }
 
-},{"react":"21dqq","./useIsomorphicEffect":"e8blq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"e8blq":[function(require,module,exports) {
+},{"react":"l8X7j","./useIsomorphicEffect":"hHMHP","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"hHMHP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -33034,7 +33309,7 @@ const isDOM = typeof document !== "undefined";
  * @category effects
  */ exports.default = isDOM || isReactNative ? (0, _react.useLayoutEffect) : (0, _react.useEffect);
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1mHjo":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"coQ1x":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -33043,8 +33318,6 @@ var _react = require("react");
 var _selectableContext = require("@restart/ui/SelectableContext");
 var _selectableContextDefault = parcelHelpers.interopDefault(_selectableContext);
 var _uncontrollable = require("uncontrollable");
-var _createWithBsPrefix = require("./createWithBsPrefix");
-var _createWithBsPrefixDefault = parcelHelpers.interopDefault(_createWithBsPrefix);
 var _navbarBrand = require("./NavbarBrand");
 var _navbarBrandDefault = parcelHelpers.interopDefault(_navbarBrand);
 var _navbarCollapse = require("./NavbarCollapse");
@@ -33056,18 +33329,13 @@ var _navbarOffcanvasDefault = parcelHelpers.interopDefault(_navbarOffcanvas);
 var _themeProvider = require("./ThemeProvider");
 var _navbarContext = require("./NavbarContext");
 var _navbarContextDefault = parcelHelpers.interopDefault(_navbarContext);
+var _navbarText = require("./NavbarText");
+var _navbarTextDefault = parcelHelpers.interopDefault(_navbarText);
 var _jsxRuntime = require("react/jsx-runtime");
-const NavbarText = (0, _createWithBsPrefixDefault.default)("navbar-text", {
-    Component: "span"
-});
-const defaultProps = {
-    expand: true,
-    variant: "light",
-    collapseOnSelect: false
-};
+"use client";
 const Navbar = /*#__PURE__*/ _react.forwardRef((props, ref)=>{
-    const { bsPrefix: initialBsPrefix, expand, variant, bg, fixed, sticky, className, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
-    as: Component = "nav", expanded, onToggle, onSelect, collapseOnSelect, ...controlledProps } = (0, _uncontrollable.useUncontrolled)(props, {
+    const { bsPrefix: initialBsPrefix, expand = true, variant = "light", bg, fixed, sticky, className, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+    as: Component = "nav", expanded, onToggle, onSelect, collapseOnSelect = false, ...controlledProps } = (0, _uncontrollable.useUncontrolled)(props, {
         expanded: "onToggle"
     });
     const bsPrefix = (0, _themeProvider.useBootstrapPrefix)(initialBsPrefix, "navbar");
@@ -33079,7 +33347,8 @@ const Navbar = /*#__PURE__*/ _react.forwardRef((props, ref)=>{
         collapseOnSelect,
         expanded,
         onToggle
-    ]); // will result in some false positives but that seems better
+    ]);
+    // will result in some false positives but that seems better
     // than false negatives. strict `undefined` check allows explicit
     // "nulling" of the role if the user really doesn't want one
     if (controlledProps.role === undefined && Component !== "nav") controlledProps.role = "navigation";
@@ -33108,17 +33377,16 @@ const Navbar = /*#__PURE__*/ _react.forwardRef((props, ref)=>{
         })
     });
 });
-Navbar.defaultProps = defaultProps;
 Navbar.displayName = "Navbar";
 exports.default = Object.assign(Navbar, {
     Brand: (0, _navbarBrandDefault.default),
     Collapse: (0, _navbarCollapseDefault.default),
     Offcanvas: (0, _navbarOffcanvasDefault.default),
-    Text: NavbarText,
+    Text: (0, _navbarTextDefault.default),
     Toggle: (0, _navbarToggleDefault.default)
 });
 
-},{"classnames":"jocGM","react":"21dqq","@restart/ui/SelectableContext":"8zLqy","uncontrollable":"b3yWY","./createWithBsPrefix":"itt7e","./NavbarBrand":"iOo4v","./NavbarCollapse":"eNSCC","./NavbarToggle":"7vOXv","./NavbarOffcanvas":"fOxoE","./ThemeProvider":"dVixI","./NavbarContext":"dpn1g","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iOo4v":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","@restart/ui/SelectableContext":"8HduR","uncontrollable":"bZk6u","./NavbarBrand":"jJLff","./NavbarCollapse":"25ds3","./NavbarToggle":"kCxjX","./NavbarOffcanvas":"5fWp9","./ThemeProvider":"aQxwt","./NavbarContext":"5RibS","./NavbarText":"lIixq","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"jJLff":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -33126,6 +33394,7 @@ var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
 var _react = require("react");
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const NavbarBrand = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, as, ...props }, ref)=>{
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "navbar-brand");
     const Component = as || (props.href ? "a" : "span");
@@ -33138,7 +33407,7 @@ const NavbarBrand = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, as, 
 NavbarBrand.displayName = "NavbarBrand";
 exports.default = NavbarBrand;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eNSCC":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"25ds3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -33148,6 +33417,7 @@ var _themeProvider = require("./ThemeProvider");
 var _navbarContext = require("./NavbarContext");
 var _navbarContextDefault = parcelHelpers.interopDefault(_navbarContext);
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const NavbarCollapse = /*#__PURE__*/ _react.forwardRef(({ children, bsPrefix, ...props }, ref)=>{
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "navbar-collapse");
     const context = (0, _react.useContext)((0, _navbarContextDefault.default));
@@ -33164,7 +33434,7 @@ const NavbarCollapse = /*#__PURE__*/ _react.forwardRef(({ children, bsPrefix, ..
 NavbarCollapse.displayName = "NavbarCollapse";
 exports.default = NavbarCollapse;
 
-},{"react":"21dqq","./Collapse":"acuzI","./ThemeProvider":"dVixI","./NavbarContext":"dpn1g","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7vOXv":[function(require,module,exports) {
+},{"react":"l8X7j","./Collapse":"6b1Hq","./ThemeProvider":"aQxwt","./NavbarContext":"5RibS","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"kCxjX":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -33176,10 +33446,8 @@ var _themeProvider = require("./ThemeProvider");
 var _navbarContext = require("./NavbarContext");
 var _navbarContextDefault = parcelHelpers.interopDefault(_navbarContext);
 var _jsxRuntime = require("react/jsx-runtime");
-const defaultProps = {
-    label: "Toggle navigation"
-};
-const NavbarToggle = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, children, label, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+"use client";
+const NavbarToggle = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, children, label = "Toggle navigation", // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
 as: Component = "button", onClick, ...props }, ref)=>{
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "navbar-toggler");
     const { onToggle, expanded } = (0, _react.useContext)((0, _navbarContextDefault.default)) || {};
@@ -33200,10 +33468,9 @@ as: Component = "button", onClick, ...props }, ref)=>{
     });
 });
 NavbarToggle.displayName = "NavbarToggle";
-NavbarToggle.defaultProps = defaultProps;
 exports.default = NavbarToggle;
 
-},{"classnames":"jocGM","react":"21dqq","@restart/hooks/useEventCallback":"7ONdq","./ThemeProvider":"dVixI","./NavbarContext":"dpn1g","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fOxoE":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","@restart/hooks/useEventCallback":"66mpy","./ThemeProvider":"aQxwt","./NavbarContext":"5RibS","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"5fWp9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -33212,6 +33479,7 @@ var _offcanvasDefault = parcelHelpers.interopDefault(_offcanvas);
 var _navbarContext = require("./NavbarContext");
 var _navbarContextDefault = parcelHelpers.interopDefault(_navbarContext);
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const NavbarOffcanvas = /*#__PURE__*/ _react.forwardRef((props, ref)=>{
     const context = (0, _react.useContext)((0, _navbarContextDefault.default));
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _offcanvasDefault.default), {
@@ -33224,7 +33492,7 @@ const NavbarOffcanvas = /*#__PURE__*/ _react.forwardRef((props, ref)=>{
 NavbarOffcanvas.displayName = "NavbarOffcanvas";
 exports.default = NavbarOffcanvas;
 
-},{"react":"21dqq","./Offcanvas":"eC3RS","./NavbarContext":"dpn1g","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eC3RS":[function(require,module,exports) {
+},{"react":"l8X7j","./Offcanvas":"iWIgm","./NavbarContext":"5RibS","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"iWIgm":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -33254,17 +33522,7 @@ var _themeProvider = require("./ThemeProvider");
 var _bootstrapModalManager = require("./BootstrapModalManager");
 var _bootstrapModalManagerDefault = parcelHelpers.interopDefault(_bootstrapModalManager);
 var _jsxRuntime = require("react/jsx-runtime");
-const defaultProps = {
-    show: false,
-    backdrop: true,
-    keyboard: true,
-    scroll: false,
-    autoFocus: true,
-    enforceFocus: true,
-    restoreFocus: true,
-    placement: "start",
-    renderStaticNode: false
-};
+"use client";
 function DialogTransition(props) {
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _offcanvasTogglingDefault.default), {
         ...props
@@ -33275,7 +33533,7 @@ function BackdropTransition(props) {
         ...props
     });
 }
-const Offcanvas = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, children, "aria-labelledby": ariaLabelledby, placement, responsive, /* BaseModal props */ show, backdrop, keyboard, scroll, onEscapeKeyDown, onShow, onHide, container, autoFocus, enforceFocus, restoreFocus, restoreFocusOptions, onEntered, onExit, onExiting, onEnter, onEntering, onExited, backdropClassName, manager: propsManager, renderStaticNode, ...props }, ref)=>{
+const Offcanvas = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, children, "aria-labelledby": ariaLabelledby, placement = "start", responsive, /* BaseModal props */ show = false, backdrop = true, keyboard = true, scroll = false, onEscapeKeyDown, onShow, onHide, container, autoFocus = true, enforceFocus = true, restoreFocus = true, restoreFocusOptions, onEntered, onExit, onExiting, onEnter, onEntering, onExited, backdropClassName, manager: propsManager, renderStaticNode = false, ...props }, ref)=>{
     const modalManager = (0, _react.useRef)();
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "offcanvas");
     const { onToggle } = (0, _react.useContext)((0, _navbarContextDefault.default)) || {};
@@ -33368,14 +33626,13 @@ const Offcanvas = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, childr
     });
 });
 Offcanvas.displayName = "Offcanvas";
-Offcanvas.defaultProps = defaultProps;
 exports.default = Object.assign(Offcanvas, {
     Body: (0, _offcanvasBodyDefault.default),
     Header: (0, _offcanvasHeaderDefault.default),
     Title: (0, _offcanvasTitleDefault.default)
 });
 
-},{"classnames":"jocGM","@restart/hooks/useBreakpoint":"2c4de","@restart/hooks/useEventCallback":"7ONdq","react":"21dqq","@restart/ui/Modal":"crj1M","./Fade":"aH18S","./OffcanvasBody":"fX7Bo","./OffcanvasToggling":"eGvzt","./ModalContext":"2U4Zk","./NavbarContext":"dpn1g","./OffcanvasHeader":"a6xAh","./OffcanvasTitle":"77qdX","./ThemeProvider":"dVixI","./BootstrapModalManager":"lr1Yp","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2c4de":[function(require,module,exports) {
+},{"classnames":"92LQ1","@restart/hooks/useBreakpoint":"byO5p","@restart/hooks/useEventCallback":"66mpy","react":"l8X7j","@restart/ui/Modal":"itnHR","./Fade":"9IyZU","./OffcanvasBody":"4KYZB","./OffcanvasToggling":"3C9Lp","./ModalContext":"lGhAF","./NavbarContext":"5RibS","./OffcanvasHeader":"hr5Pu","./OffcanvasTitle":"aD2oY","./ThemeProvider":"aQxwt","./BootstrapModalManager":"ch2Rp","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"byO5p":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 /**
@@ -33486,7 +33743,7 @@ const useBreakpoint = createBreakpointHook({
 });
 exports.default = useBreakpoint;
 
-},{"./useMediaQuery":"etGLg","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"etGLg":[function(require,module,exports) {
+},{"./useMediaQuery":"5LKCA","react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"5LKCA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useMediaQuery);
@@ -33531,7 +33788,7 @@ function useMediaQuery(query, targetWindow = typeof window === "undefined" ? und
     return matches;
 }
 
-},{"./useIsomorphicEffect":"e8blq","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"crj1M":[function(require,module,exports) {
+},{"./useIsomorphicEffect":"hHMHP","react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"itnHR":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 /* eslint-disable @typescript-eslint/no-use-before-define, react/prop-types */ var _activeElement = require("dom-helpers/activeElement");
@@ -33779,7 +34036,7 @@ exports.default = Object.assign(Modal, {
     Manager: (0, _modalManagerDefault.default)
 });
 
-},{"dom-helpers/activeElement":"5ShA6","dom-helpers/contains":"KpRFS","dom-helpers/canUseDOM":"9AwUB","dom-helpers/listen":"1i4e7","react":"21dqq","react-dom":"j6uA9","@restart/hooks/useMounted":"iK6A1","@restart/hooks/useWillUnmount":"2OOXI","@restart/hooks/usePrevious":"gDCGm","@restart/hooks/useEventCallback":"7ONdq","./ModalManager":"5alMm","./useWaitForDOMRef":"83lRQ","./useWindow":"4AsJ2","./ImperativeTransition":"j0Jao","./utils":"2Fmci","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5ShA6":[function(require,module,exports) {
+},{"dom-helpers/activeElement":"dOkZV","dom-helpers/contains":"fdPTk","dom-helpers/canUseDOM":"6f7YI","dom-helpers/listen":"3xFZB","react":"l8X7j","react-dom":"ibfHo","@restart/hooks/useMounted":"5TwgX","@restart/hooks/useWillUnmount":"fLW5U","@restart/hooks/usePrevious":"gAX6f","@restart/hooks/useEventCallback":"66mpy","./ModalManager":"dFvUd","./useWaitForDOMRef":"lnB8h","./useWindow":"9ubKq","./ImperativeTransition":"hm4I3","./utils":"7RHcA","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"dOkZV":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>activeElement);
@@ -33799,7 +34056,7 @@ function activeElement(doc) {
     }
 }
 
-},{"./ownerDocument":"2WpOk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"KpRFS":[function(require,module,exports) {
+},{"./ownerDocument":"aZZxr","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"fdPTk":[function(require,module,exports) {
 /* eslint-disable no-bitwise, no-cond-assign */ /**
  * Checks if an element contains another given element.
  * 
@@ -33815,7 +34072,7 @@ function contains(context, node) {
     if (context.compareDocumentPosition) return context === node || !!(context.compareDocumentPosition(node) & 16);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2OOXI":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"fLW5U":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useWillUnmount);
@@ -33827,7 +34084,7 @@ function useWillUnmount(fn) {
     (0, _react.useEffect)(()=>()=>onUnmount.current(), []);
 }
 
-},{"./useUpdatedRef":"cfaLu","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cfaLu":[function(require,module,exports) {
+},{"./useUpdatedRef":"2UjG2","react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"2UjG2":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useUpdatedRef);
@@ -33838,7 +34095,7 @@ function useUpdatedRef(value) {
     return valueRef;
 }
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5alMm":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"dFvUd":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "OPEN_DATA_ATTRIBUTE", ()=>OPEN_DATA_ATTRIBUTE);
@@ -33927,7 +34184,7 @@ const OPEN_DATA_ATTRIBUTE = (0, _dataKey.dataAttr)("modal-open");
 }
 exports.default = ModalManager;
 
-},{"dom-helpers/css":"klmhr","./DataKey":"9vwZh","./getScrollbarWidth":"9IxEN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9IxEN":[function(require,module,exports) {
+},{"dom-helpers/css":"cOlGj","./DataKey":"ga7Rh","./getScrollbarWidth":"fa2Ed","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"fa2Ed":[function(require,module,exports) {
 /**
  * Get the width of the vertical window scrollbar if it's visible
  */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -33938,7 +34195,7 @@ function getBodyScrollbarWidth(ownerDocument = document) {
     return Math.abs(window.innerWidth - ownerDocument.documentElement.clientWidth);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"83lRQ":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"lnB8h":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "resolveContainerRef", ()=>resolveContainerRef);
@@ -33981,7 +34238,7 @@ function useWaitForDOMRef(ref, onResolved) {
     return resolvedRef;
 }
 
-},{"dom-helpers/ownerDocument":"2WpOk","dom-helpers/canUseDOM":"9AwUB","react":"21dqq","./useWindow":"4AsJ2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4AsJ2":[function(require,module,exports) {
+},{"dom-helpers/ownerDocument":"aZZxr","dom-helpers/canUseDOM":"6f7YI","react":"l8X7j","./useWindow":"9ubKq","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"9ubKq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "WindowProvider", ()=>WindowProvider);
@@ -33995,7 +34252,7 @@ function useWindow() {
     return (0, _react.useContext)(Context);
 }
 
-},{"react":"21dqq","dom-helpers/canUseDOM":"9AwUB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"j0Jao":[function(require,module,exports) {
+},{"react":"l8X7j","dom-helpers/canUseDOM":"6f7YI","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"hm4I3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useTransition", ()=>useTransition);
@@ -34079,7 +34336,7 @@ function renderTransition(component, runTransition, props) {
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _noopTransitionDefault.default), Object.assign({}, props));
 }
 
-},{"@restart/hooks/useMergedRefs":"6hhuo","@restart/hooks/useEventCallback":"7ONdq","@restart/hooks/useIsomorphicEffect":"e8blq","react":"21dqq","./NoopTransition":"cwnaj","./RTGTransition":"IPK9l","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cwnaj":[function(require,module,exports) {
+},{"@restart/hooks/useMergedRefs":"hofA3","@restart/hooks/useEventCallback":"66mpy","@restart/hooks/useIsomorphicEffect":"hHMHP","react":"l8X7j","./NoopTransition":"6Dvi3","./RTGTransition":"j961Q","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"6Dvi3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _useEventCallback = require("@restart/hooks/useEventCallback");
@@ -34109,7 +34366,7 @@ function NoopTransition({ children, in: inProp, onExited, mountOnEnter, unmountO
 }
 exports.default = NoopTransition;
 
-},{"@restart/hooks/useEventCallback":"7ONdq","@restart/hooks/useMergedRefs":"6hhuo","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"IPK9l":[function(require,module,exports) {
+},{"@restart/hooks/useEventCallback":"66mpy","@restart/hooks/useMergedRefs":"hofA3","react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"j961Q":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -34141,7 +34398,7 @@ const RTGTransition = /*#__PURE__*/ _react.forwardRef((_ref, ref)=>{
 });
 exports.default = RTGTransition;
 
-},{"react":"21dqq","./useRTGTransitionProps":"gtjjK","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gtjjK":[function(require,module,exports) {
+},{"react":"l8X7j","./useRTGTransitionProps":"aLnVN","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"aLnVN":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useRTGTransitionProps);
@@ -34224,7 +34481,7 @@ function useRTGTransitionProps(_ref) {
     });
 }
 
-},{"react":"21dqq","@restart/hooks/useMergedRefs":"6hhuo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2Fmci":[function(require,module,exports) {
+},{"react":"l8X7j","@restart/hooks/useMergedRefs":"hofA3","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"7RHcA":[function(require,module,exports) {
 /* eslint-disable import/prefer-default-export */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isEscKey", ()=>isEscKey);
@@ -34232,14 +34489,27 @@ function isEscKey(e) {
     return e.code === "Escape" || e.keyCode === 27;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fX7Bo":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"4KYZB":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _createWithBsPrefix = require("./createWithBsPrefix");
-var _createWithBsPrefixDefault = parcelHelpers.interopDefault(_createWithBsPrefix);
-exports.default = (0, _createWithBsPrefixDefault.default)("offcanvas-body");
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const OffcanvasBody = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = "div", ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "offcanvas-body");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        ...props
+    });
+});
+OffcanvasBody.displayName = "OffcanvasBody";
+exports.default = OffcanvasBody;
 
-},{"./createWithBsPrefix":"itt7e","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eGvzt":[function(require,module,exports) {
+},{"react":"l8X7j","classnames":"92LQ1","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"3C9Lp":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -34252,21 +34522,20 @@ var _transitionWrapper = require("./TransitionWrapper");
 var _transitionWrapperDefault = parcelHelpers.interopDefault(_transitionWrapper);
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
-const defaultProps = {
-    in: false,
-    mountOnEnter: false,
-    unmountOnExit: false,
-    appear: false
-};
+"use client";
 const transitionStyles = {
     [(0, _transition.ENTERING)]: "show",
     [(0, _transition.ENTERED)]: "show"
 };
-const OffcanvasToggling = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, children, ...props }, ref)=>{
+const OffcanvasToggling = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, children, in: inProp = false, mountOnEnter = false, unmountOnExit = false, appear = false, ...props }, ref)=>{
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "offcanvas");
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _transitionWrapperDefault.default), {
         ref: ref,
         addEndListener: (0, _transitionEndListenerDefault.default),
+        in: inProp,
+        mountOnEnter: mountOnEnter,
+        unmountOnExit: unmountOnExit,
+        appear: appear,
         ...props,
         childRef: children.ref,
         children: (status, innerProps)=>/*#__PURE__*/ _react.cloneElement(children, {
@@ -34275,21 +34544,21 @@ const OffcanvasToggling = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className
             })
     });
 });
-OffcanvasToggling.defaultProps = defaultProps;
 OffcanvasToggling.displayName = "OffcanvasToggling";
 exports.default = OffcanvasToggling;
 
-},{"classnames":"jocGM","react":"21dqq","react-transition-group/Transition":"cKsrS","./transitionEndListener":"68oh7","./TransitionWrapper":"jKUqZ","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2U4Zk":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","react-transition-group/Transition":"4yGgx","./transitionEndListener":"fbsaD","./TransitionWrapper":"1TbqG","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"lGhAF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
+"use client";
 const ModalContext = /*#__PURE__*/ _react.createContext({
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     onHide () {}
 });
 exports.default = ModalContext;
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"a6xAh":[function(require,module,exports) {
+},{"react":"l8X7j","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"hr5Pu":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -34299,23 +34568,21 @@ var _themeProvider = require("./ThemeProvider");
 var _abstractModalHeader = require("./AbstractModalHeader");
 var _abstractModalHeaderDefault = parcelHelpers.interopDefault(_abstractModalHeader);
 var _jsxRuntime = require("react/jsx-runtime");
-const defaultProps = {
-    closeLabel: "Close",
-    closeButton: false
-};
-const OffcanvasHeader = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, ...props }, ref)=>{
+"use client";
+const OffcanvasHeader = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, closeLabel = "Close", closeButton = false, ...props }, ref)=>{
     bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "offcanvas-header");
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _abstractModalHeaderDefault.default), {
         ref: ref,
         ...props,
-        className: (0, _classnamesDefault.default)(className, bsPrefix)
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        closeLabel: closeLabel,
+        closeButton: closeButton
     });
 });
 OffcanvasHeader.displayName = "OffcanvasHeader";
-OffcanvasHeader.defaultProps = defaultProps;
 exports.default = OffcanvasHeader;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./AbstractModalHeader":"hPF8S","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hPF8S":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./ThemeProvider":"aQxwt","./AbstractModalHeader":"9cfi1","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"9cfi1":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -34326,11 +34593,8 @@ var _closeButtonDefault = parcelHelpers.interopDefault(_closeButton);
 var _modalContext = require("./ModalContext");
 var _modalContextDefault = parcelHelpers.interopDefault(_modalContext);
 var _jsxRuntime = require("react/jsx-runtime");
-const defaultProps = {
-    closeLabel: "Close",
-    closeButton: false
-};
-const AbstractModalHeader = /*#__PURE__*/ _react.forwardRef(({ closeLabel, closeVariant, closeButton, onHide, children, ...props }, ref)=>{
+"use client";
+const AbstractModalHeader = /*#__PURE__*/ _react.forwardRef(({ closeLabel = "Close", closeVariant, closeButton = false, onHide, children, ...props }, ref)=>{
     const context = (0, _react.useContext)((0, _modalContextDefault.default));
     const handleClick = (0, _useEventCallbackDefault.default)(()=>{
         context == null || context.onHide();
@@ -34349,22 +34613,32 @@ const AbstractModalHeader = /*#__PURE__*/ _react.forwardRef(({ closeLabel, close
         ]
     });
 });
-AbstractModalHeader.defaultProps = defaultProps;
 exports.default = AbstractModalHeader;
 
-},{"react":"21dqq","@restart/hooks/useEventCallback":"7ONdq","./CloseButton":"1wmVl","./ModalContext":"2U4Zk","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"77qdX":[function(require,module,exports) {
+},{"react":"l8X7j","@restart/hooks/useEventCallback":"66mpy","./CloseButton":"69V9d","./ModalContext":"lGhAF","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"aD2oY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _createWithBsPrefix = require("./createWithBsPrefix");
-var _createWithBsPrefixDefault = parcelHelpers.interopDefault(_createWithBsPrefix);
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
 var _divWithClassName = require("./divWithClassName");
 var _divWithClassNameDefault = parcelHelpers.interopDefault(_divWithClassName);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const DivStyledAsH5 = (0, _divWithClassNameDefault.default)("h5");
-exports.default = (0, _createWithBsPrefixDefault.default)("offcanvas-title", {
-    Component: DivStyledAsH5
+const OffcanvasTitle = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = DivStyledAsH5, ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "offcanvas-title");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        ...props
+    });
 });
+OffcanvasTitle.displayName = "OffcanvasTitle";
+exports.default = OffcanvasTitle;
 
-},{"./createWithBsPrefix":"itt7e","./divWithClassName":"eDg7t","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lr1Yp":[function(require,module,exports) {
+},{"react":"l8X7j","classnames":"92LQ1","./divWithClassName":"1OHVZ","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"ch2Rp":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getSharedManager", ()=>getSharedManager);
@@ -34385,7 +34659,8 @@ const Selector = {
 };
 class BootstrapModalManager extends (0, _modalManagerDefault.default) {
     adjustAndStore(prop, element, adjust) {
-        const actual = element.style[prop]; // TODO: DOMStringMap and CSSStyleDeclaration aren't strictly compatible
+        const actual = element.style[prop];
+        // TODO: DOMStringMap and CSSStyleDeclaration aren't strictly compatible
         // @ts-ignore
         element.dataset[prop] = actual;
         (0, _cssDefault.default)(element, {
@@ -34430,7 +34705,7 @@ function getSharedManager(options) {
 }
 exports.default = BootstrapModalManager;
 
-},{"dom-helpers/addClass":"7dIIz","dom-helpers/css":"klmhr","dom-helpers/querySelectorAll":"g5Sx6","dom-helpers/removeClass":"66hgg","@restart/ui/ModalManager":"5alMm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7dIIz":[function(require,module,exports) {
+},{"dom-helpers/addClass":"1VraF","dom-helpers/css":"cOlGj","dom-helpers/querySelectorAll":"hCr29","dom-helpers/removeClass":"hRCia","@restart/ui/ModalManager":"dFvUd","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"1VraF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>addClass);
@@ -34444,7 +34719,7 @@ function addClass(element, className) {
     }
 }
 
-},{"./hasClass":"6sJz4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6sJz4":[function(require,module,exports) {
+},{"./hasClass":"bRquZ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"bRquZ":[function(require,module,exports) {
 /**
  * Checks if a given element has a CSS class.
  * 
@@ -34458,7 +34733,7 @@ function hasClass(element, className) {
     return (" " + (element.className.baseVal || element.className) + " ").indexOf(" " + className + " ") !== -1;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"66hgg":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"hRCia":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>removeClass);
@@ -34471,7 +34746,27 @@ function removeClass(element, className) {
     else element.setAttribute("class", replaceClassName(element.className && element.className.baseVal || "", className));
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cMC39":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"lIixq":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const NavbarText = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = "span", ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "navbar-text");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        ...props
+    });
+});
+NavbarText.displayName = "NavbarText";
+exports.default = NavbarText;
+
+},{"react":"l8X7j","classnames":"92LQ1","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"41DF5":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -34479,6 +34774,7 @@ var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
 var _react = require("react");
 var _themeProvider = require("./ThemeProvider");
 var _jsxRuntime = require("react/jsx-runtime");
+"use client";
 const Row = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
 as: Component = "div", ...props }, ref)=>{
     const decoratedBsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "row");
@@ -34504,9 +34800,9 @@ as: Component = "div", ...props }, ref)=>{
 Row.displayName = "Row";
 exports.default = Row;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9xmpe":[function(require,module,exports) {
+},{"classnames":"92LQ1","react":"l8X7j","./ThemeProvider":"aQxwt","react/jsx-runtime":"iMohQ","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"3DXe8":[function(require,module,exports) {
 /**
- * React Router DOM v6.22.3
+ * React Router DOM v6.23.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -34567,6 +34863,7 @@ parcelHelpers.export(exports, "useRevalidator", ()=>(0, _reactRouter.useRevalida
 parcelHelpers.export(exports, "useRouteError", ()=>(0, _reactRouter.useRouteError));
 parcelHelpers.export(exports, "useRouteLoaderData", ()=>(0, _reactRouter.useRouteLoaderData));
 parcelHelpers.export(exports, "useRoutes", ()=>(0, _reactRouter.useRoutes));
+parcelHelpers.export(exports, "UNSAFE_ErrorResponseImpl", ()=>(0, _router.UNSAFE_ErrorResponseImpl));
 //#endregion
 parcelHelpers.export(exports, "BrowserRouter", ()=>BrowserRouter);
 parcelHelpers.export(exports, "Form", ()=>Form);
@@ -34832,6 +35129,7 @@ function createBrowserRouter(routes, opts) {
         hydrationData: (opts == null ? void 0 : opts.hydrationData) || parseHydrationData(),
         routes,
         mapRouteProperties: (0, _reactRouter.UNSAFE_mapRouteProperties),
+        unstable_dataStrategy: opts == null ? void 0 : opts.unstable_dataStrategy,
         window: opts == null ? void 0 : opts.window
     }).initialize();
 }
@@ -34847,6 +35145,7 @@ function createHashRouter(routes, opts) {
         hydrationData: (opts == null ? void 0 : opts.hydrationData) || parseHydrationData(),
         routes,
         mapRouteProperties: (0, _reactRouter.UNSAFE_mapRouteProperties),
+        unstable_dataStrategy: opts == null ? void 0 : opts.unstable_dataStrategy,
         window: opts == null ? void 0 : opts.window
     }).initialize();
 }
@@ -35928,9 +36227,9 @@ let savedScrollPositions = {};
     return (0, _router.matchPath)(path.pathname, nextPath) != null || (0, _router.matchPath)(path.pathname, currentPath) != null;
 }
 
-},{"react":"21dqq","react-dom":"j6uA9","react-router":"dbWyW","@remix-run/router":"5ncDG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dbWyW":[function(require,module,exports) {
+},{"react":"l8X7j","react-dom":"ibfHo","react-router":"i1Fig","@remix-run/router":"5hn84","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"i1Fig":[function(require,module,exports) {
 /**
- * React Router v6.22.3
+ * React Router v6.23.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -36432,7 +36731,7 @@ function _renderMatches(matches, parentMatches, dataRouterState, future) {
     // If we have data errors, trim matches to the highest error boundary
     let errors = (_dataRouterState2 = dataRouterState) == null ? void 0 : _dataRouterState2.errors;
     if (errors != null) {
-        let errorIndex = renderedMatches.findIndex((m)=>m.route.id && (errors == null ? void 0 : errors[m.route.id]));
+        let errorIndex = renderedMatches.findIndex((m)=>m.route.id && (errors == null ? void 0 : errors[m.route.id]) !== undefined);
         !(errorIndex >= 0) && (0, _router.UNSAFE_invariant)(false, "Could not find a matching route for errors on route IDs: " + Object.keys(errors).join(","));
         renderedMatches = renderedMatches.slice(0, Math.min(renderedMatches.length, errorIndex + 1));
     }
@@ -37190,13 +37489,14 @@ function createMemoryRouter(routes, opts) {
         }),
         hydrationData: opts == null ? void 0 : opts.hydrationData,
         routes,
-        mapRouteProperties
+        mapRouteProperties,
+        unstable_dataStrategy: opts == null ? void 0 : opts.unstable_dataStrategy
     }).initialize();
 }
 
-},{"react":"21dqq","@remix-run/router":"5ncDG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5ncDG":[function(require,module,exports) {
+},{"react":"l8X7j","@remix-run/router":"5hn84","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"5hn84":[function(require,module,exports) {
 /**
- * @remix-run/router v1.15.3
+ * @remix-run/router v1.16.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -38409,13 +38709,15 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
     let dataRoutes = convertRoutesToDataRoutes(init.routes, mapRouteProperties, undefined, manifest);
     let inFlightDataRoutes;
     let basename = init.basename || "/";
+    let dataStrategyImpl = init.unstable_dataStrategy || defaultDataStrategy;
     // Config driven behavior flags
     let future = _extends({
         v7_fetcherPersist: false,
         v7_normalizeFormMethod: false,
         v7_partialHydration: false,
         v7_prependBasename: false,
-        v7_relativeSplatPath: false
+        v7_relativeSplatPath: false,
+        unstable_skipActionErrorRevalidation: false
     }, init.future);
     // Cleanup function for history
     let unlistenHistory = null;
@@ -38466,7 +38768,7 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
             // No loader, nothing to initialize
             if (!m.route.loader) return true;
             // Explicitly opting-in to running on hydration
-            if (m.route.loader.hydrate === true) return false;
+            if (typeof m.route.loader === "function" && m.route.loader.hydrate === true) return false;
             // Otherwise, initialized if hydrated with data or an error
             return loaderData && loaderData[m.route.id] !== undefined || errors && errors[m.route.id] !== undefined;
         };
@@ -38917,33 +39219,33 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
         // Create a controller/Request for this navigation
         pendingNavigationController = new AbortController();
         let request = createClientSideRequest(init.history, location, pendingNavigationController.signal, opts && opts.submission);
-        let pendingActionData;
-        let pendingError;
+        let pendingActionResult;
         if (opts && opts.pendingError) // If we have a pendingError, it means the user attempted a GET submission
         // with binary FormData so assign here and skip to handleLoaders.  That
         // way we handle calling loaders above the boundary etc.  It's not really
         // different from an actionError in that sense.
-        pendingError = {
-            [findNearestBoundary(matches).route.id]: opts.pendingError
-        };
+        pendingActionResult = [
+            findNearestBoundary(matches).route.id,
+            {
+                type: ResultType.error,
+                error: opts.pendingError
+            }
+        ];
         else if (opts && opts.submission && isMutationMethod(opts.submission.formMethod)) {
             // Call action if we received an action submission
-            let actionOutput = await handleAction(request, location, opts.submission, matches, {
+            let actionResult = await handleAction(request, location, opts.submission, matches, {
                 replace: opts.replace,
                 flushSync
             });
-            if (actionOutput.shortCircuited) return;
-            pendingActionData = actionOutput.pendingActionData;
-            pendingError = actionOutput.pendingActionError;
+            if (actionResult.shortCircuited) return;
+            pendingActionResult = actionResult.pendingActionResult;
             loadingNavigation = getLoadingNavigation(location, opts.submission);
             flushSync = false;
             // Create a GET request for the loaders
-            request = new Request(request.url, {
-                signal: request.signal
-            });
+            request = createClientSideRequest(init.history, request.url, request.signal);
         }
         // Call loaders
-        let { shortCircuited, loaderData, errors } = await handleLoaders(request, location, matches, loadingNavigation, opts && opts.submission, opts && opts.fetcherSubmission, opts && opts.replace, opts && opts.initialHydration === true, flushSync, pendingActionData, pendingError);
+        let { shortCircuited, loaderData, errors } = await handleLoaders(request, location, matches, loadingNavigation, opts && opts.submission, opts && opts.fetcherSubmission, opts && opts.replace, opts && opts.initialHydration === true, flushSync, pendingActionResult);
         if (shortCircuited) return;
         // Clean up now that the action/loaders have completed.  Don't clean up if
         // we short circuited because pendingNavigationController will have already
@@ -38951,9 +39253,7 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
         pendingNavigationController = null;
         completeNavigation(location, _extends({
             matches
-        }, pendingActionData ? {
-            actionData: pendingActionData
-        } : {}, {
+        }, getActionDataForCommit(pendingActionResult), {
             loaderData,
             errors
         }));
@@ -38982,7 +39282,10 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
             })
         };
         else {
-            result = await callLoaderOrAction("action", request, actionMatch, matches, manifest, mapRouteProperties, basename, future.v7_relativeSplatPath);
+            let results = await callDataStrategy("action", request, [
+                actionMatch
+            ], matches);
+            result = results[0];
             if (request.signal.aborted) return {
                 shortCircuited: true
             };
@@ -38990,11 +39293,14 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
         if (isRedirectResult(result)) {
             let replace;
             if (opts && opts.replace != null) replace = opts.replace;
-            else // If the user didn't explicity indicate replace behavior, replace if
-            // we redirected to the exact same location we're currently at to avoid
-            // double back-buttons
-            replace = result.location === state.location.pathname + state.location.search;
-            await startRedirectNavigation(state, result, {
+            else {
+                // If the user didn't explicity indicate replace behavior, replace if
+                // we redirected to the exact same location we're currently at to avoid
+                // double back-buttons
+                let location = normalizeRedirectLocation(result.response.headers.get("Location"), new URL(request.url), basename);
+                replace = location === state.location.pathname + state.location.search;
+            }
+            await startRedirectNavigation(request, result, {
                 submission,
                 replace
             });
@@ -39002,6 +39308,9 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
                 shortCircuited: true
             };
         }
+        if (isDeferredResult(result)) throw getInternalRouterError(400, {
+            type: "defer-action"
+        });
         if (isErrorResult(result)) {
             // Store off the pending error - we use it to determine which loaders
             // to call and will commit it when we complete the navigation
@@ -39012,32 +39321,29 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
             // the pre-submission form location to try again
             if ((opts && opts.replace) !== true) pendingAction = Action.Push;
             return {
-                // Send back an empty object we can use to clear out any prior actionData
-                pendingActionData: {},
-                pendingActionError: {
-                    [boundaryMatch.route.id]: result.error
-                }
+                pendingActionResult: [
+                    boundaryMatch.route.id,
+                    result
+                ]
             };
         }
-        if (isDeferredResult(result)) throw getInternalRouterError(400, {
-            type: "defer-action"
-        });
         return {
-            pendingActionData: {
-                [actionMatch.route.id]: result.data
-            }
+            pendingActionResult: [
+                actionMatch.route.id,
+                result
+            ]
         };
     }
     // Call all applicable loaders for the given matches, handling redirects,
     // errors, etc.
-    async function handleLoaders(request, location, matches, overrideNavigation, submission, fetcherSubmission, replace, initialHydration, flushSync, pendingActionData, pendingError) {
+    async function handleLoaders(request, location, matches, overrideNavigation, submission, fetcherSubmission, replace, initialHydration, flushSync, pendingActionResult) {
         // Figure out the right navigation we want to use for data loading
         let loadingNavigation = overrideNavigation || getLoadingNavigation(location, submission);
         // If this was a redirect from an action we don't have a "submission" but
         // we have it on the loading navigation so use that if available
         let activeSubmission = submission || fetcherSubmission || getSubmissionFromNavigation(loadingNavigation);
         let routesToUse = inFlightDataRoutes || dataRoutes;
-        let [matchesToLoad, revalidatingFetchers] = getMatchesToLoad(init.history, state, matches, activeSubmission, location, future.v7_partialHydration && initialHydration === true, isRevalidationRequired, cancelledDeferredRoutes, cancelledFetcherLoads, deletedFetchers, fetchLoadMatches, fetchRedirectIds, routesToUse, basename, pendingActionData, pendingError);
+        let [matchesToLoad, revalidatingFetchers] = getMatchesToLoad(init.history, state, matches, activeSubmission, location, future.v7_partialHydration && initialHydration === true, future.unstable_skipActionErrorRevalidation, isRevalidationRequired, cancelledDeferredRoutes, cancelledFetcherLoads, deletedFetchers, fetchLoadMatches, fetchRedirectIds, routesToUse, basename, pendingActionResult);
         // Cancel pending deferreds for no-longer-matched routes or routes we're
         // about to reload.  Note that if this is an action reload we would have
         // already cancelled all pending deferreds so this would be a no-op
@@ -39050,10 +39356,10 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
                 matches,
                 loaderData: {},
                 // Commit pending error if we're short circuiting
-                errors: pendingError || null
-            }, pendingActionData ? {
-                actionData: pendingActionData
-            } : {}, updatedFetchers ? {
+                errors: pendingActionResult && isErrorResult(pendingActionResult[1]) ? {
+                    [pendingActionResult[0]]: pendingActionResult[1].error
+                } : null
+            }, getActionDataForCommit(pendingActionResult), updatedFetchers ? {
                 fetchers: new Map(state.fetchers)
             } : {}), {
                 flushSync
@@ -39074,12 +39380,20 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
                 let revalidatingFetcher = getLoadingFetcher(undefined, fetcher ? fetcher.data : undefined);
                 state.fetchers.set(rf.key, revalidatingFetcher);
             });
-            let actionData = pendingActionData || state.actionData;
+            let actionData;
+            if (pendingActionResult && !isErrorResult(pendingActionResult[1])) // This is cast to `any` currently because `RouteData`uses any and it
+            // would be a breaking change to use any.
+            // TODO: v7 - change `RouteData` to use `unknown` instead of `any`
+            actionData = {
+                [pendingActionResult[0]]: pendingActionResult[1].data
+            };
+            else if (state.actionData) {
+                if (Object.keys(state.actionData).length === 0) actionData = null;
+                else actionData = state.actionData;
+            }
             updateState(_extends({
                 navigation: loadingNavigation
-            }, actionData ? Object.keys(actionData).length === 0 ? {
-                actionData: null
-            } : {
+            }, actionData !== undefined ? {
                 actionData
             } : {}, revalidatingFetchers.length > 0 ? {
                 fetchers: new Map(state.fetchers)
@@ -39097,7 +39411,7 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
         // Proxy navigation abort through to revalidation fetchers
         let abortPendingFetchRevalidations = ()=>revalidatingFetchers.forEach((f)=>abortFetcher(f.key));
         if (pendingNavigationController) pendingNavigationController.signal.addEventListener("abort", abortPendingFetchRevalidations);
-        let { results, loaderResults, fetcherResults } = await callLoadersAndMaybeResolveData(state.matches, matches, matchesToLoad, revalidatingFetchers, request);
+        let { loaderResults, fetcherResults } = await callLoadersAndMaybeResolveData(state.matches, matches, matchesToLoad, revalidatingFetchers, request);
         if (request.signal.aborted) return {
             shortCircuited: true
         };
@@ -39107,7 +39421,10 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
         if (pendingNavigationController) pendingNavigationController.signal.removeEventListener("abort", abortPendingFetchRevalidations);
         revalidatingFetchers.forEach((rf)=>fetchControllers.delete(rf.key));
         // If any loaders returned a redirect Response, start a new REPLACE navigation
-        let redirect = findRedirect(results);
+        let redirect = findRedirect([
+            ...loaderResults,
+            ...fetcherResults
+        ]);
         if (redirect) {
             if (redirect.idx >= matchesToLoad.length) {
                 // If this redirect came from a fetcher make sure we mark it in
@@ -39116,7 +39433,7 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
                 let fetcherKey = revalidatingFetchers[redirect.idx - matchesToLoad.length].key;
                 fetchRedirectIds.add(fetcherKey);
             }
-            await startRedirectNavigation(state, redirect.result, {
+            await startRedirectNavigation(request, redirect.result, {
                 replace
             });
             return {
@@ -39124,7 +39441,7 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
             };
         }
         // Process and commit output from loaders
-        let { loaderData, errors } = processLoaderData(state, matches, matchesToLoad, loaderResults, pendingError, revalidatingFetchers, fetcherResults, activeDeferreds);
+        let { loaderData, errors } = processLoaderData(state, matches, matchesToLoad, loaderResults, pendingActionResult, revalidatingFetchers, fetcherResults, activeDeferreds);
         // Wire up subscribers to update loaderData as promises settle
         activeDeferreds.forEach((deferredData, routeId)=>{
             deferredData.subscribe((aborted)=>{
@@ -39217,7 +39534,10 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
         let fetchRequest = createClientSideRequest(init.history, path, abortController.signal, submission);
         fetchControllers.set(key, abortController);
         let originatingLoadId = incrementingLoadId;
-        let actionResult = await callLoaderOrAction("action", fetchRequest, match, requestMatches, manifest, mapRouteProperties, basename, future.v7_relativeSplatPath);
+        let actionResults = await callDataStrategy("action", fetchRequest, [
+            match
+        ], requestMatches);
+        let actionResult = actionResults[0];
         if (fetchRequest.signal.aborted) {
             // We can delete this so long as we weren't aborted by our own fetcher
             // re-submit which would have put _new_ controller is in fetchControllers
@@ -39245,7 +39565,7 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
                 } else {
                     fetchRedirectIds.add(key);
                     updateFetcherState(key, getLoadingFetcher(submission));
-                    return startRedirectNavigation(state, actionResult, {
+                    return startRedirectNavigation(fetchRequest, actionResult, {
                         fetcherSubmission: submission
                     });
                 }
@@ -39270,10 +39590,10 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
         fetchReloadIds.set(key, loadId);
         let loadFetcher = getLoadingFetcher(submission, actionResult.data);
         state.fetchers.set(key, loadFetcher);
-        let [matchesToLoad, revalidatingFetchers] = getMatchesToLoad(init.history, state, matches, submission, nextLocation, false, isRevalidationRequired, cancelledDeferredRoutes, cancelledFetcherLoads, deletedFetchers, fetchLoadMatches, fetchRedirectIds, routesToUse, basename, {
-            [match.route.id]: actionResult.data
-        }, undefined // No need to send through errors since we short circuit above
-        );
+        let [matchesToLoad, revalidatingFetchers] = getMatchesToLoad(init.history, state, matches, submission, nextLocation, false, future.unstable_skipActionErrorRevalidation, isRevalidationRequired, cancelledDeferredRoutes, cancelledFetcherLoads, deletedFetchers, fetchLoadMatches, fetchRedirectIds, routesToUse, basename, [
+            match.route.id,
+            actionResult
+        ]);
         // Put all revalidating fetchers into the loading state, except for the
         // current fetcher which we want to keep in it's current loading state which
         // contains it's action submission info + action data
@@ -39290,13 +39610,16 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
         });
         let abortPendingFetchRevalidations = ()=>revalidatingFetchers.forEach((rf)=>abortFetcher(rf.key));
         abortController.signal.addEventListener("abort", abortPendingFetchRevalidations);
-        let { results, loaderResults, fetcherResults } = await callLoadersAndMaybeResolveData(state.matches, matches, matchesToLoad, revalidatingFetchers, revalidationRequest);
+        let { loaderResults, fetcherResults } = await callLoadersAndMaybeResolveData(state.matches, matches, matchesToLoad, revalidatingFetchers, revalidationRequest);
         if (abortController.signal.aborted) return;
         abortController.signal.removeEventListener("abort", abortPendingFetchRevalidations);
         fetchReloadIds.delete(key);
         fetchControllers.delete(key);
         revalidatingFetchers.forEach((r)=>fetchControllers.delete(r.key));
-        let redirect = findRedirect(results);
+        let redirect = findRedirect([
+            ...loaderResults,
+            ...fetcherResults
+        ]);
         if (redirect) {
             if (redirect.idx >= matchesToLoad.length) {
                 // If this redirect came from a fetcher make sure we mark it in
@@ -39305,7 +39628,7 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
                 let fetcherKey = revalidatingFetchers[redirect.idx - matchesToLoad.length].key;
                 fetchRedirectIds.add(fetcherKey);
             }
-            return startRedirectNavigation(state, redirect.result);
+            return startRedirectNavigation(revalidationRequest, redirect.result);
         }
         // Process and commit output from loaders
         let { loaderData, errors } = processLoaderData(state, state.matches, matchesToLoad, loaderResults, undefined, revalidatingFetchers, fetcherResults, activeDeferreds);
@@ -39351,7 +39674,10 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
         let fetchRequest = createClientSideRequest(init.history, path, abortController.signal);
         fetchControllers.set(key, abortController);
         let originatingLoadId = incrementingLoadId;
-        let result = await callLoaderOrAction("loader", fetchRequest, match, matches, manifest, mapRouteProperties, basename, future.v7_relativeSplatPath);
+        let results = await callDataStrategy("loader", fetchRequest, [
+            match
+        ], matches);
+        let result = results[0];
         // Deferred isn't supported for fetcher loads, await everything and treat it
         // as a normal load.  resolveDeferredData will return undefined if this
         // fetcher gets aborted, so we just leave result untouched and short circuit
@@ -39376,7 +39702,7 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
                 return;
             } else {
                 fetchRedirectIds.add(key);
-                await startRedirectNavigation(state, result);
+                await startRedirectNavigation(fetchRequest, result);
                 return;
             }
         }
@@ -39407,26 +39733,28 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
    * navigation (including processed redirects).  This means that we never
    * actually touch history until we've processed redirects, so we just use
    * the history action from the original navigation (PUSH or REPLACE).
-   */ async function startRedirectNavigation(state, redirect, _temp2) {
+   */ async function startRedirectNavigation(request, redirect, _temp2) {
         let { submission, fetcherSubmission, replace } = _temp2 === void 0 ? {} : _temp2;
-        if (redirect.revalidate) isRevalidationRequired = true;
-        let redirectLocation = createLocation(state.location, redirect.location, {
+        if (redirect.response.headers.has("X-Remix-Revalidate")) isRevalidationRequired = true;
+        let location = redirect.response.headers.get("Location");
+        invariant(location, "Expected a Location header on the redirect Response");
+        location = normalizeRedirectLocation(location, new URL(request.url), basename);
+        let redirectLocation = createLocation(state.location, location, {
             _isRedirect: true
         });
-        invariant(redirectLocation, "Expected a location on the redirect navigation");
         if (isBrowser) {
             let isDocumentReload = false;
-            if (redirect.reloadDocument) // Hard reload if the response contained X-Remix-Reload-Document
+            if (redirect.response.headers.has("X-Remix-Reload-Document")) // Hard reload if the response contained X-Remix-Reload-Document
             isDocumentReload = true;
-            else if (ABSOLUTE_URL_REGEX.test(redirect.location)) {
-                const url = init.history.createURL(redirect.location);
+            else if (ABSOLUTE_URL_REGEX.test(location)) {
+                const url = init.history.createURL(location);
                 isDocumentReload = // Hard reload if it's an absolute URL to a new origin
                 url.origin !== routerWindow.location.origin || // Hard reload if it's an absolute URL that does not match our basename
                 stripBasename(url.pathname, basename) == null;
             }
             if (isDocumentReload) {
-                if (replace) routerWindow.location.replace(redirect.location);
-                else routerWindow.location.assign(redirect.location);
+                if (replace) routerWindow.location.replace(location);
+                else routerWindow.location.assign(location);
                 return;
             }
         }
@@ -39442,9 +39770,9 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
         // re-submit the GET/POST/PUT/PATCH/DELETE as a submission navigation to the
         // redirected location
         let activeSubmission = submission || fetcherSubmission;
-        if (redirectPreserveMethodStatusCodes.has(redirect.status) && activeSubmission && isMutationMethod(activeSubmission.formMethod)) await startNavigation(redirectHistoryAction, redirectLocation, {
+        if (redirectPreserveMethodStatusCodes.has(redirect.response.status) && activeSubmission && isMutationMethod(activeSubmission.formMethod)) await startNavigation(redirectHistoryAction, redirectLocation, {
             submission: _extends({}, activeSubmission, {
-                formAction: redirect.location
+                formAction: location
             }),
             // Preserve this flag across redirects
             preventScrollReset: pendingPreventScrollReset
@@ -39462,33 +39790,52 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
             });
         }
     }
-    async function callLoadersAndMaybeResolveData(currentMatches, matches, matchesToLoad, fetchersToLoad, request) {
-        // Call all navigation loaders and revalidating fetcher loaders in parallel,
-        // then slice off the results into separate arrays so we can handle them
-        // accordingly
-        let results = await Promise.all([
-            ...matchesToLoad.map((match)=>callLoaderOrAction("loader", request, match, matches, manifest, mapRouteProperties, basename, future.v7_relativeSplatPath)),
-            ...fetchersToLoad.map((f)=>{
-                if (f.matches && f.match && f.controller) return callLoaderOrAction("loader", createClientSideRequest(init.history, f.path, f.controller.signal), f.match, f.matches, manifest, mapRouteProperties, basename, future.v7_relativeSplatPath);
-                else {
-                    let error = {
-                        type: ResultType.error,
-                        error: getInternalRouterError(404, {
-                            pathname: f.path
-                        })
+    // Utility wrapper for calling dataStrategy client-side without having to
+    // pass around the manifest, mapRouteProperties, etc.
+    async function callDataStrategy(type, request, matchesToLoad, matches) {
+        try {
+            let results = await callDataStrategyImpl(dataStrategyImpl, type, request, matchesToLoad, matches, manifest, mapRouteProperties);
+            return await Promise.all(results.map((result, i)=>{
+                if (isRedirectHandlerResult(result)) {
+                    let response = result.result;
+                    return {
+                        type: ResultType.redirect,
+                        response: normalizeRelativeRoutingRedirectResponse(response, request, matchesToLoad[i].route.id, matches, basename, future.v7_relativeSplatPath)
                     };
-                    return error;
                 }
+                return convertHandlerResultToDataResult(result);
+            }));
+        } catch (e) {
+            // If the outer dataStrategy method throws, just return the error for all
+            // matches - and it'll naturally bubble to the root
+            return matchesToLoad.map(()=>({
+                    type: ResultType.error,
+                    error: e
+                }));
+        }
+    }
+    async function callLoadersAndMaybeResolveData(currentMatches, matches, matchesToLoad, fetchersToLoad, request) {
+        let [loaderResults, ...fetcherResults] = await Promise.all([
+            matchesToLoad.length ? callDataStrategy("loader", request, matchesToLoad, matches) : [],
+            ...fetchersToLoad.map((f)=>{
+                if (f.matches && f.match && f.controller) {
+                    let fetcherRequest = createClientSideRequest(init.history, f.path, f.controller.signal);
+                    return callDataStrategy("loader", fetcherRequest, [
+                        f.match
+                    ], f.matches).then((r)=>r[0]);
+                } else return Promise.resolve({
+                    type: ResultType.error,
+                    error: getInternalRouterError(404, {
+                        pathname: f.path
+                    })
+                });
             })
         ]);
-        let loaderResults = results.slice(0, matchesToLoad.length);
-        let fetcherResults = results.slice(matchesToLoad.length);
         await Promise.all([
             resolveDeferredResults(currentMatches, matchesToLoad, loaderResults, loaderResults.map(()=>request.signal), false, state.loaderData),
             resolveDeferredResults(currentMatches, fetchersToLoad.map((f)=>f.match), fetcherResults, fetchersToLoad.map((f)=>f.controller ? f.controller.signal : null), true)
         ]);
         return {
-            results,
             loaderResults,
             fetcherResults
         };
@@ -39787,8 +40134,15 @@ function createStaticHandler(routes, opts) {
    * redirect response is returned or thrown from any action/loader.  We
    * propagate that out and return the raw Response so the HTTP server can
    * return it directly.
+   *
+   * - `opts.requestContext` is an optional server context that will be passed
+   *   to actions/loaders in the `context` parameter
+   * - `opts.skipLoaderErrorBubbling` is an optional parameter that will prevent
+   *   the bubbling of errors which allows single-fetch-type implementations
+   *   where the client will handle the bubbling and we may need to return data
+   *   for the handling route
    */ async function query(request, _temp3) {
-        let { requestContext } = _temp3 === void 0 ? {} : _temp3;
+        let { requestContext, skipLoaderErrorBubbling, unstable_dataStrategy } = _temp3 === void 0 ? {} : _temp3;
         let url = new URL(request.url);
         let method = request.method;
         let location = createLocation("", createPath(url), null, "default");
@@ -39833,7 +40187,7 @@ function createStaticHandler(routes, opts) {
                 activeDeferreds: null
             };
         }
-        let result = await queryImpl(request, location, matches, requestContext);
+        let result = await queryImpl(request, location, matches, requestContext, unstable_dataStrategy || null, skipLoaderErrorBubbling === true, null);
         if (isResponse(result)) return result;
         // When returning StaticHandlerContext, we patch back in the location here
         // since we need it for React Context.  But this helps keep our submit and
@@ -39862,6 +40216,12 @@ function createStaticHandler(routes, opts) {
    * serialize the error as they see fit while including the proper response
    * code.  Examples here are 404 and 405 errors that occur prior to reaching
    * any user-defined loaders.
+   *
+   * - `opts.routeId` allows you to specify the specific route handler to call.
+   *   If not provided the handler will determine the proper route by matching
+   *   against `request.url`
+   * - `opts.requestContext` is an optional server context that will be passed
+   *    to actions/loaders in the `context` parameter
    */ async function queryRoute(request, _temp4) {
         let { routeId, requestContext } = _temp4 === void 0 ? {} : _temp4;
         let url = new URL(request.url);
@@ -39884,7 +40244,7 @@ function createStaticHandler(routes, opts) {
         throw getInternalRouterError(404, {
             pathname: location.pathname
         });
-        let result = await queryImpl(request, location, matches, requestContext, match);
+        let result = await queryImpl(request, location, matches, requestContext, null, false, match);
         if (isResponse(result)) return result;
         let error = result.errors ? Object.values(result.errors)[0] : undefined;
         if (error !== undefined) // If we got back result.errors, that means the loader/action threw
@@ -39902,25 +40262,25 @@ function createStaticHandler(routes, opts) {
         }
         return undefined;
     }
-    async function queryImpl(request, location, matches, requestContext, routeMatch) {
+    async function queryImpl(request, location, matches, requestContext, unstable_dataStrategy, skipLoaderErrorBubbling, routeMatch) {
         invariant(request.signal, "query()/queryRoute() requests must contain an AbortController signal");
         try {
             if (isMutationMethod(request.method.toLowerCase())) {
-                let result = await submit(request, matches, routeMatch || getTargetMatch(matches, location), requestContext, routeMatch != null);
+                let result = await submit(request, matches, routeMatch || getTargetMatch(matches, location), requestContext, unstable_dataStrategy, skipLoaderErrorBubbling, routeMatch != null);
                 return result;
             }
-            let result = await loadRouteData(request, matches, requestContext, routeMatch);
+            let result = await loadRouteData(request, matches, requestContext, unstable_dataStrategy, skipLoaderErrorBubbling, routeMatch);
             return isResponse(result) ? result : _extends({}, result, {
                 actionData: null,
                 actionHeaders: {}
             });
         } catch (e) {
-            // If the user threw/returned a Response in callLoaderOrAction, we throw
-            // it to bail out and then return or throw here based on whether the user
-            // returned or threw
-            if (isQueryRouteResponse(e)) {
-                if (e.type === ResultType.error) throw e.response;
-                return e.response;
+            // If the user threw/returned a Response in callLoaderOrAction for a
+            // `queryRoute` call, we throw the `HandlerResult` to bail out early
+            // and then return or throw the raw Response here accordingly
+            if (isHandlerResult(e) && isResponse(e.result)) {
+                if (e.type === ResultType.error) throw e.result;
+                return e.result;
             }
             // Redirects are always returned since they don't propagate to catch
             // boundaries
@@ -39928,7 +40288,7 @@ function createStaticHandler(routes, opts) {
             throw e;
         }
     }
-    async function submit(request, matches, actionMatch, requestContext, isRouteRequest) {
+    async function submit(request, matches, actionMatch, requestContext, unstable_dataStrategy, skipLoaderErrorBubbling, isRouteRequest) {
         let result;
         if (!actionMatch.route.action && !actionMatch.route.lazy) {
             let error = getInternalRouterError(405, {
@@ -39942,11 +40302,10 @@ function createStaticHandler(routes, opts) {
                 error
             };
         } else {
-            result = await callLoaderOrAction("action", request, actionMatch, matches, manifest, mapRouteProperties, basename, future.v7_relativeSplatPath, {
-                isStaticRequest: true,
-                isRouteRequest,
-                requestContext
-            });
+            let results = await callDataStrategy("action", request, [
+                actionMatch
+            ], matches, isRouteRequest, requestContext, unstable_dataStrategy);
+            result = results[0];
             if (request.signal.aborted) throwStaticHandlerAbortedError(request, isRouteRequest, future);
         }
         if (isRedirectResult(result)) // Uhhhh - this should never happen, we should always throw these from
@@ -39954,9 +40313,9 @@ function createStaticHandler(routes, opts) {
         // can get back on the "throw all redirect responses" train here should
         // this ever happen :/
         throw new Response(null, {
-            status: result.status,
+            status: result.response.status,
             headers: {
-                Location: result.location
+                Location: result.response.headers.get("Location")
             }
         });
         if (isDeferredResult(result)) {
@@ -39990,41 +40349,43 @@ function createStaticHandler(routes, opts) {
                 activeDeferreds: null
             };
         }
-        if (isErrorResult(result)) {
-            // Store off the pending error - we use it to determine which loaders
-            // to call and will commit it when we complete the navigation
-            let boundaryMatch = findNearestBoundary(matches, actionMatch.route.id);
-            let context = await loadRouteData(request, matches, requestContext, undefined, {
-                [boundaryMatch.route.id]: result.error
-            });
-            // action status codes take precedence over loader status codes
-            return _extends({}, context, {
-                statusCode: isRouteErrorResponse(result.error) ? result.error.status : 500,
-                actionData: null,
-                actionHeaders: _extends({}, result.headers ? {
-                    [actionMatch.route.id]: result.headers
-                } : {})
-            });
-        }
         // Create a GET request for the loaders
         let loaderRequest = new Request(request.url, {
             headers: request.headers,
             redirect: request.redirect,
             signal: request.signal
         });
-        let context = await loadRouteData(loaderRequest, matches, requestContext);
-        return _extends({}, context, result.statusCode ? {
-            statusCode: result.statusCode
-        } : {}, {
+        if (isErrorResult(result)) {
+            // Store off the pending error - we use it to determine which loaders
+            // to call and will commit it when we complete the navigation
+            let boundaryMatch = skipLoaderErrorBubbling ? actionMatch : findNearestBoundary(matches, actionMatch.route.id);
+            let context = await loadRouteData(loaderRequest, matches, requestContext, unstable_dataStrategy, skipLoaderErrorBubbling, null, [
+                boundaryMatch.route.id,
+                result
+            ]);
+            // action status codes take precedence over loader status codes
+            return _extends({}, context, {
+                statusCode: isRouteErrorResponse(result.error) ? result.error.status : result.statusCode != null ? result.statusCode : 500,
+                actionData: null,
+                actionHeaders: _extends({}, result.headers ? {
+                    [actionMatch.route.id]: result.headers
+                } : {})
+            });
+        }
+        let context = await loadRouteData(loaderRequest, matches, requestContext, unstable_dataStrategy, skipLoaderErrorBubbling, null);
+        return _extends({}, context, {
             actionData: {
                 [actionMatch.route.id]: result.data
-            },
-            actionHeaders: _extends({}, result.headers ? {
+            }
+        }, result.statusCode ? {
+            statusCode: result.statusCode
+        } : {}, {
+            actionHeaders: result.headers ? {
                 [actionMatch.route.id]: result.headers
-            } : {})
+            } : {}
         });
     }
-    async function loadRouteData(request, matches, requestContext, routeMatch, pendingActionError) {
+    async function loadRouteData(request, matches, requestContext, unstable_dataStrategy, skipLoaderErrorBubbling, routeMatch, pendingActionResult) {
         let isRouteRequest = routeMatch != null;
         // Short circuit if we have no loaders to run (queryRoute())
         if (isRouteRequest && !(routeMatch != null && routeMatch.route.loader) && !(routeMatch != null && routeMatch.route.lazy)) throw getInternalRouterError(400, {
@@ -40034,7 +40395,7 @@ function createStaticHandler(routes, opts) {
         });
         let requestMatches = routeMatch ? [
             routeMatch
-        ] : getLoaderMatchesUntilBoundary(matches, Object.keys(pendingActionError || {})[0]);
+        ] : pendingActionResult && isErrorResult(pendingActionResult[1]) ? getLoaderMatchesUntilBoundary(matches, pendingActionResult[0]) : matches;
         let matchesToLoad = requestMatches.filter((m)=>m.route.loader || m.route.lazy);
         // Short circuit if we have no loaders to run (query())
         if (matchesToLoad.length === 0) return {
@@ -40043,22 +40404,18 @@ function createStaticHandler(routes, opts) {
             loaderData: matches.reduce((acc, m)=>Object.assign(acc, {
                     [m.route.id]: null
                 }), {}),
-            errors: pendingActionError || null,
+            errors: pendingActionResult && isErrorResult(pendingActionResult[1]) ? {
+                [pendingActionResult[0]]: pendingActionResult[1].error
+            } : null,
             statusCode: 200,
             loaderHeaders: {},
             activeDeferreds: null
         };
-        let results = await Promise.all([
-            ...matchesToLoad.map((match)=>callLoaderOrAction("loader", request, match, matches, manifest, mapRouteProperties, basename, future.v7_relativeSplatPath, {
-                    isStaticRequest: true,
-                    isRouteRequest,
-                    requestContext
-                }))
-        ]);
+        let results = await callDataStrategy("loader", request, matchesToLoad, matches, isRouteRequest, requestContext, unstable_dataStrategy);
         if (request.signal.aborted) throwStaticHandlerAbortedError(request, isRouteRequest, future);
         // Process and commit output from loaders
         let activeDeferreds = new Map();
-        let context = processRouteLoaderData(matches, matchesToLoad, results, pendingActionError, activeDeferreds);
+        let context = processRouteLoaderData(matches, matchesToLoad, results, pendingActionResult, activeDeferreds, skipLoaderErrorBubbling);
         // Add a null for any non-loader matches for proper revalidation on the client
         let executedLoaders = new Set(matchesToLoad.map((match)=>match.route.id));
         matches.forEach((match)=>{
@@ -40068,6 +40425,22 @@ function createStaticHandler(routes, opts) {
             matches,
             activeDeferreds: activeDeferreds.size > 0 ? Object.fromEntries(activeDeferreds.entries()) : null
         });
+    }
+    // Utility wrapper for calling dataStrategy server-side without having to
+    // pass around the manifest, mapRouteProperties, etc.
+    async function callDataStrategy(type, request, matchesToLoad, matches, isRouteRequest, requestContext, unstable_dataStrategy) {
+        let results = await callDataStrategyImpl(unstable_dataStrategy || defaultDataStrategy, type, request, matchesToLoad, matches, manifest, mapRouteProperties, requestContext);
+        return await Promise.all(results.map((result, i)=>{
+            if (isRedirectHandlerResult(result)) {
+                let response = result.result;
+                // Throw redirects and let the server handle them with an HTTP redirect
+                throw normalizeRelativeRoutingRedirectResponse(response, request, matchesToLoad[i].route.id, matches, basename, future.v7_relativeSplatPath);
+            }
+            if (isResponse(result.result) && isRouteRequest) // For SSR single-route requests, we want to hand Responses back
+            // directly without unwrapping
+            throw result;
+            return convertHandlerResultToDataResult(result);
+        }));
     }
     return {
         dataRoutes,
@@ -40257,20 +40630,25 @@ function getLoaderMatchesUntilBoundary(matches, boundaryId) {
     }
     return boundaryMatches;
 }
-function getMatchesToLoad(history, state, matches, submission, location, isInitialLoad, isRevalidationRequired, cancelledDeferredRoutes, cancelledFetcherLoads, deletedFetchers, fetchLoadMatches, fetchRedirectIds, routesToUse, basename, pendingActionData, pendingError) {
-    let actionResult = pendingError ? Object.values(pendingError)[0] : pendingActionData ? Object.values(pendingActionData)[0] : undefined;
+function getMatchesToLoad(history, state, matches, submission, location, isInitialLoad, skipActionErrorRevalidation, isRevalidationRequired, cancelledDeferredRoutes, cancelledFetcherLoads, deletedFetchers, fetchLoadMatches, fetchRedirectIds, routesToUse, basename, pendingActionResult) {
+    let actionResult = pendingActionResult ? isErrorResult(pendingActionResult[1]) ? pendingActionResult[1].error : pendingActionResult[1].data : undefined;
     let currentUrl = history.createURL(state.location);
     let nextUrl = history.createURL(location);
     // Pick navigation matches that are net-new or qualify for revalidation
-    let boundaryId = pendingError ? Object.keys(pendingError)[0] : undefined;
-    let boundaryMatches = getLoaderMatchesUntilBoundary(matches, boundaryId);
+    let boundaryId = pendingActionResult && isErrorResult(pendingActionResult[1]) ? pendingActionResult[0] : undefined;
+    let boundaryMatches = boundaryId ? getLoaderMatchesUntilBoundary(matches, boundaryId) : matches;
+    // Don't revalidate loaders by default after action 4xx/5xx responses
+    // when the flag is enabled.  They can still opt-into revalidation via
+    // `shouldRevalidate` via `actionResult`
+    let actionStatus = pendingActionResult ? pendingActionResult[1].statusCode : undefined;
+    let shouldSkipRevalidation = skipActionErrorRevalidation && actionStatus && actionStatus >= 400;
     let navigationMatches = boundaryMatches.filter((match, index)=>{
         let { route } = match;
         if (route.lazy) // We haven't loaded this route yet so we don't know if it's got a loader!
         return true;
         if (route.loader == null) return false;
         if (isInitialLoad) {
-            if (route.loader.hydrate) return true;
+            if (typeof route.loader !== "function" || route.loader.hydrate) return true;
             return state.loaderData[route.id] === undefined && // Don't re-run if the loader ran and threw an error
             (!state.errors || state.errors[route.id] === undefined);
         }
@@ -40289,9 +40667,9 @@ function getMatchesToLoad(history, state, matches, submission, location, isIniti
             nextParams: nextRouteMatch.params
         }, submission, {
             actionResult,
-            defaultShouldRevalidate: // Forced revalidation due to submission, useRevalidator, or X-Remix-Revalidate
-            isRevalidationRequired || // Clicked the same link, resubmitted a GET form
-            currentUrl.pathname + currentUrl.search === nextUrl.pathname + nextUrl.search || // Search params affect all loaders
+            unstable_actionStatus: actionStatus,
+            defaultShouldRevalidate: shouldSkipRevalidation ? false : // Forced revalidation due to submission, useRevalidator, or X-Remix-Revalidate
+            isRevalidationRequired || currentUrl.pathname + currentUrl.search === nextUrl.pathname + nextUrl.search || // Search params affect all loaders
             currentUrl.search !== nextUrl.search || isNewRouteInstance(currentRouteMatch, nextRouteMatch)
         }));
     });
@@ -40343,7 +40721,8 @@ function getMatchesToLoad(history, state, matches, submission, location, isIniti
             nextParams: matches[matches.length - 1].params
         }, submission, {
             actionResult,
-            defaultShouldRevalidate: isRevalidationRequired
+            unstable_actionStatus: actionStatus,
+            defaultShouldRevalidate: shouldSkipRevalidation ? false : isRevalidationRequired
         }));
         if (shouldRevalidate) revalidatingFetchers.push({
             key,
@@ -40423,23 +40802,85 @@ function shouldRevalidateLoader(loaderMatch, arg) {
         lazy: undefined
     }));
 }
-async function callLoaderOrAction(type, request, match, matches, manifest, mapRouteProperties, basename, v7_relativeSplatPath, opts) {
-    if (opts === void 0) opts = {};
-    let resultType;
+// Default implementation of `dataStrategy` which fetches all loaders in parallel
+function defaultDataStrategy(opts) {
+    return Promise.all(opts.matches.map((m)=>m.resolve()));
+}
+async function callDataStrategyImpl(dataStrategyImpl, type, request, matchesToLoad, matches, manifest, mapRouteProperties, requestContext) {
+    let routeIdsToLoad = matchesToLoad.reduce((acc, m)=>acc.add(m.route.id), new Set());
+    let loadedMatches = new Set();
+    // Send all matches here to allow for a middleware-type implementation.
+    // handler will be a no-op for unneeded routes and we filter those results
+    // back out below.
+    let results = await dataStrategyImpl({
+        matches: matches.map((match)=>{
+            let shouldLoad = routeIdsToLoad.has(match.route.id);
+            // `resolve` encapsulates the route.lazy, executing the
+            // loader/action, and mapping return values/thrown errors to a
+            // HandlerResult.  Users can pass a callback to take fine-grained control
+            // over the execution of the loader/action
+            let resolve = (handlerOverride)=>{
+                loadedMatches.add(match.route.id);
+                return shouldLoad ? callLoaderOrAction(type, request, match, manifest, mapRouteProperties, handlerOverride, requestContext) : Promise.resolve({
+                    type: ResultType.data,
+                    result: undefined
+                });
+            };
+            return _extends({}, match, {
+                shouldLoad,
+                resolve
+            });
+        }),
+        request,
+        params: matches[0].params,
+        context: requestContext
+    });
+    // Throw if any loadRoute implementations not called since they are what
+    // ensures a route is fully loaded
+    matches.forEach((m)=>invariant(loadedMatches.has(m.route.id), '`match.resolve()` was not called for route id "' + m.route.id + '". ' + "You must call `match.resolve()` on every match passed to " + "`dataStrategy` to ensure all routes are properly loaded."));
+    // Filter out any middleware-only matches for which we didn't need to run handlers
+    return results.filter((_, i)=>routeIdsToLoad.has(matches[i].route.id));
+}
+// Default logic for calling a loader/action is the user has no specified a dataStrategy
+async function callLoaderOrAction(type, request, match, manifest, mapRouteProperties, handlerOverride, staticContext) {
     let result;
     let onReject;
     let runHandler = (handler)=>{
         // Setup a promise we can race against so that abort signals short circuit
         let reject;
+        // This will never resolve so safe to type it as Promise<HandlerResult> to
+        // satisfy the function return value
         let abortPromise = new Promise((_, r)=>reject = r);
         onReject = ()=>reject();
         request.signal.addEventListener("abort", onReject);
-        return Promise.race([
-            handler({
+        let actualHandler = (ctx)=>{
+            if (typeof handler !== "function") return Promise.reject(new Error("You cannot call the handler for a route which defines a boolean " + ('"' + type + '" [routeId: ' + match.route.id + "]")));
+            return handler({
                 request,
                 params: match.params,
-                context: opts.requestContext
-            }),
+                context: staticContext
+            }, ...ctx !== undefined ? [
+                ctx
+            ] : []);
+        };
+        let handlerPromise;
+        if (handlerOverride) handlerPromise = handlerOverride((ctx)=>actualHandler(ctx));
+        else handlerPromise = (async ()=>{
+            try {
+                let val = await actualHandler();
+                return {
+                    type: "data",
+                    result: val
+                };
+            } catch (e) {
+                return {
+                    type: "error",
+                    result: e
+                };
+            }
+        })();
+        return Promise.race([
+            handlerPromise,
             abortPromise
         ]);
     };
@@ -40449,7 +40890,7 @@ async function callLoaderOrAction(type, request, match, matches, manifest, mapRo
             if (handler) {
                 // Run statically defined handler in parallel with lazy()
                 let handlerError;
-                let values = await Promise.all([
+                let [value] = await Promise.all([
                     // If the handler throws, don't let it immediately bubble out,
                     // since we need to let the lazy() execution finish so we know if this
                     // route has a boundary that can handle the error
@@ -40458,13 +40899,13 @@ async function callLoaderOrAction(type, request, match, matches, manifest, mapRo
                     }),
                     loadLazyRouteModule(match.route, mapRouteProperties, manifest)
                 ]);
-                if (handlerError) throw handlerError;
-                result = values[0];
+                if (handlerError !== undefined) throw handlerError;
+                result = value;
             } else {
                 // Load lazy route module, then run any returned handler
                 await loadLazyRouteModule(match.route, mapRouteProperties, manifest);
                 handler = match.route[type];
-                if (handler) // Handler still run even if we got interrupted to maintain consistency
+                if (handler) // Handler still runs even if we got interrupted to maintain consistency
                 // with un-abortable behavior of handler execution on non-lazy or
                 // previously-lazy-loaded routes
                 result = await runHandler(handler);
@@ -40480,7 +40921,7 @@ async function callLoaderOrAction(type, request, match, matches, manifest, mapRo
                 // hit the invariant below that errors on returning undefined.
                 return {
                     type: ResultType.data,
-                    data: undefined
+                    result: undefined
                 };
             }
         } else if (!handler) {
@@ -40490,56 +40931,23 @@ async function callLoaderOrAction(type, request, match, matches, manifest, mapRo
                 pathname
             });
         } else result = await runHandler(handler);
-        invariant(result !== undefined, "You defined " + (type === "action" ? "an action" : "a loader") + " for route " + ('"' + match.route.id + "\" but didn't return anything from your `" + type + "` ") + "function. Please return a value or `null`.");
+        invariant(result.result !== undefined, "You defined " + (type === "action" ? "an action" : "a loader") + " for route " + ('"' + match.route.id + "\" but didn't return anything from your `" + type + "` ") + "function. Please return a value or `null`.");
     } catch (e) {
-        resultType = ResultType.error;
-        result = e;
+        // We should already be catching and converting normal handler executions to
+        // HandlerResults and returning them, so anything that throws here is an
+        // unexpected error we still need to wrap
+        return {
+            type: ResultType.error,
+            result: e
+        };
     } finally{
         if (onReject) request.signal.removeEventListener("abort", onReject);
     }
+    return result;
+}
+async function convertHandlerResultToDataResult(handlerResult) {
+    let { result, type, status } = handlerResult;
     if (isResponse(result)) {
-        let status = result.status;
-        // Process redirects
-        if (redirectStatusCodes.has(status)) {
-            let location = result.headers.get("Location");
-            invariant(location, "Redirects returned/thrown from loaders/actions must have a Location header");
-            // Support relative routing in internal redirects
-            if (!ABSOLUTE_URL_REGEX.test(location)) location = normalizeTo(new URL(request.url), matches.slice(0, matches.indexOf(match) + 1), basename, true, location, v7_relativeSplatPath);
-            else if (!opts.isStaticRequest) {
-                // Strip off the protocol+origin for same-origin + same-basename absolute
-                // redirects. If this is a static request, we can let it go back to the
-                // browser as-is
-                let currentUrl = new URL(request.url);
-                let url = location.startsWith("//") ? new URL(currentUrl.protocol + location) : new URL(location);
-                let isSameBasename = stripBasename(url.pathname, basename) != null;
-                if (url.origin === currentUrl.origin && isSameBasename) location = url.pathname + url.search + url.hash;
-            }
-            // Don't process redirects in the router during static requests requests.
-            // Instead, throw the Response and let the server handle it with an HTTP
-            // redirect.  We also update the Location header in place in this flow so
-            // basename and relative routing is taken into account
-            if (opts.isStaticRequest) {
-                result.headers.set("Location", location);
-                throw result;
-            }
-            return {
-                type: ResultType.redirect,
-                status,
-                location,
-                revalidate: result.headers.get("X-Remix-Revalidate") !== null,
-                reloadDocument: result.headers.get("X-Remix-Reload-Document") !== null
-            };
-        }
-        // For SSR single-route requests, we want to hand Responses back directly
-        // without unwrapping.  We do this with the QueryRouteResponse wrapper
-        // interface so we can know whether it was returned or thrown
-        if (opts.isRouteRequest) {
-            let queryRouteResponse = {
-                type: resultType === ResultType.error ? ResultType.error : ResultType.data,
-                response: result
-            };
-            throw queryRouteResponse;
-        }
         let data;
         try {
             let contentType = result.headers.get("Content-Type");
@@ -40555,9 +40963,10 @@ async function callLoaderOrAction(type, request, match, matches, manifest, mapRo
                 error: e
             };
         }
-        if (resultType === ResultType.error) return {
-            type: resultType,
-            error: new ErrorResponseImpl(status, result.statusText, data),
+        if (type === ResultType.error) return {
+            type: ResultType.error,
+            error: new ErrorResponseImpl(result.status, result.statusText, data),
+            statusCode: result.status,
             headers: result.headers
         };
         return {
@@ -40567,9 +40976,10 @@ async function callLoaderOrAction(type, request, match, matches, manifest, mapRo
             headers: result.headers
         };
     }
-    if (resultType === ResultType.error) return {
-        type: resultType,
-        error: result
+    if (type === ResultType.error) return {
+        type: ResultType.error,
+        error: result,
+        statusCode: isRouteErrorResponse(result) ? result.status : status
     };
     if (isDeferredData(result)) {
         var _result$init, _result$init2;
@@ -40582,8 +40992,30 @@ async function callLoaderOrAction(type, request, match, matches, manifest, mapRo
     }
     return {
         type: ResultType.data,
-        data: result
+        data: result,
+        statusCode: status
     };
+}
+// Support relative routing in internal redirects
+function normalizeRelativeRoutingRedirectResponse(response, request, routeId, matches, basename, v7_relativeSplatPath) {
+    let location = response.headers.get("Location");
+    invariant(location, "Redirects returned/thrown from loaders/actions must have a Location header");
+    if (!ABSOLUTE_URL_REGEX.test(location)) {
+        let trimmedMatches = matches.slice(0, matches.findIndex((m)=>m.route.id === routeId) + 1);
+        location = normalizeTo(new URL(request.url), trimmedMatches, basename, true, location, v7_relativeSplatPath);
+        response.headers.set("Location", location);
+    }
+    return response;
+}
+function normalizeRedirectLocation(location, currentUrl, basename) {
+    if (ABSOLUTE_URL_REGEX.test(location)) {
+        // Strip off the protocol+origin for same-origin + same-basename absolute redirects
+        let normalizedLocation = location;
+        let url = normalizedLocation.startsWith("//") ? new URL(currentUrl.protocol + normalizedLocation) : new URL(normalizedLocation);
+        let isSameBasename = stripBasename(url.pathname, basename) != null;
+        if (url.origin === currentUrl.origin && isSameBasename) return url.pathname + url.search + url.hash;
+    }
+    return location;
 }
 // Utility method for creating the Request instances for loaders/actions during
 // client-side navigations and fetches.  During SSR we will always have a
@@ -40624,32 +41056,36 @@ function convertSearchParamsToFormData(searchParams) {
     for (let [key, value] of searchParams.entries())formData.append(key, value);
     return formData;
 }
-function processRouteLoaderData(matches, matchesToLoad, results, pendingError, activeDeferreds) {
+function processRouteLoaderData(matches, matchesToLoad, results, pendingActionResult, activeDeferreds, skipLoaderErrorBubbling) {
     // Fill in loaderData/errors from our loaders
     let loaderData = {};
     let errors = null;
     let statusCode;
     let foundError = false;
     let loaderHeaders = {};
+    let pendingError = pendingActionResult && isErrorResult(pendingActionResult[1]) ? pendingActionResult[1].error : undefined;
     // Process loader results into state.loaderData/state.errors
     results.forEach((result, index)=>{
         let id = matchesToLoad[index].route.id;
         invariant(!isRedirectResult(result), "Cannot handle redirect results in processLoaderData");
         if (isErrorResult(result)) {
-            // Look upwards from the matched route for the closest ancestor
-            // error boundary, defaulting to the root match
-            let boundaryMatch = findNearestBoundary(matches, id);
             let error = result.error;
             // If we have a pending action error, we report it at the highest-route
             // that throws a loader error, and then clear it out to indicate that
             // it was consumed
-            if (pendingError) {
-                error = Object.values(pendingError)[0];
+            if (pendingError !== undefined) {
+                error = pendingError;
                 pendingError = undefined;
             }
             errors = errors || {};
-            // Prefer higher error values if lower errors bubble to the same boundary
-            if (errors[boundaryMatch.route.id] == null) errors[boundaryMatch.route.id] = error;
+            if (skipLoaderErrorBubbling) errors[id] = error;
+            else {
+                // Look upwards from the matched route for the closest ancestor error
+                // boundary, defaulting to the root match.  Prefer higher error values
+                // if lower errors bubble to the same boundary
+                let boundaryMatch = findNearestBoundary(matches, id);
+                if (errors[boundaryMatch.route.id] == null) errors[boundaryMatch.route.id] = error;
+            }
             // Clear our any prior loaderData for the throwing route
             loaderData[id] = undefined;
             // Once we find our first (highest) error, we set the status code and
@@ -40659,23 +41095,29 @@ function processRouteLoaderData(matches, matchesToLoad, results, pendingError, a
                 statusCode = isRouteErrorResponse(result.error) ? result.error.status : 500;
             }
             if (result.headers) loaderHeaders[id] = result.headers;
-        } else {
-            if (isDeferredResult(result)) {
-                activeDeferreds.set(id, result.deferredData);
-                loaderData[id] = result.deferredData.data;
-            } else loaderData[id] = result.data;
+        } else if (isDeferredResult(result)) {
+            activeDeferreds.set(id, result.deferredData);
+            loaderData[id] = result.deferredData.data;
             // Error status codes always override success status codes, but if all
             // loaders are successful we take the deepest status code.
             if (result.statusCode != null && result.statusCode !== 200 && !foundError) statusCode = result.statusCode;
+            if (result.headers) loaderHeaders[id] = result.headers;
+        } else {
+            loaderData[id] = result.data;
+            // Error status codes always override success status codes, but if all
+            // loaders are successful we take the deepest status code.
+            if (result.statusCode && result.statusCode !== 200 && !foundError) statusCode = result.statusCode;
             if (result.headers) loaderHeaders[id] = result.headers;
         }
     });
     // If we didn't consume the pending action error (i.e., all loaders
     // resolved), then consume it here.  Also clear out any loaderData for the
     // throwing route
-    if (pendingError) {
-        errors = pendingError;
-        loaderData[Object.keys(pendingError)[0]] = undefined;
+    if (pendingError !== undefined && pendingActionResult) {
+        errors = {
+            [pendingActionResult[0]]: pendingError
+        };
+        loaderData[pendingActionResult[0]] = undefined;
     }
     return {
         loaderData,
@@ -40684,8 +41126,9 @@ function processRouteLoaderData(matches, matchesToLoad, results, pendingError, a
         loaderHeaders
     };
 }
-function processLoaderData(state, matches, matchesToLoad, results, pendingError, revalidatingFetchers, fetcherResults, activeDeferreds) {
-    let { loaderData, errors } = processRouteLoaderData(matches, matchesToLoad, results, pendingError, activeDeferreds);
+function processLoaderData(state, matches, matchesToLoad, results, pendingActionResult, revalidatingFetchers, fetcherResults, activeDeferreds) {
+    let { loaderData, errors } = processRouteLoaderData(matches, matchesToLoad, results, pendingActionResult, activeDeferreds, false // This method is only called client side so we always want to bubble
+    );
     // Process results from our revalidating fetchers
     for(let index = 0; index < revalidatingFetchers.length; index++){
         let { key, match, controller } = revalidatingFetchers[index];
@@ -40727,6 +41170,17 @@ function mergeLoaderData(loaderData, newLoaderData, matches, errors) {
         if (errors && errors.hasOwnProperty(id)) break;
     }
     return mergedLoaderData;
+}
+function getActionDataForCommit(pendingActionResult) {
+    if (!pendingActionResult) return {};
+    return isErrorResult(pendingActionResult[1]) ? {
+        // Clear out prior actionData on errors
+        actionData: {}
+    } : {
+        actionData: {
+            [pendingActionResult[0]]: pendingActionResult[1].data
+        }
+    };
 }
 // Find the nearest error boundary, looking upwards from the leaf route (or the
 // route specified by routeId) for the closest ancestor error boundary,
@@ -40804,6 +41258,12 @@ function isHashChangeOnly(a, b) {
     // /page#hash -> /page
     return false;
 }
+function isHandlerResult(result) {
+    return result != null && typeof result === "object" && "type" in result && "result" in result && (result.type === ResultType.data || result.type === ResultType.error);
+}
+function isRedirectHandlerResult(result) {
+    return isResponse(result.result) && redirectStatusCodes.has(result.result.status);
+}
 function isDeferredResult(result) {
     return result.type === ResultType.deferred;
 }
@@ -40825,9 +41285,6 @@ function isRedirectResponse(result) {
     let status = result.status;
     let location = result.headers.get("Location");
     return status >= 300 && status <= 399 && location != null;
-}
-function isQueryRouteResponse(obj) {
-    return obj && isResponse(obj.response) && (obj.type === ResultType.data || obj.type === ResultType.error);
 }
 function isValidMethod(method) {
     return validRequestMethods.has(method.toLowerCase());
@@ -41036,9 +41493,9 @@ function persistAppliedTransitions(_window, transitions) {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"km3Ru":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd"}],"dvzmY":[function(require,module,exports) {
 "use strict";
-var Refresh = require("7422ead32dcc1e6b");
+var Refresh = require("f3ddfbe10a0d9fbb");
 function debounce(func, delay) {
     {
         let timeout = undefined;
@@ -41174,7 +41631,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"7422ead32dcc1e6b":"786KC"}],"ggaUx":[function(require,module,exports) {
+},{"f3ddfbe10a0d9fbb":"eQQgf"}],"ggaUx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41307,7 +41764,7 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router":"dbWyW","react-bootstrap/Button":"aPzUt","react-router-dom":"9xmpe","prop-types":"7wKI2","./movie-view.scss":"jnlR5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jnlR5":[function() {},{}],"9YtA0":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"bl7WB","react":"l8X7j","react-router":"i1Fig","react-bootstrap/Button":"2YoR0","react-router-dom":"3DXe8","prop-types":"389Di","./movie-view.scss":"jnlR5","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dvzmY"}],"jnlR5":[function() {},{}],"9YtA0":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$9fee = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41361,7 +41818,7 @@ const LoginView = ({ onLoggedIn })=>{
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
                 lineNumber: 42,
-                columnNumber: 10
+                columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
                 controlId: "formUsername",
@@ -41442,7 +41899,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4OGiN":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"bl7WB","react":"l8X7j","react-bootstrap/Button":"2YoR0","react-bootstrap/Form":"athQu","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dvzmY"}],"4OGiN":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$73d1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41629,7 +42086,7 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bsPVM":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"bl7WB","react":"l8X7j","react-bootstrap/Button":"2YoR0","react-bootstrap/Form":"athQu","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dvzmY"}],"bsPVM":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$abf5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41640,110 +42097,156 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "NavigationBar", ()=>NavigationBar);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _reactBootstrap = require("react-bootstrap");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _navbar = require("react-bootstrap/Navbar");
+var _navbarDefault = parcelHelpers.interopDefault(_navbar);
+var _nav = require("react-bootstrap/Nav");
+var _navDefault = parcelHelpers.interopDefault(_nav);
+var _form = require("react-bootstrap/Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _formControl = require("react-bootstrap/FormControl");
+var _formControlDefault = parcelHelpers.interopDefault(_formControl);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _reactRouterDom = require("react-router-dom");
-const NavigationBar = ({ user, onLoggedOut })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar), {
+var _s = $RefreshSig$();
+const NavigationBar = ({ user, onLoggedOut, setSearchQuery })=>{
+    _s();
+    const [searchInput, setSearchInput] = (0, _react.useState)(""); // State to store the search input
+    const location = (0, _reactRouterDom.useLocation)(); // Get the current location/route
+    const handleSearchChange = (event)=>{
+        setSearchInput(event.target.value); // Update search input state
+    };
+    const handleSearchSubmit = (event)=>{
+        event.preventDefault();
+        setSearchQuery(searchInput.trim()); // Set search query in parent component
+    };
+    // Render search bar only on the home page ("/")
+    const renderSearchBar = location.pathname === "/";
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default), {
         bg: "light",
         expand: "lg",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Brand, {
-                    as: (0, _reactRouterDom.Link),
-                    to: "/",
-                    children: "Movies App"
-                }, void 0, false, {
-                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 9,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Toggle, {
-                    "aria-controls": "basic-navbar-nav"
-                }, void 0, false, {
-                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 12,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Collapse, {
-                    id: "basic-navbar-nav",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav), {
-                        className: "me-auto",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Brand, {
+                href: "/",
+                children: "MovieFlix"
+            }, void 0, false, {
+                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                lineNumber: 27,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Toggle, {
+                "aria-controls": "basic-navbar-nav"
+            }, void 0, false, {
+                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                lineNumber: 28,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Collapse, {
+                id: "basic-navbar-nav",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default), {
+                        className: "mr-auto",
                         children: [
-                            !user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                        as: (0, _reactRouterDom.Link),
-                                        to: "/login",
-                                        children: "Login"
-                                    }, void 0, false, {
-                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 17,
-                                        columnNumber: 17
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                        as: (0, _reactRouterDom.Link),
-                                        to: "/signup",
-                                        children: "Signup"
-                                    }, void 0, false, {
-                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 20,
-                                        columnNumber: 17
-                                    }, undefined)
-                                ]
-                            }, void 0, true),
-                            user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                        as: (0, _reactRouterDom.Link),
-                                        to: "/",
-                                        children: "Home"
-                                    }, void 0, false, {
-                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 27,
-                                        columnNumber: 17
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                        as: (0, _reactRouterDom.Link),
-                                        to: "/profile",
-                                        children: "My Profile"
-                                    }, void 0, false, {
-                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 30,
-                                        columnNumber: 17
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                        onClick: onLoggedOut,
-                                        children: "Logout"
-                                    }, void 0, false, {
-                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 33,
-                                        columnNumber: 17
-                                    }, undefined)
-                                ]
-                            }, void 0, true)
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                href: "/",
+                                children: "Home"
+                            }, void 0, false, {
+                                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                lineNumber: 31,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                href: "/profile",
+                                children: "Profile"
+                            }, void 0, false, {
+                                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                lineNumber: 32,
+                                columnNumber: 11
+                            }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                        lineNumber: 14,
-                        columnNumber: 11
+                        lineNumber: 30,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default), {
+                        children: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                    onClick: onLoggedOut,
+                                    children: "Logout"
+                                }, void 0, false, {
+                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                    lineNumber: 37,
+                                    columnNumber: 15
+                                }, undefined),
+                                renderSearchBar && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {
+                                    onSubmit: handleSearchSubmit,
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formControlDefault.default), {
+                                        type: "text",
+                                        placeholder: "Search",
+                                        className: "mr-sm-2",
+                                        value: searchInput,
+                                        onChange: handleSearchChange,
+                                        onKeyDown: (e)=>{
+                                            if (e.key === "Enter") handleSearchSubmit(e);
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                        lineNumber: 40,
+                                        columnNumber: 19
+                                    }, undefined)
+                                }, void 0, false, {
+                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                    lineNumber: 39,
+                                    columnNumber: 17
+                                }, undefined)
+                            ]
+                        }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                    href: "/login",
+                                    children: "Login"
+                                }, void 0, false, {
+                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                    lineNumber: 57,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                    href: "/signup",
+                                    children: "Sign Up"
+                                }, void 0, false, {
+                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                    lineNumber: 58,
+                                    columnNumber: 15
+                                }, undefined)
+                            ]
+                        }, void 0, true)
+                    }, void 0, false, {
+                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                        lineNumber: 34,
+                        columnNumber: 9
                     }, undefined)
-                }, void 0, false, {
-                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 13,
-                    columnNumber: 9
-                }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 8,
-            columnNumber: 7
-        }, undefined)
-    }, void 0, false, {
+                ]
+            }, void 0, true, {
+                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                lineNumber: 29,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-        lineNumber: 7,
+        lineNumber: 26,
         columnNumber: 5
     }, undefined);
 };
+_s(NavigationBar, "+tqXS1m0aGDFf7BSJVAlrkJKYdc=", false, function() {
+    return [
+        (0, _reactRouterDom.useLocation)
+    ];
+});
 _c = NavigationBar;
 var _c;
 $RefreshReg$(_c, "NavigationBar");
@@ -41753,7 +42256,7 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"2vVqf":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"bl7WB","react":"l8X7j","react-bootstrap/Navbar":"coQ1x","react-bootstrap/Nav":"874l3","react-bootstrap/Form":"athQu","react-bootstrap/FormControl":"lCtBq","react-bootstrap/Button":"2YoR0","react-router-dom":"3DXe8","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dvzmY"}],"2vVqf":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3c12 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -42101,7 +42604,7 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","./profile-view.scss":"eyKYH","moment":"jwcsj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eyKYH":[function() {},{}],"jwcsj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"bl7WB","react":"l8X7j","react-bootstrap":"hwlHV","./profile-view.scss":"eyKYH","moment":"lQc7s","@parcel/transformer-js/src/esmodule-helpers.js":"1Iizd","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dvzmY"}],"eyKYH":[function() {},{}],"lQc7s":[function(require,module,exports) {
 //! moment.js
 //! version : 2.30.1
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -45856,6 +46359,6 @@ $RefreshReg$(_c, "ProfileView");
     return hooks;
 });
 
-},{}],"lJZlQ":[function() {},{}]},["5qIsR","1xC6H","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{}],"lJZlQ":[function() {},{}]},["7oH2Q","40UBb","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
